@@ -82,7 +82,6 @@ public class EditorApplicationModel extends DrawApplicationModel {
         public SouthEast(DrawingEditor editor) {
             super(editor, 1, 1);
             labels.configureAction(this, "createArrow");
-            // New Comment
         }
     }
 
