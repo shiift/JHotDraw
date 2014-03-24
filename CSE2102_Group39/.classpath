@@ -2,12 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="D:/Users/Liam/Documents/Dropbox/UCONN/Sophomore/CSE2102/JHotDraw/batik.jar"/>
-	<classpathentry kind="lib" path="D:/Users/Liam/Documents/Dropbox/UCONN/Sophomore/CSE2102/JHotDraw/com-sun-tools-visualvm-tools.jar"/>
-	<classpathentry kind="lib" path="D:/Users/Liam/Documents/Dropbox/UCONN/Sophomore/CSE2102/JHotDraw/javac.jar"/>
-	<classpathentry kind="lib" path="D:/Users/Liam/Documents/Dropbox/UCONN/Sophomore/CSE2102/JHotDraw/java-plugin-1.6.0.23.jar"/>
-	<classpathentry kind="lib" path="D:/Users/Liam/Documents/Dropbox/UCONN/Sophomore/CSE2102/JHotDraw/jdo2-api-2.2.jar"/>
-	<classpathentry kind="lib" path="D:/Users/Liam/Documents/Dropbox/UCONN/Sophomore/CSE2102/JHotDraw/MRJAdapter.jar"/>
-	<classpathentry kind="lib" path="D:/Users/Liam/Documents/Dropbox/UCONN/Sophomore/CSE2102/JHotDraw/quaqua-3.6.11.jar"/>
+	<classpathentry kind="lib" path="JHotDraw/batik.jar"/>
+	<classpathentry kind="lib" path="JHotDraw/com-sun-tools-visualvm-tools.jar"/>
+	<classpathentry kind="lib" path="JHotDraw/javac.jar"/>
+	<classpathentry kind="lib" path="JHotDraw/java-plugin-1.6.0.23.jar"/>
+	<classpathentry kind="lib" path="JHotDraw/jdo2-api-2.2.jar"/>
+	<classpathentry kind="lib" path="JHotDraw/MRJAdapter.jar"/>
+	<classpathentry kind="lib" path="JHotDraw/quaqua-3.6.11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
