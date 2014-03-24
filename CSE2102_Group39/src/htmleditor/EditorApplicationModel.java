@@ -78,7 +78,6 @@ public class EditorApplicationModel extends DrawApplicationModel {
 		app.launch(args);
 	}
 	
-	// SouthEast MoveAction
     public static class SouthEast extends MoveAction {
         public SouthEast(DrawingEditor editor) {
             super(editor, 1, 1);
