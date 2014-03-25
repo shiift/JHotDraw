@@ -102,12 +102,7 @@ public class DrawProject extends AbstractProject {
         pButton.putClientProperty("Quaqua.Component.visualMargin",new Insets(0,0,0,0));
         pButton.setFont(UIManager.getFont("SmallSystemFont"));
         placardPanel.add(pButton, BorderLayout.WEST);
-        pButton = ToolBarButtonFactory.createToggleGridButton(view);
-        pButton.putClientProperty("Quaqua.Button.style","placard");
-        pButton.putClientProperty("Quaqua.Component.visualMargin",new Insets(0,0,0,0));
-        pButton.setFont(UIManager.getFont("SmallSystemFont"));
-        labels.configureToolBarButton(pButton, "alignGridSmall");
-        placardPanel.add(pButton, BorderLayout.EAST);
+        view.setConstrainer(new GridConstrainer(10,10));
         scrollPane.add(placardPanel, JScrollPane.LOWER_LEFT_CORNER);
     }
     

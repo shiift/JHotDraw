@@ -80,13 +80,13 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         tb.setName(labels.getString("drawToolBarTitle"));
         list.add(tb);
         tb = new JToolBar();
-        ToolBarButtonFactory.addAttributesButtonsTo(tb, editor);
-        tb.setName(labels.getString("attributesToolBarTitle"));
-        list.add(tb);
-        tb = new JToolBar();
-        ToolBarButtonFactory.addAlignmentButtonsTo(tb, editor);
-        tb.setName(labels.getString("alignmentToolBarTitle"));
-        list.add(tb);
+        //ToolBarButtonFactory.addAttributesButtonsTo(tb, editor);
+        //tb.setName(labels.getString("attributesToolBarTitle"));
+        //list.add(tb);
+        //tb = new JToolBar();
+        //ToolBarButtonFactory.addAlignmentButtonsTo(tb, editor);
+        //tb.setName(labels.getString("alignmentToolBarTitle"));
+        //list.add(tb);
         return list;
     }
     private void addCreationButtonsTo(JToolBar tb, DrawingEditor editor) {
@@ -108,20 +108,20 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         ConnectionFigure lc;
         
         ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new HtmlFigure()), "createRectangle", labels);
-        ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new RoundRectangleFigure()), "createRoundRectangle", labels);
-        ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new EllipseFigure()), "createEllipse", labels);
-        ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new DiamondFigure()), "createDiamond", labels);
-        ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new TriangleFigure()), "createTriangle", labels);
-        ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new LineFigure()), "createLine", labels);
-        ToolBarButtonFactory.addToolTo(tb, editor, ct = new CreationTool(new LineFigure()), "createArrow", labels);
-       af = (AttributedFigure) ct.getPrototype();
-        af.setAttribute(END_DECORATION, new ArrowTip(0.35, 12, 11.3));
-        ToolBarButtonFactory.addToolTo(tb, editor, new ConnectionTool(new LineConnectionFigure()), "createLineConnection", labels);
-        ToolBarButtonFactory.addToolTo(tb, editor, cnt = new ConnectionTool(new LineConnectionFigure()), "createElbowConnection", labels);
-     lc =  cnt.getPrototype();
-        lc.setLiner(new ElbowLiner());
-        ToolBarButtonFactory.addToolTo(tb, editor, new BezierTool(new BezierFigure()), "createScribble", labels);
-        ToolBarButtonFactory.addToolTo(tb, editor, new BezierTool(new BezierFigure(true)), "createPolygon", labels);
+//        ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new RoundRectangleFigure()), "createRoundRectangle", labels);
+//        ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new EllipseFigure()), "createEllipse", labels);
+//        ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new DiamondFigure()), "createDiamond", labels);
+//        ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new TriangleFigure()), "createTriangle", labels);
+//        ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new LineFigure()), "createLine", labels);
+//        ToolBarButtonFactory.addToolTo(tb, editor, ct = new CreationTool(new LineFigure()), "createArrow", labels);
+//       af = (AttributedFigure) ct.getPrototype();
+//        af.setAttribute(END_DECORATION, new ArrowTip(0.35, 12, 11.3));
+//        ToolBarButtonFactory.addToolTo(tb, editor, new ConnectionTool(new LineConnectionFigure()), "createLineConnection", labels);
+//        ToolBarButtonFactory.addToolTo(tb, editor, cnt = new ConnectionTool(new LineConnectionFigure()), "createElbowConnection", labels);
+//     lc =  cnt.getPrototype();
+//        lc.setLiner(new ElbowLiner());
+//        ToolBarButtonFactory.addToolTo(tb, editor, new BezierTool(new BezierFigure()), "createScribble", labels);
+//        ToolBarButtonFactory.addToolTo(tb, editor, new BezierTool(new BezierFigure(true)), "createPolygon", labels);
         ToolBarButtonFactory.addToolTo(tb, editor, new TextTool(new TextFigure()), "createText", labels);
         ToolBarButtonFactory.addToolTo(tb, editor, new TextAreaTool(new TextAreaFigure()), "createTextArea", labels);
     }    
