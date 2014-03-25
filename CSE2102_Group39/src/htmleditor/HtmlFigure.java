@@ -1,21 +1,46 @@
 package htmleditor;
 
+import static org.jhotdraw.draw.AttributeKeys.DECORATOR_INSETS;
+
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.Point2D.Double;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
+import org.jhotdraw.draw.AbstractConnector;
+import org.jhotdraw.draw.AttributeKey;
 import org.jhotdraw.draw.AttributeKeys;
 import org.jhotdraw.draw.AttributedFigure;
+import org.jhotdraw.draw.ConnectionFigure;
+import org.jhotdraw.draw.ConnectionHandle;
+import org.jhotdraw.draw.Connector;
 import org.jhotdraw.draw.Figure;
+import org.jhotdraw.draw.Handle;
+import org.jhotdraw.draw.LineConnectionFigure;
+import org.jhotdraw.draw.LocatorConnector;
+import org.jhotdraw.draw.MoveHandle;
 import org.jhotdraw.draw.RectangleFigure;
+import org.jhotdraw.draw.RelativeLocator;
 import org.jhotdraw.geom.Geom;
+import org.jhotdraw.geom.Insets2DDouble;
+import org.jhotdraw.samples.net.figures.NodeFigure;
 
-public abstract class HtmlFigure extends AttributedFigure {
+import ch.randelshofer.quaqua.util.ResourceBundleUtil;
 
+public class HtmlFigure extends RectangleFigure {
     private Rectangle2D.Double rectangle;
+    
+    private LinkedList<AbstractConnector> connectors;
+    private static LocatorConnector north;
+    private static LocatorConnector south;
+    private static LocatorConnector east;
+    private static LocatorConnector west;
     
     /** Creates a new instance. */
     public HtmlFigure() {
@@ -24,91 +49,60 @@ public abstract class HtmlFigure extends AttributedFigure {
     
     public HtmlFigure(double x, double y, double width, double height) {
         rectangle = new Rectangle2D.Double(x, y, width, height);
-        /*
-        FILL_COLOR.set(this, Color.white);
-        STROKE_COLOR.set(this, Color.black);
-         */
+        createConnectors();
+        ResourceBundleUtil labels = ResourceBundleUtil.getLAFBundle("org.jhotdraw.samples.net.Labels");
     }
     
-    // DRAWING
-    // SHAPE AND BOUNDS
-    // ATTRIBUTES
-    // EDITING
-// CONNECTING
-    // COMPOSITE FIGURES
-    // CLONING
-    // EVENT HANDLING
-    public Rectangle2D.Double getBounds() {
-        Rectangle2D.Double bounds = (Rectangle2D.Double) rectangle.clone();
-        return bounds;
+    private void createConnectors() {
+        connectors = new LinkedList<AbstractConnector>();
+        connectors.add(new LocatorConnector(this, new RelativeLocator(0.5,0.5)));
+        for (AbstractConnector c : connectors) {
+            c.setVisible(true);
+        }
     }
     
-    protected void drawFill(Graphics2D g) {
-        Rectangle2D.Double r = (Rectangle2D.Double) rectangle.clone();
-            double grow = AttributeKeys.getPerpendicularFillGrowth(this);
-            Geom.grow(r, grow, grow);
-        g.fill(r);
+    @Override public Collection<Handle> createHandles(int detailLevel) {
+    	java.util.List<Handle> handles = (List<Handle>) super.createHandles(detailLevel);
+        if (detailLevel == 0) {
+        	LineConnectionFigure lcf = new LineConnectionFigure();
+        	lcf.setAttribute(AttributeKeys.STROKE_COLOR, Color.red);
+            handles.add(new ConnectionHandle(this, RelativeLocator.north(), lcf));
+        }
+        return handles;
     }
     
-    protected void drawStroke(Graphics2D g) {
-        Rectangle2D.Double r = (Rectangle2D.Double) rectangle.clone();
-        double grow = AttributeKeys.getPerpendicularDrawGrowth(this);
-       Geom.grow(r, grow, grow);
-       
-        g.draw(r);
+    @Override public Connector findConnector(Point2D.Double p, ConnectionFigure figure) {
+        // return closest connector
+        double min = java.lang.Double.MAX_VALUE;
+        Connector closest = null;
+        for (Connector c : connectors) {
+            Point2D.Double p2 = Geom.center(c.getBounds());
+            double d = Geom.length2(p.x, p.y, p2.x, p2.y);
+            if (d < min) {
+                min = d;
+                closest = c;
+            }
+        }
+        return closest;
     }
     
-    public Rectangle2D.Double getFigureDrawBounds() {
-        Rectangle2D.Double r = (Rectangle2D.Double) rectangle.clone();
-        double grow = AttributeKeys.getPerpendicularHitGrowth(this) + 1d;
-        Geom.grow(r, grow, grow);
-        return r;
-    }
-    /**
-     * Checks if a Point2D.Double is inside the figure.
-     */
-    public boolean contains(Point2D.Double p) {
-        Rectangle2D.Double r = (Rectangle2D.Double) rectangle.clone();
-        double grow = AttributeKeys.getPerpendicularHitGrowth(this) + 1d;
-        Geom.grow(r, grow, grow);
-        return r.contains(p);
-    }
-    
-    public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
-        rectangle.x = Math.min(anchor.x, lead.x);
-        rectangle.y = Math.min(anchor.y , lead.y);
-        rectangle.width = Math.max(0.1, Math.abs(lead.x - anchor.x));
-        rectangle.height = Math.max(0.1, Math.abs(lead.y - anchor.y));
-    }
-    /**
-     * Moves the Figure to a new location.
-     * @param tx the transformation matrix.
-     */
-    public void basicTransform(AffineTransform tx) {
-        Point2D.Double anchor = getStartPoint();
-        Point2D.Double lead = getEndPoint();
-        basicSetBounds(
-                (Point2D.Double) tx.transform(anchor, anchor),
-                (Point2D.Double) tx.transform(lead, lead)
-                );
+    @Override public Connector findCompatibleConnector(Connector c, boolean isStart) {
+        return connectors.getFirst();
     }
     
     public HtmlFigure clone() {
     	HtmlFigure that = (HtmlFigure) super.clone();
-        that.rectangle = (Rectangle2D.Double) this.rectangle.clone();
+        that.createConnectors();
         return that;
     }
-    public void restoreTo(Object geometry) {
-        Rectangle2D.Double r = (Rectangle2D.Double) geometry;
-        rectangle.x = r.x;
-        rectangle.y = r.y;
-        rectangle.width = r.width;
-        rectangle.height = r.height;
+    
+    @Override protected void drawConnectors(Graphics2D g) {
+        for (Connector c : connectors) {
+            c.draw(g);
+        }
     }
     
-    public Object getRestoreData() {
-        return rectangle.clone();
+    @Override public int getLayer() {
+        return -1; // stay below ConnectionFigures
     }
-    
-
 }

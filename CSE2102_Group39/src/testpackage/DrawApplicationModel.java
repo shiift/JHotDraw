@@ -15,11 +15,17 @@
 package testpackage;
 
 import org.jhotdraw.util.*;
+
+import htmleditor.HtmlFigure;
+
 import java.util.*;
+
 import javax.swing.*;
+
 import org.jhotdraw.app.*;
 import org.jhotdraw.draw.*;
 import org.jhotdraw.draw.action.*;
+
 import static org.jhotdraw.draw.AttributeKeys.*;
 /**
  * DrawApplicationModel.
@@ -101,7 +107,7 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         ConnectionTool cnt;
         ConnectionFigure lc;
         
-        ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new RectangleFigure()), "createRectangle", labels);
+        ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new HtmlFigure()), "createRectangle", labels);
         ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new RoundRectangleFigure()), "createRoundRectangle", labels);
         ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new EllipseFigure()), "createEllipse", labels);
         ToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new DiamondFigure()), "createDiamond", labels);
