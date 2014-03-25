@@ -34,15 +34,10 @@ import org.jhotdraw.samples.net.figures.NodeFigure;
 import ch.randelshofer.quaqua.util.ResourceBundleUtil;
 
 public class HtmlFigure extends RectangleFigure {
-    private Rectangle2D.Double rectangle;
     
     private LinkedList<HtmlFigure> figureList;
+    private HtmlFigure parent;
     private boolean isData;
-    private LinkedList<AbstractConnector> connectors;
-    private static LocatorConnector north;
-    private static LocatorConnector south;
-    private static LocatorConnector east;
-    private static LocatorConnector west;
     
     /** Creates a new instance. */
     public HtmlFigure() {
@@ -50,58 +45,7 @@ public class HtmlFigure extends RectangleFigure {
     }
     
     public HtmlFigure(double x, double y, double width, double height) {
-        rectangle = new Rectangle2D.Double(x, y, width, height);
-        createConnectors();
-        ResourceBundleUtil labels = ResourceBundleUtil.getLAFBundle("org.jhotdraw.samples.net.Labels");
-    }
-    
-    private void createConnectors() {
-        connectors = new LinkedList<AbstractConnector>();
-        connectors.add(new LocatorConnector(this, new RelativeLocator(0.5,0.5)));
-        for (AbstractConnector c : connectors) {
-            c.setVisible(true);
-        }
-    }
-    
-    @Override public Collection<Handle> createHandles(int detailLevel) {
-    	java.util.List<Handle> handles = (List<Handle>) super.createHandles(detailLevel);
-        if (detailLevel == 0) {
-        	LineConnectionFigure lcf = new LineConnectionFigure();
-        	lcf.setAttribute(AttributeKeys.STROKE_COLOR, Color.red);
-            handles.add(new ConnectionHandle(this, RelativeLocator.north(), lcf));
-        }
-        return handles;
-    }
-    
-    @Override public Connector findConnector(Point2D.Double p, ConnectionFigure figure) {
-        // return closest connector
-        double min = java.lang.Double.MAX_VALUE;
-        Connector closest = null;
-        for (Connector c : connectors) {
-            Point2D.Double p2 = Geom.center(c.getBounds());
-            double d = Geom.length2(p.x, p.y, p2.x, p2.y);
-            if (d < min) {
-                min = d;
-                closest = c;
-            }
-        }
-        return closest;
-    }
-    
-    @Override public Connector findCompatibleConnector(Connector c, boolean isStart) {
-        return connectors.getFirst();
-    }
-    
-    public HtmlFigure clone() {
-    	HtmlFigure that = (HtmlFigure) super.clone();
-        that.createConnectors();
-        return that;
-    }
-    
-    @Override protected void drawConnectors(Graphics2D g) {
-        for (Connector c : connectors) {
-            c.draw(g);
-        }
+    	super(x, y, width, height);
     }
     
     @Override public int getLayer() {
@@ -122,11 +66,11 @@ public class HtmlFigure extends RectangleFigure {
 	
 	
 	//isData methods
-		public boolean getData(){
-			return isData;
-		}
-		
-		public void setData(boolean val){
-			isData = val;
-		}
+	public boolean getData(){
+		return isData;
+	}
+	
+	public void setData(boolean val){
+		isData = val;
+	}
 }

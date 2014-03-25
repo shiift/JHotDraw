@@ -1,6 +1,6 @@
 package htmleditor;
 
-public abstract class HtmlAttribute 
+public class HtmlAttribute 
 {
 	
 	private String _name;
