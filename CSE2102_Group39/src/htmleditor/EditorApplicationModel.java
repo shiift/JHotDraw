@@ -40,8 +40,6 @@ public class EditorApplicationModel extends DrawApplicationModel {
         ToolBarButtonFactory.addSelectionToolTo(newBar, editor, ToolBarButtonFactory.createDrawingActions(editor), ToolBarButtonFactory.createSelectionActions(editor));
         newBar.addSeparator();
         
-        newBar.add(new SouthEast(editor)).setFocusable(false);
-        
         // following is needed to test the new tool
         ToolBarButtonFactory.addToolTo(newBar, editor, new CreationTool(new HtmlFigure()), "createRectangle", labels);
         
@@ -77,12 +75,5 @@ public class EditorApplicationModel extends DrawApplicationModel {
 		myProject.setProjectClassName("org.jhotdraw.samples.draw.DrawProject");
 		app.launch(args);
 	}
-	//Comment back here
-    public static class SouthEast extends MoveAction {
-        public SouthEast(DrawingEditor editor) {
-            super(editor, 1, 1);
-            labels.configureAction(this, "createArrow");
-        }
-    }
 
 }

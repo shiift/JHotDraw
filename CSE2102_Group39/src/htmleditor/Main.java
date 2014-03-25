@@ -12,7 +12,7 @@
  * JHotDraw.org.
  */
 
-package testpackage;
+package htmleditor;
 
 import javax.swing.*;
 import org.jhotdraw.app.*;
@@ -42,7 +42,7 @@ public class Main {
         model.setName("JHotDraw PlasmaDraw");
         model.setVersion("0.5");
         model.setCopyright("Copyright 2006 (c) Werner Randelshofer.");
-        model.setProjectClassName("testpackage.DrawProject");
+        model.setProjectClassName("htmleditor.DrawProject");
         app.setModel(model);
         app.launch(args);
     }

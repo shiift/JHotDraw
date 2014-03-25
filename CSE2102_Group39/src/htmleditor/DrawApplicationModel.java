@@ -12,7 +12,7 @@
  * JHotDraw.org.
  */
 
-package testpackage;
+package htmleditor;
 
 import org.jhotdraw.util.*;
 
