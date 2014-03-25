@@ -7,8 +7,17 @@ public class HtmlObject {
 	private LinkedList<HtmlObject> objectList;
 	//For now attribute list is strings, possibly make its own class?
 	private LinkedList<String> attributeList;
-	private boolean isData;
+	private boolean isData = false;
 	
+	public HtmlObject(){
+		objectList = new LinkedList<HtmlObject>();
+		attributeList = new LinkedList<String>();
+	}
+	public HtmlObject(LinkedList<String> attrList, boolean val){
+		objectList = new LinkedList<HtmlObject>();
+		attributeList = new LinkedList<String>(attrList);
+		isData = val;
+	}
 	
 	//HtmlObject methods
 	public LinkedList<HtmlObject> getObjectList(){
