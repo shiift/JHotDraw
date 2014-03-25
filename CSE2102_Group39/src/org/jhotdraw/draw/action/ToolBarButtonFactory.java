@@ -102,9 +102,9 @@ public class ToolBarButtonFactory {
     }
     
     
-    private static class ToolButtonListener implements ItemListener {
-        private Tool tool;
-        private DrawingEditor editor;
+    protected static class ToolButtonListener implements ItemListener {
+        protected Tool tool;
+        protected DrawingEditor editor;
         public ToolButtonListener(Tool t, DrawingEditor editor) {
             this.tool = t;
             this.editor = editor;
@@ -117,7 +117,7 @@ public class ToolBarButtonFactory {
     }
     
     /** Prevent instance creation. */
-    private ToolBarButtonFactory() {
+    protected ToolBarButtonFactory() {
     }
     
     public static Collection<Action> createDrawingActions(DrawingEditor editor) {

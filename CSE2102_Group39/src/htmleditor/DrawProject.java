@@ -104,6 +104,9 @@ public class DrawProject extends AbstractProject {
         placardPanel.add(pButton, BorderLayout.WEST);
         view.setConstrainer(new GridConstrainer(10,10));
         scrollPane.add(placardPanel, JScrollPane.LOWER_LEFT_CORNER);
+        
+        Drawing draw = view.getDrawing();
+        draw.add(new HtmlFigure(10, 10, 800, 1000));
     }
     
     public DrawingEditor getEditor() {
