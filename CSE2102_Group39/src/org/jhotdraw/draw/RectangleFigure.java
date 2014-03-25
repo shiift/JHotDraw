@@ -108,6 +108,7 @@ public class RectangleFigure extends AttributedFigure {
                 (Point2D.Double) tx.transform(anchor, anchor),
                 (Point2D.Double) tx.transform(lead, lead)
                 );
+        System.out.println("test");
     }
     
     public RectangleFigure clone() {

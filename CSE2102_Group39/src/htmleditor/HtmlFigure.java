@@ -36,6 +36,8 @@ import ch.randelshofer.quaqua.util.ResourceBundleUtil;
 public class HtmlFigure extends RectangleFigure {
     private Rectangle2D.Double rectangle;
     
+    private LinkedList<HtmlFigure> figureList;
+    private boolean isData;
     private LinkedList<AbstractConnector> connectors;
     private static LocatorConnector north;
     private static LocatorConnector south;
@@ -105,4 +107,26 @@ public class HtmlFigure extends RectangleFigure {
     @Override public int getLayer() {
         return -1; // stay below ConnectionFigures
     }
+    
+    //Figure list methods
+    public LinkedList<HtmlFigure> getObjectList(){
+		return figureList;
+	}
+    public void addHtmlObject(HtmlFigure object){
+		figureList.add(object);
+	}
+	
+	public HtmlFigure removeHtmlFigure(int location){
+		return figureList.remove(location);
+	}
+	
+	
+	//isData methods
+		public boolean getData(){
+			return isData;
+		}
+		
+		public void setData(boolean val){
+			isData = val;
+		}
 }
