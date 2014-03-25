@@ -38,6 +38,8 @@ public class HtmlFigure extends RectangleFigure {
     private LinkedList<HtmlFigure> figureList;
     private HtmlFigure parent;
     private boolean isData;
+    private String tag;
+    private String name;
     
     /** Creates a new instance. */
     public HtmlFigure() {
@@ -65,6 +67,16 @@ public class HtmlFigure extends RectangleFigure {
 	}
 	
 	
+	// parent methods
+	public HtmlFigure getParent() {
+		return parent;
+	}
+	
+	public void setParent(HtmlFigure parent) {
+		this.parent = parent;
+	}
+	
+	
 	//isData methods
 	public boolean getData(){
 		return isData;
@@ -72,5 +84,25 @@ public class HtmlFigure extends RectangleFigure {
 	
 	public void setData(boolean val){
 		isData = val;
+	}
+	
+	
+	// Tag methods
+	public String getTag() {
+		return tag;
+	}
+	
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+	
+	
+	// Name methods
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
 	}
 }
