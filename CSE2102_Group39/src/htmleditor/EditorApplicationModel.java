@@ -43,7 +43,7 @@ public class EditorApplicationModel extends DrawApplicationModel {
         newBar.add(new SouthEast(editor)).setFocusable(false);
         
         // following is needed to test the new tool
-        ToolBarButtonFactory.addToolTo(newBar, editor, new CreationTool(new RectangleFigure()), "createRectangle", labels);
+        ToolBarButtonFactory.addToolTo(newBar, editor, new CreationTool(new HtmlFigure()), "createRectangle", labels);
         
 		toolBars.add(newBar);
 		return toolBars;

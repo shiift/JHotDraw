@@ -9,15 +9,18 @@ public class HtmlObject {
 	private LinkedList<String> attributeList;
 	private boolean isData = false;
 	
+	
 	public HtmlObject(){
 		objectList = new LinkedList<HtmlObject>();
 		attributeList = new LinkedList<String>();
 	}
+	//Constructor for HtmlObject elements (text, image, etc.)
 	public HtmlObject(LinkedList<String> attrList, boolean val){
 		objectList = new LinkedList<HtmlObject>();
 		attributeList = new LinkedList<String>(attrList);
 		isData = val;
 	}
+	
 	
 	//HtmlObject methods
 	public LinkedList<HtmlObject> getObjectList(){
@@ -28,8 +31,8 @@ public class HtmlObject {
 		objectList.add(object);
 	}
 	
-	public HtmlObject popHtmlObject(){
-		return objectList.pop();
+	public HtmlObject removeHtmlObject(int location){
+		return objectList.remove(location);
 	}
 	
 	
@@ -42,10 +45,9 @@ public class HtmlObject {
 		attributeList.add(object);
 	}
 	
-	public String popAttribute(){
-		return attributeList.pop();
+	public String removeAttribute(int location){
+		return attributeList.remove(location);
 	}
-	
 	
 	
 	//isData methods
