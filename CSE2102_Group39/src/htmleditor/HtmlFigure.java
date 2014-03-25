@@ -35,6 +35,7 @@ import ch.randelshofer.quaqua.util.ResourceBundleUtil;
 
 public class HtmlFigure extends RectangleFigure {
     
+	private Rectangle2D.Double figure;
     private LinkedList<HtmlFigure> figureList;
     private HtmlFigure parent;
     private boolean isData;
@@ -47,12 +48,22 @@ public class HtmlFigure extends RectangleFigure {
     }
     
     public HtmlFigure(double x, double y, double width, double height) {
-    	super(x, y, width, height);
+    	figure = new Rectangle2D.Double(x, y, width, height);
     }
     
+    public HtmlFigure clone() {
+        HtmlFigure that = (HtmlFigure) super.clone();
+        that.figure = (Rectangle2D.Double) this.figure.clone();
+        return that;
+    }
+    
+    /*
+     * Make something like this but so the object attached is the hgihest layer.
+     * 
     @Override public int getLayer() {
         return -1; // stay below ConnectionFigures
     }
+    */
     
     //Figure list methods
     public LinkedList<HtmlFigure> getObjectList(){
