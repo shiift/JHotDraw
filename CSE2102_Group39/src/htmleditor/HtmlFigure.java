@@ -58,7 +58,7 @@ public class HtmlFigure extends RectangleFigure {
     }
     
     /*
-     * Make something like this but so the object attached is the hgihest layer.
+     * Make something like this but so the object attached is the hihgest layer.
      * 
     @Override public int getLayer() {
         return -1; // stay below ConnectionFigures
