@@ -88,5 +88,13 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
 		export.addActionListener(new HtmlExporter());
     	tb.add(export);
     	//tb.add(new AlignAction.West(editor)).setFocusable(false);
+    	
+    	
+    	JButton parentAssigner = new JButton();
+    	//labels.configureButton(export, "attributeFontBold");
+    	parentAssigner.setText("Assign Parents");
+    	parentAssigner.setFocusable(false);
+    	parentAssigner.addActionListener(new HtmlParentAssigner());
+    	tb.add(parentAssigner);
     }
 }
