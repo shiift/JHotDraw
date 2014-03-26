@@ -22,5 +22,6 @@ public class HtmlSelectionTool extends DelegationSelectionTool {
 	public void mouseReleased(MouseEvent evt){
 		super.mouseReleased(evt);
 		System.out.println("Mouse Released HTML");
+		
 	}
 }

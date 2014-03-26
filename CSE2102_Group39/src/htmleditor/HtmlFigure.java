@@ -35,9 +35,8 @@ import ch.randelshofer.quaqua.util.ResourceBundleUtil;
 
 public class HtmlFigure extends RectangleFigure {
     
-	private Rectangle2D.Double figure;
     private LinkedList<HtmlFigure> figureList;
-    private HtmlFigure parent;
+    private HtmlFigure parent = Global.topParent;
     private boolean isData;
     
     /** Creates a new instance. */
@@ -46,17 +45,61 @@ public class HtmlFigure extends RectangleFigure {
     }
     
     public HtmlFigure(double x, double y, double width, double height) {
-    	figure = new Rectangle2D.Double(x, y, width, height);
+    	super(x, y, width, height);
     }
     
     public HtmlFigure clone() {
         HtmlFigure that = (HtmlFigure) super.clone();
-        that.figure = (Rectangle2D.Double) this.figure.clone();
         return that;
     }
     
+    public void basicTransform(AffineTransform tx) {
+    	super.basicTransform(tx);
+//    	boolean changed = false;
+//    	java.awt.geom.Rectangle2D.Double pLoc = parent.getDrawBounds();
+//    	double x = this.getDrawBounds().x;
+//    	double y = this.getDrawBounds().y;
+//    	double w = this.getDrawBounds().width;
+//    	double h = this.getDrawBounds().height;
+//    	double xf = this.getDrawBounds().x;
+//    	double yf = this.getDrawBounds().y;
+//    	double wf = this.getDrawBounds().width;
+//    	double hf = this.getDrawBounds().height;
+//    	double x2 = this.getDrawBounds().width+x;
+//    	double y2 = this.getDrawBounds().height+y;
+//    	double pw = pLoc.x+pLoc.width;
+//    	double ph = pLoc.y+pLoc.height;
+//    	if (x<pLoc.x){
+//    		x = pLoc.x;
+//    		changed = true;
+//    	}
+//    	if (y<pLoc.y){
+//    		y = pLoc.y;
+//    		changed = true;
+//    	}
+//    	if (x2>pw){
+//    		w = pw;
+//    		changed = true;
+//    	}
+//    	if (y2>ph){
+//    		h = ph;
+//    		changed = true;
+//    	}
+//
+//    	if(changed){
+//    		this.setBounds(new java.awt.geom.Rectangle2D.Double(x, y, w, h));
+//    	}else{
+//    		super.basicTransform(tx);
+//    	}
+//    	System.out.println("C" + "  " + x + "  " + y);
+//    	System.out.println("P" + "  " + pLoc.x + "  " + pLoc.y);
+    	
+    	
+    }
+
+    
     /*
-     * Make something like this but so the object attached is the hgihest layer.
+     * Make something like this but so the object attached is the highest layer.
      * 
     @Override public int getLayer() {
         return -1; // stay below ConnectionFigures
