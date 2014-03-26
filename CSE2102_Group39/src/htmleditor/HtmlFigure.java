@@ -47,12 +47,12 @@ public class HtmlFigure extends RectangleFigure {
 				rectangle.y = pRectangle.y + 10;
 			}
 		}
-			if(rectangle.x + rectangle.width >= pRectangle.x + pRectangle.width){
-				rectangle.x = pRectangle.x + pRectangle.width - rectangle.width - 10;
-			}
-			if(rectangle.y + rectangle.height >= pRectangle.y + pRectangle.height){
-				rectangle.y = pRectangle.y + pRectangle.height - rectangle.height - 10;
-			}
+		if(rectangle.x + rectangle.width >= pRectangle.x + pRectangle.width){
+			rectangle.x = pRectangle.x + pRectangle.width - rectangle.width - 10;
+		}
+		if(rectangle.y + rectangle.height >= pRectangle.y + pRectangle.height){
+			rectangle.y = pRectangle.y + pRectangle.height - rectangle.height - 10;
+		}
 		if(rectangle.width > pRectangle.width - 20){
 			rectangle.width = pRectangle.width - 20;
 		}
