@@ -83,6 +83,9 @@ public class HtmlFigure extends RectangleFigure {
 	public HtmlFigure removeHtmlFigure(int location){
 		return figureList.remove(location);
 	}
+	public void clearFigureList(){
+		this.figureList = new LinkedList<HtmlFigure>();
+	}
 	
 	
 	// Attribute list methods

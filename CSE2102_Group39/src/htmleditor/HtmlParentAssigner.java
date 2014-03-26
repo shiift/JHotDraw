@@ -10,6 +10,11 @@ public class HtmlParentAssigner implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for(int i = 0; i<Global.figureList.size(); i++){
+			HtmlFigure current = Global.figureList.pop();
+			current.clearFigureList();
+			Global.figureList.add(current);
+		}
+		for(int i = 0; i<Global.figureList.size(); i++){
 			HtmlFigure curFig = Global.figureList.pop();
 			//Current Figure loop.
 			if(curFig.isTopParent==false){
