@@ -93,8 +93,6 @@ public class DrawProject extends AbstractProject {
         
         ResourceBundleUtil labels = ResourceBundleUtil.getLAFBundle("org.jhotdraw.draw.Labels");
         
-        
-        
         JPanel placardPanel = new JPanel(new BorderLayout());
         javax.swing.AbstractButton pButton;
         pButton = ToolBarButtonFactory.createZoomButton(view);
