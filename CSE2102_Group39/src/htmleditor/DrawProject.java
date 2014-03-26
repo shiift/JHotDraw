@@ -104,7 +104,9 @@ public class DrawProject extends AbstractProject {
         scrollPane.add(placardPanel, JScrollPane.LOWER_LEFT_CORNER);
         
         Drawing draw = view.getDrawing();
-        draw.add(new HtmlFigure(10, 10, 800, 1000));
+        HtmlFigure grandPa = new HtmlFigure(10, 10, 800, 1000);
+        Global.topParent = grandPa;
+        draw.add(grandPa);
     }
     
     public DrawingEditor getEditor() {
