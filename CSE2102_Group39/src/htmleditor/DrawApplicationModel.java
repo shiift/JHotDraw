@@ -76,17 +76,22 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         LinkedList<JToolBar> list = new LinkedList<JToolBar>();
         JToolBar tb;
         tb = new JToolBar();
-       addCreationButtonsTo(tb, editor);
+        addCreationButtonsTo(tb, editor);
         tb.setName(labels.getString("drawToolBarTitle"));
         list.add(tb);
+//        tb = new JToolBar();
+//        HtmlToolBarButtonFactory.addAttributesButtonsTo(tb, editor);
+//        tb.setName(labels.getString("attributesToolBarTitle"));
+//        list.add(tb);
+//        tb = new JToolBar();
+//        HtmlToolBarButtonFactory.addAlignmentButtonsTo(tb, editor);
+//        tb.setName(labels.getString("alignmentToolBarTitle"));
+//        list.add(tb);
+        
         tb = new JToolBar();
-        //HtmlToolBarButtonFactory.addAttributesButtonsTo(tb, editor);
-        //tb.setName(labels.getString("attributesToolBarTitle"));
-        //list.add(tb);
-        //tb = new JToolBar();
-        //HtmlToolBarButtonFactory.addAlignmentButtonsTo(tb, editor);
-        //tb.setName(labels.getString("alignmentToolBarTitle"));
-        //list.add(tb);
+        HtmlToolBarButtonFactory.addExportButtonsTo(tb, editor);
+        tb.setName("Export ToolBar");
+        list.add(tb);
         return list;
     }
     private void addCreationButtonsTo(JToolBar tb, DrawingEditor editor) {

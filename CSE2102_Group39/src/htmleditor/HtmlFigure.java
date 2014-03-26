@@ -1,37 +1,10 @@
 package htmleditor;
 
-import static org.jhotdraw.draw.AttributeKeys.DECORATOR_INSETS;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.geom.Point2D.Double;
-import java.util.Collection;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
-import org.jhotdraw.draw.AbstractConnector;
-import org.jhotdraw.draw.AttributeKey;
-import org.jhotdraw.draw.AttributeKeys;
-import org.jhotdraw.draw.AttributedFigure;
-import org.jhotdraw.draw.ConnectionFigure;
-import org.jhotdraw.draw.ConnectionHandle;
-import org.jhotdraw.draw.Connector;
-import org.jhotdraw.draw.Figure;
-import org.jhotdraw.draw.Handle;
-import org.jhotdraw.draw.LineConnectionFigure;
-import org.jhotdraw.draw.LocatorConnector;
-import org.jhotdraw.draw.MoveHandle;
 import org.jhotdraw.draw.RectangleFigure;
-import org.jhotdraw.draw.RelativeLocator;
-import org.jhotdraw.geom.Geom;
-import org.jhotdraw.geom.Insets2DDouble;
-import org.jhotdraw.samples.net.figures.NodeFigure;
-
-import ch.randelshofer.quaqua.util.ResourceBundleUtil;
 
 public class HtmlFigure extends RectangleFigure {
     
@@ -48,12 +21,11 @@ public class HtmlFigure extends RectangleFigure {
     }
     
     public HtmlFigure(double x, double y, double width, double height) {
-    	figure = new Rectangle2D.Double(x, y, width, height);
+    	super(x, y, width, height);
     }
     
     public HtmlFigure clone() {
         HtmlFigure that = (HtmlFigure) super.clone();
-        that.figure = (Rectangle2D.Double) this.figure.clone();
         return that;
     }
     
