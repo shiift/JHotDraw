@@ -1,10 +1,12 @@
 package htmleditor;
 
+import java.awt.Color;
 import java.util.Collection;
 import java.util.HashMap;
 
 import javax.swing.Action;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
@@ -12,6 +14,7 @@ import org.jhotdraw.draw.DrawingEditor;
 import org.jhotdraw.draw.Tool;
 import org.jhotdraw.draw.ToolEvent;
 import org.jhotdraw.draw.ToolListener;
+import org.jhotdraw.draw.action.AlignAction;
 import org.jhotdraw.draw.action.ToolBarButtonFactory;
 import org.jhotdraw.util.ResourceBundleUtil;
 
@@ -73,5 +76,17 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
         t.setFocusable(false);
         group.add(t);
         tb.add(t);
+    }
+    
+    public static void addExportButtonsTo(JToolBar tb, final DrawingEditor editor){
+    	ResourceBundleUtil labels = ResourceBundleUtil.getLAFBundle("org.jhotdraw.draw.Labels");
+
+    	JButton export = new JButton();
+    	//labels.configureButton(export, "attributeFontBold");
+    	export.setText("Export");
+    	export.setFocusable(false);
+		export.addActionListener(new HtmlExporter());
+    	tb.add(export);
+    	//tb.add(new AlignAction.West(editor)).setFocusable(false);
     }
 }
