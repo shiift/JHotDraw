@@ -37,6 +37,7 @@ public class HtmlParentAssigner implements ActionListener{
 					}
 				}
 				curFig.setParent(_parent);
+				System.out.println("assigned a parent");
 			}
 			Global.figureList.add(curFig);
 		}

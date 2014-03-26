@@ -30,12 +30,8 @@ public class HtmlFigure extends RectangleFigure {
 
 	public HtmlFigure clone() {
 		HtmlFigure that = (HtmlFigure) super.clone();
+		Global.figureList.add(that);
 		return that;
-	}
-	
-	public void assignParents(){
-
-
 	}
 
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
@@ -66,6 +62,13 @@ public class HtmlFigure extends RectangleFigure {
 		if(rectangle.height >= pRectangle.height - 20){
 			rectangle.height = pRectangle.height - 20;
 		}
+	}
+	
+	public void basicTransform(AffineTransform tx) {
+		super.basicTransform(tx);
+//		for(int i = 0; i < figureList.size(); i++){
+//			figureList.get(i).basicTransform(tx);
+//		}
 	}
 
 	/*
