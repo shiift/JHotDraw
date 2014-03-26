@@ -37,10 +37,10 @@ public class HtmlParentAssigner implements ActionListener{
 					}
 				}
 				curFig.setParent(_parent);
+				curFig.getParent().addHtmlObject(curFig);
 			}
 			Global.figureList.add(curFig);
 		}
-		
 	}
 
 }

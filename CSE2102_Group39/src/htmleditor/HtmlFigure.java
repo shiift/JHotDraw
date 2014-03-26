@@ -30,12 +30,8 @@ public class HtmlFigure extends RectangleFigure {
 
 	public HtmlFigure clone() {
 		HtmlFigure that = (HtmlFigure) super.clone();
+		Global.figureList.add(that);
 		return that;
-	}
-	
-	public void assignParents(){
-
-
 	}
 
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
