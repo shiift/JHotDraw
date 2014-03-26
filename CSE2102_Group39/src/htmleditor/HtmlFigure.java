@@ -2,9 +2,11 @@ package htmleditor;
 
 
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 
+import org.jhotdraw.draw.Figure;
 import org.jhotdraw.draw.RectangleFigure;
 
 public class HtmlFigure extends RectangleFigure {
@@ -31,7 +33,15 @@ public class HtmlFigure extends RectangleFigure {
     }
     
     public void basicTransform(AffineTransform tx) {
+    	
+//    	Point2D.Double refPoint = new Point2D.Double(this.getDrawBounds().x-1,this.getDrawBounds().y-1);
+//    	Point2D.Double Point = new Point2D.Double(this.getDrawBounds().x,this.getDrawBounds().y);
+//    	HtmlFigure _parent = (HtmlFigure) super.findFigureInside(refPoint);
+//    	System.out.println("point" + "    " +Point);
+//    	System.out.println("refpoint" + "    " +refPoint);
+//    	System.out.println(_parent);
     	super.basicTransform(tx);
+    	
 //    	boolean changed = false;
 //    	java.awt.geom.Rectangle2D.Double pLoc = parent.getDrawBounds();
 //    	double x = this.getDrawBounds().x;
@@ -65,8 +75,6 @@ public class HtmlFigure extends RectangleFigure {
 //
 //    	if(changed){
 //    		this.setBounds(new java.awt.geom.Rectangle2D.Double(x, y, w, h));
-//    	}else{
-//    		super.basicTransform(tx);
 //    	}
 //    	System.out.println("C" + "  " + x + "  " + y);
 //    	System.out.println("P" + "  " + pLoc.x + "  " + pLoc.y);
