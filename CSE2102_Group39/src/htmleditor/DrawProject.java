@@ -23,6 +23,7 @@ import java.awt.*;
 import java.beans.*;
 import java.io.*;
 import java.lang.reflect.*;
+import java.util.LinkedList;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -105,6 +106,9 @@ public class DrawProject extends AbstractProject {
         
         Drawing draw = view.getDrawing();
         HtmlFigure grandPa = new HtmlFigure(100, 100, 500, 500);
+        Global.figureList = new LinkedList<HtmlFigure>();
+        Global.figureList.add(grandPa);
+        grandPa.isTopParent = true;
         Global.topParent = grandPa;
         draw.add(grandPa);
     }

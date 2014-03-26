@@ -12,10 +12,12 @@ import org.jhotdraw.draw.RectangleFigure;
 public class HtmlFigure extends RectangleFigure {
 
 	private LinkedList<HtmlFigure> figureList;
+	private LinkedList<HtmlAttribute> attributeList;
 	private HtmlFigure parent = Global.topParent;
 	private boolean isData;
 	private String tag;
 	private String name;
+	public boolean isTopParent = false;
 
 	/** Creates a new instance. */
 	public HtmlFigure() {
@@ -30,15 +32,50 @@ public class HtmlFigure extends RectangleFigure {
 		HtmlFigure that = (HtmlFigure) super.clone();
 		return that;
 	}
+	
+	public void assignParents(){
+
+		for(int i = 0; i<Global.figureList.size(); i++){
+			HtmlFigure curFig = Global.figureList.pop();
+			//Current Figure loop.
+			if(curFig.isTopParent==false){
+				Rectangle2D.Double curRec = curFig.rectangle;
+				LinkedList<HtmlFigure> possibleParents = new LinkedList<HtmlFigure>();
+				//Possible Parents are added to newly created linklist for the current figure.
+				for(int j = 0; j<Global.figureList.size(); j++){
+					HtmlFigure curPossibleParent = Global.figureList.pop();
+					Rectangle2D.Double posRec = curPossibleParent.rectangle;
+					if(posRec.x<=curRec.x && posRec.y<=curRec.y && posRec.x + posRec.width>=curRec.x + curRec.width && posRec.y + posRec.height>=curRec.y + curRec.height){
+						possibleParents.add(curPossibleParent);
+					}
+					Global.figureList.add(curPossibleParent);
+				}
+				//Possible Parents are looped to see the smallest of the parent and assign it as such.
+				HtmlFigure _parent = possibleParents.pop();
+				if(possibleParents.isEmpty()==false){
+					for(int j = 0; j<possibleParents.size(); j++){
+						Rectangle2D.Double curParRec = _parent.rectangle;
+						HtmlFigure posPar = possibleParents.pop();
+						Rectangle2D.Double posParRec = posPar.rectangle;
+						if(posParRec.x>=curParRec.x && posParRec.y>=curParRec.x && posParRec.x + posParRec.width <= curParRec.x + curParRec.width && posParRec.y + posParRec.height <= curParRec.y + curParRec.height){
+							_parent = posPar;
+						}
+					}
+				}
+				curFig.setParent(_parent);
+			}
+			Global.figureList.add(curFig);
+		}
+	}
 
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
 		Rectangle2D.Double pRectangle = parent.rectangle;
-		
+
 		rectangle.x = Math.min(anchor.x, lead.x);
 		rectangle.y = Math.min(anchor.y , lead.y);
 		rectangle.width = Math.max(0.1, Math.abs(lead.x - anchor.x));
 		rectangle.height = Math.max(0.1, Math.abs(lead.y - anchor.y));
-		
+
 		if(!this.isChanging() || (rectangle.x != 0 || rectangle.y != 0)){
 			if(rectangle.x <= pRectangle.x){
 				rectangle.x = pRectangle.x + 10;
@@ -79,6 +116,20 @@ public class HtmlFigure extends RectangleFigure {
 
 	public HtmlFigure removeHtmlFigure(int location){
 		return figureList.remove(location);
+	}
+	
+	
+	// Attribute list methods
+	public LinkedList<HtmlAttribute> getAttributeList() {
+		return attributeList;
+	}
+	
+	public void addHtmlAttribute(HtmlAttribute attribute) {
+		attributeList.add(attribute);
+	}
+	
+	public HtmlAttribute removeHtmlAttribute(int location) {
+		return attributeList.remove(location);
 	}
 
 
