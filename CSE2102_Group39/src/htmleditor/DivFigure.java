@@ -11,9 +11,7 @@ public class DivFigure extends HtmlFigure
 		super(x, y, width, height);
 		setTag("<div>");
 		setName("div");
-		//addDivAttributes();
-		//HtmlAttribute style = new HtmlAttribute("style", "value");
-		//addHtmlAttribute(style);
+		//addDivAttributes();		
 	}
 	
 	// attributes of div: style
