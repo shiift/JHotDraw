@@ -20,8 +20,6 @@ public class HtmlSelectionTool extends DelegationSelectionTool {
 	
 	@Override
 	public void mouseReleased(MouseEvent evt){
-		super.mouseReleased(evt);
-		System.out.println("Mouse Released HTML");
-		
+		super.mouseReleased(evt);		
 	}
 }

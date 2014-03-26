@@ -32,7 +32,7 @@ import org.jhotdraw.geom.Geom;
  * <br>1.0 2003-12-01 Derived from JHotDraw 5.4b1.
  */
 public class RectangleFigure extends AttributedFigure {
-    private Rectangle2D.Double rectangle;
+    public Rectangle2D.Double rectangle;
     
     /** Creates a new instance. */
     public RectangleFigure() {

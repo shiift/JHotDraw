@@ -18,7 +18,7 @@ public class DivFigure extends HtmlFigure
 	public void addDivAttributes()
 	{
 		HtmlAttribute style = new HtmlAttribute("style", "value");
-		addHtmlAttribute(style);
+		//addHtmlAttribute(style);
 	}
 	
 	
