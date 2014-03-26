@@ -1,6 +1,7 @@
 package htmleditor;
 
 
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 
