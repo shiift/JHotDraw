@@ -13,7 +13,7 @@ public class HtmlFigure extends RectangleFigure {
 
 	private LinkedList<HtmlFigure> figureList;
 	private LinkedList<HtmlAttribute> attributeList;
-	private HtmlFigure parent = Global.topParent;
+	private HtmlFigure parent = null;
 	private boolean isData;
 	private String tag;
 	private String name;
@@ -26,6 +26,7 @@ public class HtmlFigure extends RectangleFigure {
 
 	public HtmlFigure(double x, double y, double width, double height) {
 		super(x, y, width, height);
+		figureList = new LinkedList<HtmlFigure>();
 	}
 
 	public HtmlFigure clone() {
@@ -35,40 +36,43 @@ public class HtmlFigure extends RectangleFigure {
 	}
 
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
-		Rectangle2D.Double pRectangle = parent.rectangle;
-
-		rectangle.x = Math.min(anchor.x, lead.x);
-		rectangle.y = Math.min(anchor.y , lead.y);
-		rectangle.width = Math.max(0.1, Math.abs(lead.x - anchor.x));
-		rectangle.height = Math.max(0.1, Math.abs(lead.y - anchor.y));
-
-		if(!this.isChanging() || (rectangle.x != 0 || rectangle.y != 0)){
-			if(rectangle.x <= pRectangle.x){
-				rectangle.x = pRectangle.x + 10;
+		if(parent != null){
+			Rectangle2D.Double pRectangle = parent.rectangle;
+			rectangle.x = Math.min(anchor.x, lead.x);
+			rectangle.y = Math.min(anchor.y , lead.y);
+			rectangle.width = Math.max(0.1, Math.abs(lead.x - anchor.x));
+			rectangle.height = Math.max(0.1, Math.abs(lead.y - anchor.y));
+	
+			if(!this.isChanging() || (rectangle.x != 0 || rectangle.y != 0)){
+				if(rectangle.x <= pRectangle.x){
+					rectangle.x = pRectangle.x + 10;
+				}
+				if(rectangle.y <= pRectangle.y){
+					rectangle.y = pRectangle.y + 10;
+				}		
 			}
-			if(rectangle.y <= pRectangle.y){
-				rectangle.y = pRectangle.y + 10;
+			if(rectangle.x + rectangle.width >= pRectangle.x + pRectangle.width){
+				rectangle.x = pRectangle.x + pRectangle.width - rectangle.width - 10;
 			}
-		}
-		if(rectangle.x + rectangle.width >= pRectangle.x + pRectangle.width){
-			rectangle.x = pRectangle.x + pRectangle.width - rectangle.width - 10;
-		}
-		if(rectangle.y + rectangle.height >= pRectangle.y + pRectangle.height){
-			rectangle.y = pRectangle.y + pRectangle.height - rectangle.height - 10;
-		}
-		if(rectangle.width > pRectangle.width - 20){
-			rectangle.width = pRectangle.width - 20;
-		}
-		if(rectangle.height >= pRectangle.height - 20){
-			rectangle.height = pRectangle.height - 20;
+			if(rectangle.y + rectangle.height >= pRectangle.y + pRectangle.height){
+				rectangle.y = pRectangle.y + pRectangle.height - rectangle.height - 10;
+			}
+			if(rectangle.width > pRectangle.width - 20){
+				rectangle.width = pRectangle.width - 20;
+			}
+			if(rectangle.height >= pRectangle.height - 20){
+				rectangle.height = pRectangle.height - 20;
+			}
+		}else{
+			super.basicSetBounds(anchor, lead);
 		}
 	}
 	
 	public void basicTransform(AffineTransform tx) {
 		super.basicTransform(tx);
-//		for(int i = 0; i < figureList.size(); i++){
-//			figureList.get(i).basicTransform(tx);
-//		}
+		for(int i = 0; i < figureList.size(); i++){
+			figureList.get(i).basicTransform(tx);
+		}
 	}
 
 	/*
