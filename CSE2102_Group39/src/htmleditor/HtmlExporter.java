@@ -7,8 +7,7 @@ public class HtmlExporter implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		HtmlParser.createDummyOutput();
-		
+		HtmlParser.createFile(Global.topParent);
 	}
 
 }

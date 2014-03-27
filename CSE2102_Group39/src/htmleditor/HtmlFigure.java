@@ -13,7 +13,7 @@ public class HtmlFigure extends RectangleFigure {
 
 	private LinkedList<HtmlFigure> figureList;
 	private LinkedList<HtmlAttribute> attributeList;
-	private HtmlFigure parent = null;
+	private HtmlFigure parent;
 	private boolean isData;
 	private String tag;
 	private String name;
@@ -27,11 +27,20 @@ public class HtmlFigure extends RectangleFigure {
 	public HtmlFigure(double x, double y, double width, double height) {
 		super(x, y, width, height);
 		figureList = new LinkedList<HtmlFigure>();
+		attributeList = new LinkedList<HtmlAttribute>();
+		parent = null;
+		tag = "";
+		name = "";
 	}
 
 	public HtmlFigure clone() {
 		HtmlFigure that = (HtmlFigure) super.clone();
 		Global.figureList.add(that);
+		that.figureList = new LinkedList<HtmlFigure>();
+		that.attributeList = new LinkedList<HtmlAttribute>();
+		that.parent = null;
+		that.tag = "";
+		that.name = "";
 		return that;
 	}
 
@@ -40,8 +49,8 @@ public class HtmlFigure extends RectangleFigure {
 			Rectangle2D.Double pRectangle = parent.rectangle;
 			rectangle.x = Math.min(anchor.x, lead.x);
 			rectangle.y = Math.min(anchor.y , lead.y);
-			rectangle.width = Math.max(0.1, Math.abs(lead.x - anchor.x));
-			rectangle.height = Math.max(0.1, Math.abs(lead.y - anchor.y));
+			rectangle.width = Math.max(5, Math.abs(lead.x - anchor.x));
+			rectangle.height = Math.max(5, Math.abs(lead.y - anchor.y));
 	
 			if(!this.isChanging() || (rectangle.x != 0 || rectangle.y != 0)){
 				if(rectangle.x <= pRectangle.x){
