@@ -11,12 +11,12 @@ import org.jhotdraw.draw.RectangleFigure;
 
 public class HtmlFigure extends RectangleFigure {
 
-	private LinkedList<HtmlFigure> figureList;
-	private LinkedList<HtmlAttribute> attributeList;
-	private HtmlFigure parent;
-	private boolean isData;
-	private String tag;
-	private String name;
+	protected LinkedList<HtmlFigure> figureList;
+	protected LinkedList<HtmlAttribute> attributeList;
+	protected HtmlFigure parent;
+	protected boolean isData;
+	protected String tag;
+	protected String name;
 	public boolean isTopParent = false;
 
 	/** Creates a new instance. */
@@ -103,6 +103,7 @@ public class HtmlFigure extends RectangleFigure {
 	public HtmlFigure removeHtmlFigure(int location){
 		return figureList.remove(location);
 	}
+	
 	public void clearFigureList(){
 		this.figureList = new LinkedList<HtmlFigure>();
 	}

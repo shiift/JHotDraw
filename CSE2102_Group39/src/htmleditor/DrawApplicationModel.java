@@ -114,7 +114,7 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new HtmlFigure()), "createRectangle", labels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new DivFigure()), "createTriangle", labels);
-//        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new RoundRectangleFigure()), "createRoundRectangle", labels);
+        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new ImageFigure()), "createRoundRectangle", labels);
 //        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new EllipseFigure()), "createEllipse", labels);
 //        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new DiamondFigure()), "createDiamond", labels);
 //        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new TriangleFigure()), "createTriangle", labels);
