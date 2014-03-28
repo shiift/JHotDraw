@@ -15,8 +15,8 @@ public class HtmlParser {
 			System.out.print("\t");
 		}
 		System.out.print("<" + hf.getTag());
-		for(int i = 0; i < hf.getAttributeList().size(); i++){
-			System.out.print(" " + hf.getAttributeList().get(i).getName() + "=\"" + hf.getAttributeList().get(i).getValue() + "\" ");
+		for(String name : hf.attributeList.keySet()){
+			System.out.print(" " + name + "=\"" + hf.getAttributeList().get(name).getValue() + "\" ");
 		}
 		System.out.println(">");
 		for(int i = 0; i < hf.getObjectList().size(); i++){

@@ -16,20 +16,6 @@ public class ImgFigure extends HtmlFigure
 		super(x, y, width, height);
 		setTag("img");
 		setName("img");
-		addImgAttributes(this);
-	}
-	
-	// attributes of img: src, alt, height, width
-	public void addImgAttributes(ImgFigure figure)
-	{
-		HtmlAttribute src = new HtmlAttribute("src", "img.gif");
-		figure.addHtmlAttribute(src);
-		HtmlAttribute alt = new HtmlAttribute("alt", "Image");
-		figure.addHtmlAttribute(alt);
-		HtmlAttribute height = new HtmlAttribute("height", String.valueOf(_height));
-		figure.addHtmlAttribute(height);
-		HtmlAttribute width = new HtmlAttribute("width", String.valueOf(_width));
-		figure.addHtmlAttribute(width);
 	}
 		
 	public ImgFigure clone()
@@ -37,15 +23,18 @@ public class ImgFigure extends HtmlFigure
 		ImgFigure that = (ImgFigure) super.clone();
 		that.setTag("img");
 		that.setName("img");
-		addImgAttributes(that);
+		this.addAttribute(that, "src", "img.jpg");
+		this.addAttribute(that, "alt", "THIS IMAGE");
+		this.addAttribute(that, "width", "100px");
+		this.addAttribute(that, "height", "100px");
 		return that;
 	}
 	
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) 
 	{
 		super.basicSetBounds(anchor, lead);
-		_width = rectangle.width;
-		_height = rectangle.height;
+		this.getAttributeList().get("width").setValue(this.rectangle.width + "px");
+		this.getAttributeList().get("height").setValue(this.rectangle.height + "px");
 	}
 		
 }

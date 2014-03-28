@@ -16,22 +16,11 @@ public class DivFigure extends HtmlFigure
 		setName("div");
 	}
 	
-	public void addDivAttributes(String attribute, String value){
-		this.addDivAttributes(this, attribute, value);
-	}
-	
-	// attributes of div: style
-	public void addDivAttributes(DivFigure figure, String attribute, String value)
-	{
-		HtmlAttribute style = new HtmlAttribute(attribute, value);
-		figure.addHtmlAttribute(style);
-	}
-	
 	public DivFigure clone(){
 		DivFigure that = (DivFigure) super.clone();
 		that.setTag("div");
 		that.setName("div");
-		addDivAttributes(that, "style", "background: #CCC");
+		addAttribute(that, "style", "background: #CCC");
 		return that;
 	}
 	

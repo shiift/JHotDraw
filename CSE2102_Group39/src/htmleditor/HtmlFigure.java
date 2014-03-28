@@ -4,6 +4,7 @@ package htmleditor;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 import org.jhotdraw.draw.Figure;
@@ -12,7 +13,7 @@ import org.jhotdraw.draw.RectangleFigure;
 public class HtmlFigure extends RectangleFigure {
 
 	protected LinkedList<HtmlFigure> figureList;
-	protected LinkedList<HtmlAttribute> attributeList;
+	protected HashMap<String, AttributeValue> attributeList;
 	protected HtmlFigure parent;
 	protected boolean isData;
 	protected String tag;
@@ -27,7 +28,7 @@ public class HtmlFigure extends RectangleFigure {
 	public HtmlFigure(double x, double y, double width, double height) {
 		super(x, y, width, height);
 		figureList = new LinkedList<HtmlFigure>();
-		attributeList = new LinkedList<HtmlAttribute>();
+		attributeList = new HashMap<String, AttributeValue>();
 		parent = null;
 		tag = "";
 		name = "";
@@ -37,7 +38,7 @@ public class HtmlFigure extends RectangleFigure {
 		HtmlFigure that = (HtmlFigure) super.clone();
 		Global.figureList.add(that);
 		that.figureList = new LinkedList<HtmlFigure>();
-		that.attributeList = new LinkedList<HtmlAttribute>();
+		that.attributeList = new HashMap<String, AttributeValue>();
 		that.parent = null;
 		that.tag = "";
 		that.name = "";
@@ -83,6 +84,12 @@ public class HtmlFigure extends RectangleFigure {
 			figureList.get(i).basicTransform(tx);
 		}
 	}
+	
+	public void addAttribute(HtmlFigure figure, String attribute, String value)
+	{
+		AttributeValue style = new AttributeValue(value);
+		figure.addHtmlAttribute(attribute, style);
+	}
 
 	/*
 	 * Make something like this but so the object attached is the highest layer.
@@ -110,15 +117,15 @@ public class HtmlFigure extends RectangleFigure {
 	
 	
 	// Attribute list methods
-	public LinkedList<HtmlAttribute> getAttributeList() {
+	public HashMap<String, AttributeValue> getAttributeList() {
 		return attributeList;
 	}
 	
-	public void addHtmlAttribute(HtmlAttribute attribute) {
-		attributeList.add(attribute);
+	public void addHtmlAttribute(String attributeName, AttributeValue attributeValue) {
+		attributeList.put(attributeName, attributeValue);
 	}
 	
-	public HtmlAttribute removeHtmlAttribute(int location) {
+	public AttributeValue removeHtmlAttribute(int location) {
 		return attributeList.remove(location);
 	}
 

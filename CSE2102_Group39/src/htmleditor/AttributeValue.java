@@ -1,20 +1,17 @@
 package htmleditor;
 
-public class HtmlAttribute 
+public class AttributeValue 
 {
 	
-	private String _name;
 	private String _value;
 	
-	public HtmlAttribute()
+	public AttributeValue()
 	{
-		_name = null;
 		_value = null;
 	}
 	
-	public HtmlAttribute(String name, String value)
+	public AttributeValue(String value)
 	{
-		_name = name;
 		_value = value;
 	}
 	
@@ -26,11 +23,6 @@ public class HtmlAttribute
 	public void setValue(String val)
 	{
 		_value = val;
-	}
-	
-	public String getName()
-	{
-		return _name;
 	}
 	
 }
