@@ -1,7 +1,11 @@
 package htmleditor;
 
+import java.awt.Color;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Point2D;
 import java.util.LinkedList;
+
+import org.jhotdraw.draw.AttributeKeys;
 
 public class DivFigure extends HtmlFigure
 {
@@ -26,6 +30,11 @@ public class DivFigure extends HtmlFigure
 	
 	public void basicTransform(AffineTransform tx){
 		super.basicTransform(tx);
+	}
+	
+	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead){
+		super.basicSetBounds(anchor, lead);
+		//this.setAttribute(AttributeKeys.FILL_COLOR, Color.LIGHT_GRAY);
 	}
 	
 }
