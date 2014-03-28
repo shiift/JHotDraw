@@ -10,9 +10,7 @@ public class HtmlParentAssigner implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for(int i = 0; i<Global.figureList.size(); i++){
-			HtmlFigure current = Global.figureList.pop();
-			current.clearFigureList();
-			Global.figureList.add(current);
+			Global.figureList.get(i).clearFigureList();;
 		}
 		for(int i = 0; i<Global.figureList.size(); i++){
 			HtmlFigure curFig = Global.figureList.pop();
@@ -41,7 +39,6 @@ public class HtmlParentAssigner implements ActionListener{
 					}
 				}
 				curFig.setParent(_parent);
-				System.out.println("assigned a parent");
 				curFig.getParent().addHtmlObject(curFig);
 			}
 			Global.figureList.add(curFig);

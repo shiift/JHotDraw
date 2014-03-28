@@ -1,5 +1,6 @@
 package htmleditor;
 
+import java.awt.geom.AffineTransform;
 import java.util.LinkedList;
 
 public class DivFigure extends HtmlFigure
@@ -13,23 +14,26 @@ public class DivFigure extends HtmlFigure
 		super(x, y, width, height);
 		setTag("div");
 		setName("div");
-		addDivAttributes();
+		addDivAttributes(this);
 	}
 	
 	// attributes of div: style
-	public void addDivAttributes()
+	public void addDivAttributes(DivFigure figure)
 	{
 		HtmlAttribute style = new HtmlAttribute("style", "background: #CCC");
-		this.addHtmlAttribute(style);
+		figure.addHtmlAttribute(style);
 	}
 	
 	public DivFigure clone(){
 		DivFigure that = (DivFigure) super.clone();
 		that.setTag("div");
 		that.setName("div");
-		addDivAttributes();
+		addDivAttributes(that);
 		return that;
 	}
 	
+	public void basicTransform(AffineTransform tx){
+		super.basicTransform(tx);
+	}
 	
 }
