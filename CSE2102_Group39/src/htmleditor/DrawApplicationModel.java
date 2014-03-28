@@ -103,6 +103,7 @@ public class DrawApplicationModel extends DefaultApplicationModel {
     public void addDefaultCreationButtonsTo(JToolBar tb, final DrawingEditor editor,
             Collection<Action> drawingActions, Collection<Action> selectionActions) {
         ResourceBundleUtil labels = ResourceBundleUtil.getLAFBundle("org.jhotdraw.draw.Labels");
+        ResourceBundleUtil htmlLabels = ResourceBundleUtil.getLAFBundle("htmleditor.Labels");
         
         HtmlToolBarButtonFactory.addSelectionToolTo(tb, editor, drawingActions, selectionActions);
         tb.addSeparator();
@@ -113,8 +114,8 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         ConnectionFigure lc;
         
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new HtmlFigure()), "createRectangle", labels);
-        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new DivFigure()), "createTriangle", labels);
-        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new ImageFigure()), "createRoundRectangle", labels);
+        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new DivFigure()), "createDiv", htmlLabels);
+//        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new RoundRectangleFigure()), "createRoundRectangle", labels);
 //        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new EllipseFigure()), "createEllipse", labels);
 //        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new DiamondFigure()), "createDiamond", labels);
 //        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new TriangleFigure()), "createTriangle", labels);

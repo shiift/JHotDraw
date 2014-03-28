@@ -16,27 +16,27 @@ public class ImageFigure extends HtmlFigure
 		_height = height;
 		setTag("img");
 		setName("img");
-		addImgAttributes();
+		addImgAttributes(this);
 	}
 	
 	// attributes of img: src, alt, height, width
-	public void addImgAttributes()
+	public void addImgAttributes(ImageFigure figure)
 	{
 		HtmlAttribute src = new HtmlAttribute("src", "img.gif");
-		this.addHtmlAttribute(src);
+		figure.addHtmlAttribute(src);
 		HtmlAttribute alt = new HtmlAttribute("alt", "Image");
-		this.addHtmlAttribute(alt);
+		figure.addHtmlAttribute(alt);
 		HtmlAttribute height = new HtmlAttribute("height", String.valueOf(_height));
-		this.addHtmlAttribute(height);
+		figure.addHtmlAttribute(height);
 		HtmlAttribute width = new HtmlAttribute("width", String.valueOf(_width));
-		this.addHtmlAttribute(width);
+		figure.addHtmlAttribute(width);
 	}
 		
 	public ImageFigure clone(){
 		ImageFigure that = (ImageFigure) super.clone();
 		that.setTag("img");
 		that.setName("img");
-		addImgAttributes();
+		addImgAttributes(this);
 		return that;
 	}
 		
