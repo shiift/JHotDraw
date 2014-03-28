@@ -1,26 +1,26 @@
 package htmleditor;
 
-public class ImageFigure extends HtmlFigure
+import java.awt.geom.Point2D;
+
+public class ImgFigure extends HtmlFigure
 {
 
 	public double _width;
 	public double _height;
 	
-	public ImageFigure() {
+	public ImgFigure() {
 		this(0, 0, 0, 0);
 	}
 	
-	public ImageFigure(double x, double y, double width, double height) {
+	public ImgFigure(double x, double y, double width, double height) {
 		super(x, y, width, height);
-		_width = width;
-		_height = height;
 		setTag("img");
 		setName("img");
 		addImgAttributes(this);
 	}
 	
 	// attributes of img: src, alt, height, width
-	public void addImgAttributes(ImageFigure figure)
+	public void addImgAttributes(ImgFigure figure)
 	{
 		HtmlAttribute src = new HtmlAttribute("src", "img.gif");
 		figure.addHtmlAttribute(src);
@@ -32,12 +32,20 @@ public class ImageFigure extends HtmlFigure
 		figure.addHtmlAttribute(width);
 	}
 		
-	public ImageFigure clone(){
-		ImageFigure that = (ImageFigure) super.clone();
+	public ImgFigure clone()
+	{
+		ImgFigure that = (ImgFigure) super.clone();
 		that.setTag("img");
 		that.setName("img");
-		addImgAttributes(this);
+		addImgAttributes(that);
 		return that;
+	}
+	
+	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) 
+	{
+		super.basicSetBounds(anchor, lead);
+		_width = rectangle.width;
+		_height = rectangle.height;
 	}
 		
 }
