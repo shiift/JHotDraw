@@ -1,6 +1,7 @@
 package htmleditor;
 
 public class HtmlParser {
+	
 	static public void createFile(HtmlFigure hf){
 		System.out.println("<html>\n<body>");
 		for(int i = 0; i < hf.getObjectList().size(); i++){
