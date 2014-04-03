@@ -7,6 +7,7 @@ import java.util.LinkedList;
 
 public class HtmlParentAssigner implements ActionListener{
 
+	//Assigns the parents within the base figure to parse using the children of each parent.
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		for(int i = 0; i<Global.figureList.size(); i++){
@@ -14,11 +15,13 @@ public class HtmlParentAssigner implements ActionListener{
 		}
 		for(int i = 0; i<Global.figureList.size(); i++){
 			HtmlFigure curFig = Global.figureList.pop();
+			
 			//Current Figure loop.
 			if(curFig.isTopParent==false){
 				Rectangle2D.Double curRec = curFig.rectangle;
 				LinkedList<HtmlFigure> possibleParents = new LinkedList<HtmlFigure>();
-				//Possible Parents are added to newly created linklist for the current figure.
+				
+				//Possible Parents are found, based on dimensions, and added to newly created link list for the current figure.
 				for(int j = 0; j<Global.figureList.size(); j++){
 					HtmlFigure curPossibleParent = Global.figureList.get(j);
 					Rectangle2D.Double posRec = curPossibleParent.rectangle;
@@ -26,7 +29,8 @@ public class HtmlParentAssigner implements ActionListener{
 						possibleParents.add(curPossibleParent);
 					}
 				}
-				//Possible Parents are looped to see the smallest of the parent and assign it as such.
+				
+				//Possible Parents list is searched to find the smallest of the possible parents and assign it as such.
 				HtmlFigure _parent = possibleParents.get(0);
 				if(possibleParents.size()>1){
 					for(int j = 1; j<possibleParents.size(); j++){
