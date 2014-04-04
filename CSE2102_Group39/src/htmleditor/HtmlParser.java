@@ -2,6 +2,7 @@ package htmleditor;
 
 public class HtmlParser {
 	
+	// parses main html parser
 	static public void createFile(HtmlFigure hf){
 		System.out.println("<html>\n<body>");
 		for(int i = 0; i < hf.getObjectList().size(); i++){
@@ -10,6 +11,7 @@ public class HtmlParser {
 		System.out.println("</body>\n</html>");
 	}
 	
+	// parses html recursively
 	static public void parseHtml(HtmlFigure hf, int depth){
 		for(int i = 0; i < depth; i++){
 			System.out.print("\t");
