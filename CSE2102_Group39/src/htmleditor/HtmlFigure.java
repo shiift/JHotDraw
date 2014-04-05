@@ -7,6 +7,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import org.jhotdraw.draw.Drawing;
 import org.jhotdraw.draw.Figure;
 import org.jhotdraw.draw.RectangleFigure;
 
@@ -73,15 +74,39 @@ public class HtmlFigure extends RectangleFigure {
 			if(rectangle.height >= pRectangle.height - 20){
 				rectangle.height = pRectangle.height - 20;
 			}
+//			this.getDrawing().bringToFront(this);
+//			for(int i = 0; i < parent.getObjectList().size(); i++){
+//				HtmlFigure compFigure = parent.getObjectList().get(i);
+//				if(!compFigure.equals(this)){
+//					Point2D.Double tr = new Point2D.Double(this.getStartPoint().x + this.getEndPoint().x, this.getStartPoint().y);
+//					Point2D.Double bl = new Point2D.Double(this.getStartPoint().x, this.getStartPoint().y + this.getEndPoint().y);
+//					if(compFigure.contains(this.getStartPoint()) || compFigure.contains(this.getEndPoint())
+//							|| compFigure.contains(tr) || compFigure.contains(bl)){
+//					}
+//					System.out.println("Collide");
+//				}
+//			}
 		}else{
 			super.basicSetBounds(anchor, lead);
 		}
 	}
 	
+//	@Override
+//	public void removeNotify(Drawing d){
+//		for(int i = 0; i<Global.figureList.size(); i++){
+//			if(figureList.get(i).equals(this)){
+//				Global.figureList.remove(i);
+//				break;
+//			}
+//		}
+//		System.out.println("REMOVED");
+//		super.removeNotify(d);
+//	}
+	
 	public void basicTransform(AffineTransform tx) {
 		super.basicTransform(tx);
 		for(int i = 0; i < figureList.size(); i++){
-			figureList.get(i).basicTransform(tx);
+			figureList.get(i).basicTransform(new AffineTransform(1, 0, 0, 1, 0, 0));;
 		}
 	}
 	

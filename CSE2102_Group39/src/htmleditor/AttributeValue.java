@@ -1,5 +1,6 @@
 package htmleditor;
 
+// String value of the attribute
 public class AttributeValue 
 {
 	
