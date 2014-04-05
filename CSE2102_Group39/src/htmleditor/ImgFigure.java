@@ -10,6 +10,7 @@ public class ImgFigure extends HtmlFigure
 
 	public double _width;
 	public double _height;
+	public StyleBuilder _style = new StyleBuilder();
 	
 	public ImgFigure() {
 		this(0, 0, 0, 0);
@@ -26,10 +27,11 @@ public class ImgFigure extends HtmlFigure
 		ImgFigure that = (ImgFigure) super.clone();
 		that.setTag("img");
 		that.setName("img");
-		this.addAttribute(that, "src", "img.jpg");
+		this.addAttribute(that, "src", "#");
 		this.addAttribute(that, "alt", "THIS IMAGE");
 		this.addAttribute(that, "width", "100px");
 		this.addAttribute(that, "height", "100px");
+		this.addAttribute(that, "style", _style.getStyleValueString());
 		return that;
 	}
 	

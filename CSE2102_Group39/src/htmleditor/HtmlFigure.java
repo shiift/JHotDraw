@@ -125,8 +125,8 @@ public class HtmlFigure extends RectangleFigure {
 		attributeList.put(attributeName, attributeValue);
 	}
 	
-	public AttributeValue removeHtmlAttribute(int location) {
-		return attributeList.remove(location);
+	public AttributeValue removeHtmlAttribute(String key) {
+		return attributeList.remove(key);
 	}
 
 
