@@ -4,7 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
+import java.util.Collection;
 import java.util.LinkedList;
+
+import org.jhotdraw.draw.Figure;
 
 
 
@@ -14,11 +17,25 @@ public class HtmlParentAssigner implements ActionListener {
 	//Assigns the parents within the base figure to parse using the children of each parent.
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		for(int i = 0; i<Global.figureList.size(); i++){
-			Global.figureList.get(i).clearFigureList();
+		int size1 = Global.topParent.getDrawSpace().getFigures().size();
+		Object[] objlist = new Object[size1];
+		objlist = Global.topParent.getDrawSpace().getFigures().toArray();
+		LinkedList<HtmlFigure> figurelist = new LinkedList<HtmlFigure>();
+		
+		//Tests to see if the object in the collection is an html figure and makes a list for it.
+		for(int k = 0; k<size1; k++){
+			if(objlist[k] instanceof HtmlFigure){
+				figurelist.add((HtmlFigure) objlist[k]);
+			}
 		}
-		for(int i = 0; i<Global.figureList.size(); i++){
-			HtmlFigure curFig = Global.figureList.get(i);
+		
+		//Clears child lists to reassign them.
+		int size = figurelist.size();
+		for(int i = 0; i<size; i++){
+			figurelist.get(i).clearFigureList();
+		}
+		for(int i = 0; i<size; i++){
+			HtmlFigure curFig = figurelist.get(i);
 
 			//Current Figure loop.
 			if(curFig.isTopParent == false){
@@ -26,9 +43,9 @@ public class HtmlParentAssigner implements ActionListener {
 				LinkedList<HtmlFigure> possibleParents = new LinkedList<HtmlFigure>();
 
 				//Possible Parents are found, based on dimensions, and added to newly created link list for the current figure.
-				for(int j = 0; j < Global.figureList.size(); j++){
+				for(int j = 0; j <size; j++){
 					if(j != i){
-						HtmlFigure curPossibleParent = Global.figureList.get(j);
+						HtmlFigure curPossibleParent = figurelist.get(j);
 						Rectangle2D.Double posRec = curPossibleParent.rectangle;
 						if(posRec.x<=curRec.x && posRec.y<=curRec.y && posRec.x + posRec.width>=curRec.x + curRec.width && posRec.y + posRec.height>=curRec.y + curRec.height){
 							possibleParents.add(curPossibleParent);
