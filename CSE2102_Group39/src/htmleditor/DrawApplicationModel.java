@@ -130,6 +130,6 @@ public class DrawApplicationModel extends DefaultApplicationModel {
 //        HtmlToolBarButtonFactory.addToolTo(tb, editor, new BezierTool(new BezierFigure()), "createScribble", labels);
 //        HtmlToolBarButtonFactory.addToolTo(tb, editor, new BezierTool(new BezierFigure(true)), "createPolygon", labels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new TextTool(new TextFigure()), "createText", labels);
-        HtmlToolBarButtonFactory.addToolTo(tb, editor, new TextAreaTool(new TextAreaFigure()), "createTextArea", labels);
+        HtmlToolBarButtonFactory.addToolTo(tb, editor, new TextAreaTool(new ParagraphFigure()), "createTextArea", labels);
     }    
 }
