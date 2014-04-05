@@ -6,9 +6,11 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 
-public class HtmlParentAssigner implements ActionListener{
-	
 
+
+public class HtmlParentAssigner implements ActionListener {
+	
+	
 	//Assigns the parents within the base figure to parse using the children of each parent.
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -52,4 +54,5 @@ public class HtmlParentAssigner implements ActionListener{
 			curFig.transform(new AffineTransform(1, 0, 0, 1, 0, 0));
 		}
 	}	
+
 }
