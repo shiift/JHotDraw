@@ -37,7 +37,6 @@ public class HtmlFigure extends RectangleFigure {
 
 	public HtmlFigure clone() {
 		HtmlFigure that = (HtmlFigure) super.clone();
-		Global.figureList.add(that);
 		that.figureList = new LinkedList<HtmlFigure>();
 		that.attributeList = new HashMap<String, AttributeValue>();
 		that.parent = null;
@@ -150,8 +149,8 @@ public class HtmlFigure extends RectangleFigure {
 		attributeList.put(attributeName, attributeValue);
 	}
 	
-	public AttributeValue removeHtmlAttribute(int location) {
-		return attributeList.remove(location);
+	public AttributeValue removeHtmlAttribute(String key) {
+		return attributeList.remove(key);
 	}
 
 
@@ -164,6 +163,9 @@ public class HtmlFigure extends RectangleFigure {
 		this.parent = parent;
 	}
 
+	public Drawing getDrawSpace(){
+		return this.getDrawing();
+	}
 
 	//isData methods
 	public boolean getData(){

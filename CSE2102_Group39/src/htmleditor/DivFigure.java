@@ -10,6 +10,8 @@ import org.jhotdraw.draw.AttributeKeys;
 public class DivFigure extends HtmlFigure
 {
 
+	public StyleBuilder _style = new StyleBuilder();
+	
 	public DivFigure() {
 		this(0, 0, 0, 0);
 	}
@@ -18,13 +20,14 @@ public class DivFigure extends HtmlFigure
 		super(x, y, width, height);
 		setTag("div");
 		setName("div");
+		_style.addStyleAttribute("background", "#CCC");
 	}
 	
 	public DivFigure clone(){
 		DivFigure that = (DivFigure) super.clone();
 		that.setTag("div");
 		that.setName("div");
-		addAttribute(that, "style", "background: #CCC");
+		addAttribute(that, "style", _style.getStyleValueString());
 		return that;
 	}
 	

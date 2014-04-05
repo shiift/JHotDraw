@@ -101,8 +101,8 @@ public class DrawProject extends AbstractProject {
         
         Drawing draw = view.getDrawing();
         HtmlFigure grandPa = new HtmlFigure(100, 100, 500, 500);
-        Global.figureList = new LinkedList<HtmlFigure>();
-        Global.figureList.add(grandPa);
+//        Global.figureList = new LinkedList<HtmlFigure>();
+//        Global.figureList.add(grandPa);
         grandPa.isTopParent = true;
         Global.topParent = grandPa;
         draw.add(grandPa);
