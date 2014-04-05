@@ -70,12 +70,7 @@ public class DrawProject extends AbstractProject {
         
         initComponents();
         
-        htmlAttributePane.setPreferredSize(new Dimension(200,0));
-        htmlAttributePane.setBorder(new EmptyBorder(30,0,0,0));
-        javax.swing.JTextPane textPane = new JTextPane();
-        textPane.setText("HTML Attribute Pane");
-        textPane.setBackground(null);
-        htmlAttributePane.add(textPane);
+        view.addFigureSelectionListener(htmlAttributePane);
 
         scrollPane.setLayout(new PlacardScrollPaneLayout());
         scrollPane.setBorder(new EmptyBorder(0,0,0,0));
@@ -234,7 +229,7 @@ public class DrawProject extends AbstractProject {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         scrollPane = new javax.swing.JScrollPane();
-        htmlAttributePane = new javax.swing.JPanel();
+        htmlAttributePane = new AttributePanel();
         view = new org.jhotdraw.draw.DefaultDrawingView();
 
         setLayout(new java.awt.BorderLayout());
@@ -250,7 +245,7 @@ public class DrawProject extends AbstractProject {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel htmlAttributePane;
+    private AttributePanel htmlAttributePane;
     private javax.swing.JScrollPane scrollPane;
     private org.jhotdraw.draw.DefaultDrawingView view;
     // End of variables declaration//GEN-END:variables
