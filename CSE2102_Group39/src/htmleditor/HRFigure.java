@@ -7,7 +7,7 @@ import java.awt.geom.Rectangle2D;
 public class HRFigure extends HtmlFigure
 {
 
-	//public StyleBuilder _style = new StyleBuilder();
+	public StyleBuilder _style = new StyleBuilder();
 	
 	public HRFigure() {
 		this(0, 0, 0, 0);
@@ -24,7 +24,7 @@ public class HRFigure extends HtmlFigure
 		HRFigure that = (HRFigure) super.clone();
 		that.setTag("hr");
 		that.setName("horizontal rule");
-		//this.addAttribute(that, "style", _style.getStyleValueString());
+		this.addAttribute(that, "style", _style.getStyleValueString());
 		return that;
 	}
 	
@@ -36,7 +36,6 @@ public class HRFigure extends HtmlFigure
 			rectangle.x = Math.min(anchor.x, lead.x);
 			rectangle.y = Math.min(anchor.y , lead.y);
 			rectangle.width = rectangle.width = Math.max(5, Math.abs(lead.x - anchor.x));
-//			rectangle.width = 475;
 			rectangle.height = 1;
 	
 			if(!this.isChanging() || (rectangle.x != 0 || rectangle.y != 0)){
@@ -65,7 +64,6 @@ public class HRFigure extends HtmlFigure
 			rectangle.x = Math.min(anchor.x, lead.x);
 	        rectangle.y = Math.min(anchor.y , lead.y);
 	        rectangle.width = Math.max(0.1, Math.abs(lead.x - anchor.x));
-//	        rectangle.width = 475;
 	        rectangle.height = 1;
 		}
 	}
