@@ -16,9 +16,9 @@ public class HtmlFigure extends RectangleFigure {
 	protected LinkedList<HtmlFigure> figureList;
 	protected HashMap<String, AttributeValue> attributeList;
 	protected HtmlFigure parent;
-	protected boolean isData;
 	protected String tag;
 	protected String name;
+	protected String data;
 	public boolean isTopParent = false;
 
 	/** Creates a new instance. */
@@ -33,6 +33,7 @@ public class HtmlFigure extends RectangleFigure {
 		parent = null;
 		tag = "";
 		name = "";
+		data = "";
 	}
 
 	public HtmlFigure clone() {
@@ -42,6 +43,7 @@ public class HtmlFigure extends RectangleFigure {
 		that.parent = null;
 		that.tag = "";
 		that.name = "";
+		that.data = "";
 		return that;
 	}
 
@@ -168,12 +170,12 @@ public class HtmlFigure extends RectangleFigure {
 	}
 
 	//isData methods
-	public boolean getData(){
-		return isData;
+	public String getData(){
+		return this.data;
 	}
 
-	public void setData(boolean val){
-		isData = val;
+	public void setData(String data){
+		this.data = data;
 	}
 
 

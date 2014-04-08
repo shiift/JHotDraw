@@ -27,9 +27,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener {
 	@Override
 	public void selectionChanged(FigureSelectionEvent evt) {
 		System.out.println("I am the AttributePanel... fear me");
-		javax.swing.JTextPane textPane = new JTextPane();
-        textPane.setText("HTML Pane");
-        add(textPane);
+		
 	}
 
 }
