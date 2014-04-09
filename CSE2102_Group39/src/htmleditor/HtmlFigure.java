@@ -129,7 +129,6 @@ public class HtmlFigure extends RectangleFigure {
 		this.figureList = new LinkedList<HtmlFigure>();
 	}
 	
-	
 	// Attribute list methods
 	public HashMap<String, AttributeValue> getAttributeList() {
 		return attributeList;
