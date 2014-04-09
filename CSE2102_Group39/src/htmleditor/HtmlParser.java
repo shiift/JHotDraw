@@ -4,11 +4,13 @@ public class HtmlParser {
 	
 	// parses main html parser
 	static public void createFile(HtmlFigure hf){
+		HtmlParentAssigner.actionPerformed();
 		System.out.println("<html>\n<body>");
 		for(int i = 0; i < hf.getObjectList().size(); i++){
 			parseHtml(hf.getObjectList().get(i), 1);
 		}
 		System.out.println("</body>\n</html>");
+		HtmlParentAssigner.actionRelease();
 	}
 	
 	// parses html recursively

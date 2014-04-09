@@ -11,12 +11,11 @@ import org.jhotdraw.draw.Figure;
 
 
 
-public class HtmlParentAssigner implements ActionListener {
+public class HtmlParentAssigner  {
 	
 	
 	//Assigns the parents within the base figure to parse using the children of each parent.
-	@Override
-	public void actionPerformed(ActionEvent e) {
+	public static void actionPerformed() {
 		int size1 = Global.topParent.getDrawSpace().getFigures().size();
 		Object[] objlist = new Object[size1];
 		objlist = Global.topParent.getDrawSpace().getFigures().toArray();
@@ -71,5 +70,24 @@ public class HtmlParentAssigner implements ActionListener {
 			curFig.transform(new AffineTransform(1, 0, 0, 1, 0, 0));
 		}
 	}	
+	public static void actionRelease(){
+		int size1 = Global.topParent.getDrawSpace().getFigures().size();
+		Object[] objlist = new Object[size1];
+		objlist = Global.topParent.getDrawSpace().getFigures().toArray();
+		LinkedList<HtmlFigure> figurelist = new LinkedList<HtmlFigure>();
+		
+		//Tests to see if the object in the collection is an html figure and makes a list for it.
+		for(int k = 0; k<size1; k++){
+			if(objlist[k] instanceof HtmlFigure){
+				figurelist.add((HtmlFigure) objlist[k]);
+			}
+		}
+		
+		//Clears child lists to reassign them.
+		int size = figurelist.size();
+		for(int i = 0; i<size; i++){
+			figurelist.get(i).setParent(null);
+		}
+	}
 
 }
