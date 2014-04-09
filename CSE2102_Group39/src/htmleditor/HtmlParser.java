@@ -1,25 +1,37 @@
 package htmleditor;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
 public class HtmlParser {
+	
+	public static PrintWriter writer;
 	
 	// parses main html parser
 	static public void createFile(HtmlFigure hf){
-		HtmlParentAssigner.actionPerformed();
-		System.out.println("<html>\n<body>");
-		for(int i = 0; i < hf.getObjectList().size(); i++){
-			parseHtml(hf.getObjectList().get(i), 1);
+		try {
+			writer = new PrintWriter("index.html", "UTF-8");
+			
+			writer.println("<html>\n<body>");
+			for(int i = 0; i < hf.getObjectList().size(); i++){
+				parseHtml(hf.getObjectList().get(i), 1);
+			}
+			writer.println("</body>\n</html>");
+			writer.close();
+		} catch (FileNotFoundException | UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		System.out.println("</body>\n</html>");
-		HtmlParentAssigner.actionRelease();
 	}
 	
 	// parses html recursively
 	static public void parseHtml(HtmlFigure hf, int depth){
 		print("<" + hf.getTag(), depth);
 		for(String name : hf.attributeList.keySet()){
-			System.out.print(" " + name + "=\"" + hf.getAttributeList().get(name).getValue() + "\" ");
+			writer.print(" " + name + "=\"" + hf.getAttributeList().get(name).getValue() + "\" ");
 		}
-		System.out.println(">");
+		writer.println(">");
 		for(int i = 0; i < hf.getObjectList().size(); i++){
 			parseHtml(hf.getObjectList().get(i), depth + 1);
 		}
@@ -31,6 +43,6 @@ public class HtmlParser {
 		for(int i = 0; i < depth; i++){
 			System.out.print("\t");
 		}
-		System.out.print(line);
+		writer.print(line);
 	}
 }

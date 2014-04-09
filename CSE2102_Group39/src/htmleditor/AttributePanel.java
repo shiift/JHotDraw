@@ -86,7 +86,6 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	        		for(int i = 0; i < figureArray.length; i++){
 	        			HtmlFigure cFigure = (HtmlFigure) figureArray[i];
 	        			cFigure.addHtmlAttribute(e.getActionCommand(), new AttributeValue(attributeFields.get(e.getActionCommand()).getText()));
-	        			System.out.println(e.getActionCommand() + ": " + attributeFields.get(e.getActionCommand()).getText());
 	        		}
 	        	}
 	        };
