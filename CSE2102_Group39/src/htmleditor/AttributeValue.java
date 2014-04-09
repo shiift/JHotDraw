@@ -5,15 +5,23 @@ public class AttributeValue
 {
 	
 	private String _value;
+	private boolean _editable;
 	
 	public AttributeValue()
 	{
-		_value = null;
+		this("");
 	}
 	
 	public AttributeValue(String value)
 	{
 		_value = value;
+		_editable = true;
+	}
+	
+	public AttributeValue(String value, boolean editable)
+	{
+		_value = value;
+		_editable = editable;
 	}
 	
 	public String getValue()
@@ -24,6 +32,14 @@ public class AttributeValue
 	public void setValue(String val)
 	{
 		_value = val;
+	}
+
+	public boolean isEditable() {
+		return _editable;
+	}
+
+	public void setEditable(boolean editable) {
+		_editable = editable;
 	}
 	
 }

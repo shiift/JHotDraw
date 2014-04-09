@@ -229,7 +229,7 @@ public class DrawProject extends AbstractProject {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         scrollPane = new javax.swing.JScrollPane();
-        htmlAttributePane = new AttributePanel();
+        htmlAttributePane = Global.attributePanel;
         view = new org.jhotdraw.draw.DefaultDrawingView();
 
         setLayout(new java.awt.BorderLayout());

@@ -34,6 +34,7 @@ public class HtmlFigure extends RectangleFigure {
 		tag = "";
 		name = "";
 		data = "";
+		this.addFigureListener(Global.attributePanel);
 	}
 
 	public HtmlFigure clone() {
@@ -44,6 +45,7 @@ public class HtmlFigure extends RectangleFigure {
 		that.tag = "";
 		that.name = "";
 		that.data = "";
+		that.addFigureListener(Global.attributePanel);
 		return that;
 	}
 
@@ -111,20 +113,6 @@ public class HtmlFigure extends RectangleFigure {
 		}
 	}
 	
-	public void addAttribute(HtmlFigure figure, String attribute, String value)
-	{
-		AttributeValue style = new AttributeValue(value);
-		figure.addHtmlAttribute(attribute, style);
-	}
-
-	/*
-	 * Make something like this but so the object attached is the highest layer.
-	 * 
-    @Override public int getLayer() {
-        return -1; // stay below ConnectionFigures
-    }
-	 */
-
 	//Figure list methods
 	public LinkedList<HtmlFigure> getObjectList(){
 		return figureList;
@@ -145,6 +133,17 @@ public class HtmlFigure extends RectangleFigure {
 	// Attribute list methods
 	public HashMap<String, AttributeValue> getAttributeList() {
 		return attributeList;
+	}
+
+	public void addHtmlAttribute(HtmlFigure figure, String attribute, String value)
+	{
+		figure.addHtmlAttribute(figure, attribute, value, true);
+	}
+	
+	public void addHtmlAttribute(HtmlFigure figure, String attribute, String value, boolean editable)
+	{
+		AttributeValue style = new AttributeValue(value, editable);
+		figure.addHtmlAttribute(attribute, style);
 	}
 	
 	public void addHtmlAttribute(String attributeName, AttributeValue attributeValue) {
