@@ -27,7 +27,7 @@ public class DivFigure extends HtmlFigure
 		DivFigure that = (DivFigure) super.clone();
 		that.setTag("div");
 		that.setName("div");
-		addAttribute(that, "style", _style.getStyleValueString());
+		addHtmlAttribute(that, "style", _style.getStyleValueString());
 		return that;
 	}
 	

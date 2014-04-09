@@ -27,11 +27,11 @@ public class ImgFigure extends HtmlFigure
 		ImgFigure that = (ImgFigure) super.clone();
 		that.setTag("img");
 		that.setName("img");
-		this.addAttribute(that, "src", "#");
-		this.addAttribute(that, "alt", "THIS IMAGE");
-		this.addAttribute(that, "width", "100px");
-		this.addAttribute(that, "height", "100px");
-		this.addAttribute(that, "style", _style.getStyleValueString());
+		this.addHtmlAttribute(that, "src", "#");
+		this.addHtmlAttribute(that, "alt", "THIS IMAGE");
+		this.addHtmlAttribute(that, "width", "100px", false);
+		this.addHtmlAttribute(that, "height", "100px", false);
+		this.addHtmlAttribute(that, "style", _style.getStyleValueString());
 		return that;
 	}
 	
