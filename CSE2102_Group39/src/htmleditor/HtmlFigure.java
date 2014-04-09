@@ -117,14 +117,6 @@ public class HtmlFigure extends RectangleFigure {
 		figure.addHtmlAttribute(attribute, style);
 	}
 
-	/*
-	 * Make something like this but so the object attached is the highest layer.
-	 * 
-    @Override public int getLayer() {
-        return -1; // stay below ConnectionFigures
-    }
-	 */
-
 	//Figure list methods
 	public LinkedList<HtmlFigure> getObjectList(){
 		return figureList;
