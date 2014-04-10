@@ -69,6 +69,31 @@ public class HtmlParentAssigner  {
 			}
 			curFig.transform(new AffineTransform(1, 0, 0, 1, 0, 0));
 		}
+		
+		// Makes sure to assign children in left to right and then top to bottom order 
+		HtmlFigure[] list = new HtmlFigure[figurelist.size()]; 
+		figurelist.toArray(list);
+		for(int i = 0;i<figurelist.size();i++){
+			LinkedList<HtmlFigure> curIter = list[i].getObjectList();
+			if(curIter.size()>1){
+				list[i].clearFigureList();
+				while(curIter.isEmpty()==false){
+					int control = 0;
+					HtmlFigure curFig = curIter.get(0);
+					for(int j = 1; j<curIter.size();j++){
+						HtmlFigure curComp = curIter.get(j);
+						if((curComp.rectangle.x<=curFig.rectangle.x && curComp.rectangle.y<(curFig.rectangle.y+curFig.rectangle.height))){
+							curFig = curComp;
+							control = j;
+						}
+					}
+					curIter.remove(control);
+					list[i].addHtmlObject(curFig);
+					//TODO test to see if it gets stuck in an unbounded loop
+				}
+			}
+		}
+
 	}	
 	public static void actionRelease(){
 		int size1 = Global.topParent.getDrawSpace().getFigures().size();
