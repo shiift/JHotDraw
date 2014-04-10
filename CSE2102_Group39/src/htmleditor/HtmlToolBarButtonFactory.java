@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
+import org.jhotdraw.draw.DelegationSelectionTool;
 import org.jhotdraw.draw.DrawingEditor;
 import org.jhotdraw.draw.Tool;
 import org.jhotdraw.draw.ToolEvent;
@@ -45,7 +46,7 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
         }
         
         // Selection tool
-        Tool selectionTool = new HtmlSelectionTool(
+        Tool selectionTool = new DelegationSelectionTool(
                 drawingActions, selectionActions
                 );
         editor.setTool(selectionTool);

@@ -37,7 +37,7 @@ public class DivFigure extends HtmlFigure
 	
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead){
 		super.basicSetBounds(anchor, lead);
-		//this.setAttribute(AttributeKeys.FILL_COLOR, Color.LIGHT_GRAY);
+		this.setAttribute(AttributeKeys.FILL_COLOR, Color.LIGHT_GRAY);
 	}
 	
 }
