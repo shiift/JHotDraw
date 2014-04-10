@@ -16,6 +16,8 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 
 import org.jhotdraw.draw.Figure;
 import org.jhotdraw.draw.FigureEvent;
@@ -41,15 +43,30 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
         JSplitPane mainPane = new JSplitPane();
         mainPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
         mainPane.setDividerSize(0);
+        mainPane.setBorder(null);
         
-        javax.swing.JTextPane textPane = new JTextPane();
+        JTextPane textPane = new JTextPane();
         textPane.setText("HTML Attribute Pane");
+        textPane.setEditable(false);
         textPane.setBackground(null);
+        SimpleAttributeSet attribs = new SimpleAttributeSet();
+        StyleConstants.setAlignment(attribs , StyleConstants.ALIGN_CENTER);
+        textPane.setParagraphAttributes(attribs,true);
+        
+        JTextPane colorPane = new JTextPane();
+        colorPane.setText("Color Text");
+        
+        JSplitPane headerPane = new JSplitPane();
+        headerPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
+        headerPane.setDividerSize(0);
+        headerPane.setBottomComponent(textPane);
+        headerPane.setTopComponent(colorPane);
+        headerPane.setBorder(null);
         
 		optionsPanel = new JPanel();
 		optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
         
-        mainPane.setTopComponent(textPane);
+        mainPane.setTopComponent(headerPane);
         mainPane.setBottomComponent(optionsPanel);
         
         add(mainPane);

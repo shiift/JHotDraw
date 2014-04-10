@@ -114,6 +114,7 @@ public class DefaultSDIApplication extends AbstractApplication {
         m.putAction(ClearRecentFilesAction.ID, new ClearRecentFilesAction(this));
         m.putAction(SaveAction.ID, new SaveAction(this));
         m.putAction(SaveAsAction.ID, new SaveAsAction(this));
+        m.putAction(ExportAction.ID, new htmleditor.ExportAction(this));
         m.putAction(CloseAction.ID, new CloseAction(this));
         
         m.putAction(UndoAction.ID, new UndoAction(this));
