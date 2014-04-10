@@ -40,7 +40,7 @@ public class ImgFigure extends HtmlFigure
 		super.basicSetBounds(anchor, lead);
 		this.getAttributeList().get("width").setValue(this.rectangle.width + "px");
 		this.getAttributeList().get("height").setValue(this.rectangle.height + "px");
-		//this.setAttribute(AttributeKeys.FILL_COLOR, Color.BLUE);
+		this.setAttribute(AttributeKeys.FILL_COLOR, Color.BLUE);
 	}
 		
 }
