@@ -42,6 +42,9 @@ public class DivFigure extends HtmlFigure
 			this.setAttribute(AttributeKeys.FILL_COLOR, Color.LIGHT_GRAY);
 			control = true;
 		}
+		if(getParent() != null){
+			rectangle.width = getParent().rectangle.width - 20;
+		}
 	}
 	
 }
