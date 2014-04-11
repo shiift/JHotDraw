@@ -14,9 +14,7 @@ public class HtmlParser {
 			writer = new PrintWriter("index.html", "UTF-8");
 			
 			writer.println("<html>\n<body>");
-			for(int i = 0; i < hf.getObjectList().size(); i++){
-				parseHtml(hf.getObjectList().get(i), 1);
-			}
+			parseHtml(hf, 1);
 			writer.println("</body>\n</html>");
 			writer.close();
 		}
@@ -26,9 +24,7 @@ public class HtmlParser {
 		writer = new PrintWriter(file.getAbsolutePath(), "UTF-8");
 		
 		writer.println("<html>\n<body>");
-		for(int i = 0; i < hf.getObjectList().size(); i++){
-			parseHtml(hf.getObjectList().get(i), 1);
-		}
+		parseHtml(hf, 1);
 		writer.println("</body>\n</html>");
 		writer.close();
 	}

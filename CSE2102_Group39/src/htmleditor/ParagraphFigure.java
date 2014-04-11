@@ -89,6 +89,7 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
      */
     public void setText(String newText) {
         setAttribute(TEXT, newText);
+        newText = newText.replaceAll("\n", "<br />");
         this.data = newText;
     }
     
@@ -100,6 +101,9 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
         bounds.width = rectangle.width;
         bounds.height = rectangle.height;
         textLayout = null;
+        if(getParent() != null){
+			rectangle.width = getParent().rectangle.width - 20;
+		}
     }
     
     public void basicTransform(AffineTransform tx) {

@@ -83,8 +83,13 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		HashMap<String, AttributeValue> allAttributes = new HashMap<String, AttributeValue>();
 		HashMap<String, AttributeValue> sharedAttributes = new HashMap<String, AttributeValue>();
 		
+		JPanel namePanel = new JPanel();
+		namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.X_AXIS));
+		JTextField objectName = new JTextField();
+		
 		if(figureArray.length == 1){
 			sharedAttributes = figureArray[0].getAttributeList();
+			objectName.setText(figureArray[0].getName());
 		}else{
 			for(int i = 0; i < figureArray.length; i++){
 				HtmlFigure cFigure = (HtmlFigure) figureArray[i];
@@ -92,10 +97,23 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 					if(allAttributes.containsKey(entry.getKey())){
 						sharedAttributes.put(entry.getKey(), entry.getValue());
 					}
-					allAttributes.put(entry.getKey(), entry.getValue());
+					if(entry.getValue().isEditable()){
+						allAttributes.put(entry.getKey(), entry.getValue());
+					}
 				}
 			}
+			if(figureArray.length == 0){
+				objectName.setText("None");
+			}else{
+				objectName.setText("Multiple Figures");
+			}
 		}
+
+		objectName.setMaximumSize(new Dimension(100, 20));
+		objectName.setEditable(false);
+		namePanel.add(objectName);
+		
+		optionsPanel.add(namePanel);
 		
 		for(Entry<String, AttributeValue> entry : sharedAttributes.entrySet()){
 			ActionListener setListener = new ActionListener() {

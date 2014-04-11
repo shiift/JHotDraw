@@ -31,40 +31,10 @@ public class HRFigure extends HtmlFigure
 	@Override
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) 
 	{
-		if(parent != null){
-			Rectangle2D.Double pRectangle = parent.rectangle;
-			rectangle.x = Math.min(anchor.x, lead.x);
-			rectangle.y = Math.min(anchor.y , lead.y);
-			rectangle.width = rectangle.width = Math.max(5, Math.abs(lead.x - anchor.x));
-			rectangle.height = 1;
-	
-			if(!this.isChanging() || (rectangle.x != 0 || rectangle.y != 0)){
-				if(rectangle.x <= pRectangle.x){
-					rectangle.x = pRectangle.x + 10;
-				}
-				if(rectangle.y <= pRectangle.y){
-					rectangle.y = pRectangle.y + 10;
-				}		
-			}
-			if(rectangle.x + rectangle.width >= pRectangle.x + pRectangle.width){
-				rectangle.x = pRectangle.x + pRectangle.width - rectangle.width - 10;
-			}
-			if(rectangle.y + rectangle.height >= pRectangle.y + pRectangle.height){
-				rectangle.y = pRectangle.y + pRectangle.height - rectangle.height - 10;
-			}
-			if(rectangle.width > pRectangle.width - 20){
-				rectangle.width = pRectangle.width - 20;
-			}
-			if(rectangle.height >= pRectangle.height - 20){
-				rectangle.height = pRectangle.height - 20;
-			}
-		//this.setAttribute(AttributeKeys.FILL_COLOR, Color.BLUE);
-		}
-		else{
-			rectangle.x = Math.min(anchor.x, lead.x);
-	        rectangle.y = Math.min(anchor.y , lead.y);
-	        rectangle.width = Math.max(0.1, Math.abs(lead.x - anchor.x));
-	        rectangle.height = 1;
+		super.basicSetBounds(anchor, lead);
+		rectangle.height = 1;
+		if(getParent() != null){
+			rectangle.width = getParent().rectangle.width - 20;
 		}
 	}
 	

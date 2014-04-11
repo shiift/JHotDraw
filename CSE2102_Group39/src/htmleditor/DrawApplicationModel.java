@@ -118,7 +118,7 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new ImgFigure()), "createImg", htmlLabels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new HRFigure()), "createHR", htmlLabels);
 //        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new DiamondFigure()), "createDiamond", labels);
-        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new TriangleFigure()), "createTriangle", labels);
+//        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new TriangleFigure()), "createTriangle", labels);
 //        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new LineFigure()), "createLine", labels);
 //        HtmlToolBarButtonFactory.addToolTo(tb, editor, ct = new CreationTool(new LineFigure()), "createArrow", labels);
 //       af = (AttributedFigure) ct.getPrototype();
