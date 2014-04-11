@@ -104,6 +104,7 @@ public class DrawProject extends AbstractProject {
         grandPa.addHtmlAttribute(grandPa, "style", "background:#FFF;width:800px;margin:0 auto;border:1px solid black;", false);
         grandPa.isTopParent = true;
         grandPa.setName("div");
+		grandPa.setAttribute(AttributeKeys.FILL_COLOR, Color.LIGHT_GRAY);
         Global.topParent = grandPa;
         draw.add(grandPa);
     }
