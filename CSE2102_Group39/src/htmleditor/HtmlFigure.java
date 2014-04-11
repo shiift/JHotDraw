@@ -30,7 +30,7 @@ public class HtmlFigure extends RectangleFigure {
 		super(x, y, width, height);
 		figureList = new LinkedList<HtmlFigure>();
 		attributeList = new HashMap<String, AttributeValue>();
-		parent = null;
+		parent = Global.topParent;
 		tag = "";
 		name = "";
 		data = "";
@@ -41,7 +41,7 @@ public class HtmlFigure extends RectangleFigure {
 		HtmlFigure that = (HtmlFigure) super.clone();
 		that.figureList = new LinkedList<HtmlFigure>();
 		that.attributeList = new HashMap<String, AttributeValue>();
-		that.parent = null;
+		that.parent = Global.topParent;
 		that.tag = "";
 		that.name = "";
 		that.data = "";
@@ -93,18 +93,6 @@ public class HtmlFigure extends RectangleFigure {
 			super.basicSetBounds(anchor, lead);
 		}
 	}
-	
-//	@Override
-//	public void removeNotify(Drawing d){
-//		for(int i = 0; i<Global.figureList.size(); i++){
-//			if(figureList.get(i).equals(this)){
-//				Global.figureList.remove(i);
-//				break;
-//			}
-//		}
-//		System.out.println("REMOVED");
-//		super.removeNotify(d);
-//	}
 	
 	public void basicTransform(AffineTransform tx) {
 		super.basicTransform(tx);
