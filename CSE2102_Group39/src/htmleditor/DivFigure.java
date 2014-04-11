@@ -11,6 +11,7 @@ public class DivFigure extends HtmlFigure
 {
 
 	public StyleBuilder _style = new StyleBuilder();
+	private boolean control = false;
 	
 	public DivFigure() {
 		this(0, 0, 0, 0);
@@ -37,7 +38,10 @@ public class DivFigure extends HtmlFigure
 	
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead){
 		super.basicSetBounds(anchor, lead);
-		this.setAttribute(AttributeKeys.FILL_COLOR, Color.LIGHT_GRAY);
+		if(control==false){
+			this.setAttribute(AttributeKeys.FILL_COLOR, Color.LIGHT_GRAY);
+			control = true;
+		}
 	}
 	
 }
