@@ -4,12 +4,15 @@ package htmleditor;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 import org.jhotdraw.draw.Drawing;
 import org.jhotdraw.draw.Figure;
 import org.jhotdraw.draw.RectangleFigure;
+import org.jhotdraw.xml.DOMInput;
+import org.jhotdraw.xml.DOMOutput;
 
 public class HtmlFigure extends RectangleFigure {
 
@@ -140,6 +143,10 @@ public class HtmlFigure extends RectangleFigure {
 	public AttributeValue removeHtmlAttribute(String key) {
 		return attributeList.remove(key);
 	}
+	
+	public void setAttributeList(HashMap<String, AttributeValue> list){
+		attributeList = list;
+	}
 
 
 	// parent methods
@@ -183,4 +190,20 @@ public class HtmlFigure extends RectangleFigure {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public void read(DOMInput in) throws IOException {
+        double x = in.getAttribute("x", 0d);
+        double y = in.getAttribute("y", 0d);
+        double w = in.getAttribute("w", 0d);
+        double h = in.getAttribute("h", 0d);
+        setBounds(new Point2D.Double(x,y), new Point2D.Double(x+w,y+h));
+        readAttributes(in);
+    }
+    public void write(DOMOutput out) throws IOException {
+        Rectangle2D.Double r = getBounds();
+        out.addAttribute("x", r.x);
+        out.addAttribute("y", r.y);
+        writeAttributes(out);
+    }
+	
 }
