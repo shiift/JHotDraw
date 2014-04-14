@@ -38,12 +38,18 @@ public class HtmlParentAssigner  {
 
 			//Current Figure loop.
 			if(curFig.isTopParent == false){
-				Rectangle2D.Double curRec = curFig.rectangle;
+				Rectangle2D.Double curRec = new Rectangle2D.Double();
+				if(curFig instanceof ParagraphFigure){
+					curRec = curFig.getBounds();
+				}
+				else{
+					curRec = curFig.rectangle;
+				}
 				LinkedList<HtmlFigure> possibleParents = new LinkedList<HtmlFigure>();
 
 				//Possible Parents are found, based on dimensions, and added to newly created link list for the current figure.
 				for(int j = 0; j <size; j++){
-					if(j != i){
+					if(j != i && (!(figurelist.get(j) instanceof ParagraphFigure))){
 						HtmlFigure curPossibleParent = figurelist.get(j);
 						Rectangle2D.Double posRec = curPossibleParent.rectangle;
 						if(posRec.x<=curRec.x && posRec.y<=curRec.y && posRec.x + posRec.width>=curRec.x + curRec.width && posRec.y + posRec.height>=curRec.y + curRec.height){
