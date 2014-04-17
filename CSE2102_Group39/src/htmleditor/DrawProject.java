@@ -103,8 +103,9 @@ public class DrawProject extends AbstractProject {
         HtmlFigure grandPa = new DivFigure(100, 100, 800, 1200);
         grandPa.addHtmlAttribute(grandPa, "style", "background:#FFF;width:800px;margin:0 auto;border:1px solid black;", false);
         grandPa.isTopParent = true;
-        grandPa.setName("div");
+        grandPa.setName("pa");
 		grandPa.setAttribute(AttributeKeys.FILL_COLOR, Color.LIGHT_GRAY);
+		grandPa.setParent(null);
         Global.topParent = grandPa;
         draw.add(grandPa);
     }

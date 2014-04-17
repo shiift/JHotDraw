@@ -109,7 +109,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 			}
 		}
 
-		objectName.setMaximumSize(new Dimension(100, 20));
+		objectName.setMaximumSize(new Dimension(100, 30));
 		objectName.setEditable(false);
 		namePanel.add(objectName);
 		
@@ -131,7 +131,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 			newPanel.add(new JLabel(entry.getKey()));
 			
 			JTextField newField = new JTextField(entry.getValue().getValue());
-			newField.setMaximumSize(new Dimension(100, 20));
+			newField.setMaximumSize(new Dimension(100, 30));
 			newField.setEditable(entry.getValue().isEditable());
 			
 			newPanel.add(newField);
