@@ -7,6 +7,7 @@ import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map.Entry;
 
 import org.jhotdraw.draw.Drawing;
 import org.jhotdraw.draw.Figure;
@@ -22,6 +23,7 @@ public class HtmlFigure extends RectangleFigure {
 	protected String tag;
 	protected String name;
 	protected String data;
+	protected int fileControl;
 	public boolean isTopParent = false;
 
 	/** Creates a new instance. */
@@ -138,14 +140,18 @@ public class HtmlFigure extends RectangleFigure {
 	
 	public void addHtmlAttribute(String attributeName, AttributeValue attributeValue) {
 		attributeList.put(attributeName, attributeValue);
+		fileControl++;
 	}
 	
 	public AttributeValue removeHtmlAttribute(String key) {
+		fileControl--;
 		return attributeList.remove(key);
 	}
 	
 	public void setAttributeList(HashMap<String, AttributeValue> list){
 		attributeList = list;
+		//TODO check this once saving works
+		fileControl = attributeList.size();
 	}
 
 
@@ -191,18 +197,52 @@ public class HtmlFigure extends RectangleFigure {
 		this.name = name;
 	}
 	
+	public void setControl(int c){
+		fileControl = c;
+	}
+	public int getControl(){
+		return fileControl;
+	}
+	
 	public void read(DOMInput in) throws IOException {
-        double x = in.getAttribute("x", 0d);
-        double y = in.getAttribute("y", 0d);
-        double w = in.getAttribute("w", 0d);
-        double h = in.getAttribute("h", 0d);
-        setBounds(new Point2D.Double(x,y), new Point2D.Double(x+w,y+h));
-        readAttributes(in);
-    }
+		double x = in.getAttribute("x", 0d);
+		double y = in.getAttribute("y", 0d);
+		double w = in.getAttribute("w", 0d);
+		double h = in.getAttribute("h", 0d);
+		String n = in.getAttribute("n", "null");
+		String t = in.getAttribute("t", "null");
+		int _control = in.getAttribute("control", 0);
+		for(int i = 1; i<_control+1;i++){
+			String name = in.getAttribute("n"+Integer.toString(i), null);
+			String value = in.getAttribute("v"+Integer.toString(i), null);
+			boolean edit = in.getAttribute("e"+Integer.toString(i), false);
+			if(name!=null){
+				this.addHtmlAttribute(name, new AttributeValue(value,edit));
+			}
+		}
+		this.setControl(_control);
+		this.setTag(t);
+		this.setName(n);
+		setBounds(new Point2D.Double(x,y), new Point2D.Double(x+w,y+h));
+		readAttributes(in);
+	}
     public void write(DOMOutput out) throws IOException {
         Rectangle2D.Double r = getBounds();
         out.addAttribute("x", r.x);
         out.addAttribute("y", r.y);
+        out.addAttribute("w", r.width);
+        out.addAttribute("h", r.height);
+        out.addAttribute("n", this.getName());
+        out.addAttribute("t", this.getTag());
+        out.addAttribute("control", fileControl);
+        System.out.println(fileControl);
+        int control = 1;
+        for(Entry<String, AttributeValue> entry : attributeList.entrySet()){
+            out.addAttribute("n"+Integer.toString(control), entry.getKey());
+            out.addAttribute("v"+Integer.toString(control), entry.getValue().getValue());
+            out.addAttribute("e"+Integer.toString(control), entry.getValue().isEditable());
+            control++;
+        }
         writeAttributes(out);
     }
 	

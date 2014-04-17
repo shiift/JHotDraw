@@ -42,8 +42,8 @@ public class DrawFigureFactory extends DefaultDOMFactory {
         
         { HtmlFigure.class, "Html" },
 //        { ParagraphFigure.class, "Par" },
-//        { DivFigure.class, "Div" },
-//        { ImgFigure.class, "Img" },
+        { DivFigure.class, "Div" },
+        { ImgFigure.class, "Img" },
         
         { ArrowTip.class, "arrowTip" },
         { ChopBoxConnector.class, "rConnector" },
