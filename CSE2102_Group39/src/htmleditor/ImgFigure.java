@@ -2,8 +2,11 @@ package htmleditor;
 
 import java.awt.Color;
 import java.awt.geom.Point2D;
+import java.io.IOException;
 
 import org.jhotdraw.draw.AttributeKeys;
+import org.jhotdraw.xml.DOMInput;
+import org.jhotdraw.xml.DOMOutput;
 
 public class ImgFigure extends HtmlFigure
 {
@@ -46,5 +49,11 @@ public class ImgFigure extends HtmlFigure
 			control = true;
 		}
 	}
+	public void read(DOMInput in) throws IOException {
+		super.read(in);
+    }
+    public void write(DOMOutput out) throws IOException {
+    	super.write(out);
+    }
 		
 }

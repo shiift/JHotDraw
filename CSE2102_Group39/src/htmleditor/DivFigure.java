@@ -52,28 +52,10 @@ public class DivFigure extends HtmlFigure
 		}
 	}
 	public void read(DOMInput in) throws IOException {
-        double x = in.getAttribute("x", 0d);
-        double y = in.getAttribute("y", 0d);
-        double w = in.getAttribute("w", 0d);
-        double h = in.getAttribute("h", 0d);
-        setBounds(new Point2D.Double(x,y), new Point2D.Double(x+w,y+h));
-        readAttributes(in);
-        in.openElement("model");
-        in.openElement("attributeList");
-        setAttributeList((HashMap<String, AttributeValue>) in.readObject());
-        in.closeElement();
-        in.closeElement();
+		super.read(in);
     }
     public void write(DOMOutput out) throws IOException {
-        Rectangle2D.Double r = getBounds();
-        out.addAttribute("x", r.x);
-        out.addAttribute("y", r.y);
-        writeAttributes(out);
-        out.openElement("model");
-        out.openElement("attributeList");
-        out.writeObject(getAttributeList());
-        out.closeElement();
-        out.closeElement();
+    	super.write(out);
     }
 	
 }
