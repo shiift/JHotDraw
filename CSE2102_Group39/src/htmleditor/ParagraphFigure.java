@@ -69,7 +69,7 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     	super.clone();
     	ParagraphFigure that = (ParagraphFigure) super.clone();
     	
-    	that.setName("p");
+    	that.setName("Paragraph");
     	that.setTag("p");
     	
     	//May not need the below line of code but was in TextAreaFigure
