@@ -39,7 +39,8 @@ public class HtmlFigure extends RectangleFigure {
 		tag = "";
 		name = "";
 		data = "";
-		this.addFigureListener(Global.attributePanel);
+		DefaultHtmlDrawing htmlDrawing = (DefaultHtmlDrawing) this.getDrawing();
+		this.addFigureListener(htmlDrawing.getProject().getAttributePanel());
 	}
 
 	public HtmlFigure clone() {
@@ -50,7 +51,8 @@ public class HtmlFigure extends RectangleFigure {
 		that.tag = "";
 		that.name = "";
 		that.data = "";
-		that.addFigureListener(Global.attributePanel);
+		DefaultHtmlDrawing htmlDrawing = (DefaultHtmlDrawing) this.getDrawing();
+		that.addFigureListener(htmlDrawing.getProject().getAttributePanel());
 		Global.topParent.addHtmlObject(that);
 		return that;
 	}

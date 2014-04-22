@@ -30,7 +30,7 @@ public class ImgFigure extends HtmlFigure
 	{
 		ImgFigure that = (ImgFigure) super.clone();
 		that.setTag("img");
-		that.setName("img");
+		that.setName("Image");
 		this.addHtmlAttribute(that, "src", "#");
 		this.addHtmlAttribute(that, "alt", "THIS IMAGE");
 		this.addHtmlAttribute(that, "width", "100px", false);

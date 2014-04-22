@@ -70,7 +70,7 @@ public class DrawProject extends AbstractProject {
         
         initComponents();
         
-        view.addFigureSelectionListener(htmlAttributePane);
+        view.addFigureSelectionListener(attributePanel);
 
         scrollPane.setLayout(new PlacardScrollPaneLayout());
         scrollPane.setBorder(new EmptyBorder(0,0,0,0));
@@ -78,7 +78,7 @@ public class DrawProject extends AbstractProject {
         setEditor(new DefaultDrawingEditor());
         view.setDOMFactory(new DrawFigureFactory());
         undo = new UndoRedoManager();
-        view.setDrawing(new DefaultDrawing());
+        view.setDrawing(new DefaultHtmlDrawing());
         view.getDrawing().addUndoableEditListener(undo);
         initActions();
         undo.addPropertyChangeListener(new PropertyChangeListener() {
@@ -103,7 +103,7 @@ public class DrawProject extends AbstractProject {
         HtmlFigure grandPa = new DivFigure(100, 100, 600, 800);
         grandPa.addHtmlAttribute(grandPa, "style", "background:#FFF;width:800px;margin:0 auto;border:1px solid black;", false);
         grandPa.isTopParent = true;
-        grandPa.setName("pa");
+        grandPa.setName("Base Page");
 		grandPa.setAttribute(AttributeKeys.FILL_COLOR, Color.LIGHT_GRAY);
 		grandPa.setParent(null);
         Global.topParent = grandPa;
@@ -208,7 +208,7 @@ public class DrawProject extends AbstractProject {
      * Clears the project.
      */
     public void clear() {
-        view.setDrawing(new DefaultDrawing());
+        view.setDrawing(new DefaultHtmlDrawing());
         undo.discardAllEdits();
     }
     
@@ -230,8 +230,9 @@ public class DrawProject extends AbstractProject {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
+    	setAttributePanel(new AttributePanel());
+    	
         scrollPane = new javax.swing.JScrollPane();
-        htmlAttributePane = Global.attributePanel;
         view = new org.jhotdraw.draw.DefaultDrawingView();
 
         setLayout(new java.awt.BorderLayout());
@@ -241,15 +242,24 @@ public class DrawProject extends AbstractProject {
         scrollPane.setViewportView(view);
 
         add(scrollPane, java.awt.BorderLayout.CENTER);
-        add(htmlAttributePane, java.awt.BorderLayout.WEST);
-
+        add(attributePanel, java.awt.BorderLayout.WEST);
+    	
     }// </editor-fold>//GEN-END:initComponents
     
     
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private AttributePanel htmlAttributePane;
+    public AttributePanel getAttributePanel() {
+		return attributePanel;
+	}
+
+	public void setAttributePanel(AttributePanel attributePanel) {
+		this.attributePanel = attributePanel;
+	}
+
+
+	// Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane scrollPane;
     private org.jhotdraw.draw.DefaultDrawingView view;
+    private AttributePanel attributePanel;
     // End of variables declaration//GEN-END:variables
     
 }

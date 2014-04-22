@@ -1,5 +1,6 @@
 package htmleditor;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -28,6 +29,7 @@ import org.jhotdraw.draw.FigureSelectionListener;
 public class AttributePanel extends JPanel implements FigureSelectionListener, FigureListener {
 	
 	private JPanel optionsPanel;
+	private JPanel colorPane;
 	private HtmlFigure[] figureArray;
 	private HashMap<String, JTextField> attributeFields;
 		
@@ -53,8 +55,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
         StyleConstants.setAlignment(attribs , StyleConstants.ALIGN_CENTER);
         textPane.setParagraphAttributes(attribs,true);
         
-        JTextPane colorPane = new JTextPane();
-        colorPane.setText("Color Text");
+        colorPane = new JPanel();
         
         JSplitPane headerPane = new JSplitPane();
         headerPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
@@ -193,6 +194,19 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	public void figureRequestRemove(FigureEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void addColorPane(String name, Color color){
+		JPanel newPanel = new JPanel();
+		newPanel.setBackground(color);
+		JTextPane figureText = new JTextPane();
+		figureText.setBackground(null);
+		figureText.setText(name);
+		newPanel.add(figureText);
+		newPanel.setSize(new Dimension(20, 20));
+		colorPane.add(newPanel);
+		revalidate();
+		repaint();
 	}
 
 }
