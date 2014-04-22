@@ -84,7 +84,7 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         HtmlToolBarButtonFactory.addFontButtonsTo(tb, editor);
         tb.setName("FontButtons ToolBar");
         list.add(tb);
-//        tb = new JToolBar();
+        tb = new JToolBar();
 //        HtmlToolBarButtonFactory.addAttributesButtonsTo(tb, editor);
 //        tb.setName(labels.getString("attributesToolBarTitle"));
 //        list.add(tb);
