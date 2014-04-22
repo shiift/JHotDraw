@@ -62,7 +62,7 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     public ParagraphFigure(String text) {
         setText(text);
         setTag("p");
-		setName("p");
+		setName("Paragraph");
     }
     
     public ParagraphFigure clone() {

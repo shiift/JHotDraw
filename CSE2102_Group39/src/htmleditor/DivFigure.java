@@ -32,7 +32,7 @@ public class DivFigure extends HtmlFigure
 	public DivFigure clone(){
 		DivFigure that = (DivFigure) super.clone();
 		that.setTag("div");
-		that.setName("div");
+		that.setName("Division");
 		addHtmlAttribute(that, "style", _style.getStyleValueString());
 		return that;
 	}
