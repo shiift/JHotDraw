@@ -39,8 +39,6 @@ public class HtmlFigure extends RectangleFigure {
 		tag = "";
 		name = "";
 		data = "";
-		DefaultHtmlDrawing htmlDrawing = (DefaultHtmlDrawing) this.getDrawing();
-		this.addFigureListener(htmlDrawing.getProject().getAttributePanel());
 	}
 
 	public HtmlFigure clone() {
@@ -51,8 +49,6 @@ public class HtmlFigure extends RectangleFigure {
 		that.tag = "";
 		that.name = "";
 		that.data = "";
-		DefaultHtmlDrawing htmlDrawing = (DefaultHtmlDrawing) this.getDrawing();
-		that.addFigureListener(htmlDrawing.getProject().getAttributePanel());
 		Global.topParent.addHtmlObject(that);
 		return that;
 	}
@@ -196,6 +192,13 @@ public class HtmlFigure extends RectangleFigure {
 	}
 	public int getControl(){
 		return fileControl;
+	}
+	
+	@Override
+	public void addNotify(Drawing d){
+		super.addNotify(d);
+		DefaultHtmlDrawing htmlD = (DefaultHtmlDrawing) d; 
+		addFigureListener(htmlD.getProject().getAttributePanel());
 	}
 	
 	public void read(DOMInput in) throws IOException {
