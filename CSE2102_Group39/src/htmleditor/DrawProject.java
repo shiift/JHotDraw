@@ -78,7 +78,9 @@ public class DrawProject extends AbstractProject {
         setEditor(new DefaultDrawingEditor());
         view.setDOMFactory(new DrawFigureFactory());
         undo = new UndoRedoManager();
-        view.setDrawing(new DefaultHtmlDrawing());
+        DefaultHtmlDrawing htmlDrawing = new DefaultHtmlDrawing();
+    	htmlDrawing.setProject(this);
+        view.setDrawing(htmlDrawing);
         view.getDrawing().addUndoableEditListener(undo);
         initActions();
         undo.addPropertyChangeListener(new PropertyChangeListener() {
@@ -208,7 +210,9 @@ public class DrawProject extends AbstractProject {
      * Clears the project.
      */
     public void clear() {
-        view.setDrawing(new DefaultHtmlDrawing());
+    	DefaultHtmlDrawing htmlDrawing = new DefaultHtmlDrawing();
+    	htmlDrawing.setProject(this);
+        view.setDrawing(htmlDrawing);
         undo.discardAllEdits();
     }
     
