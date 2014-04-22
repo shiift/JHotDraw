@@ -73,7 +73,7 @@ public class HtmlParentAssigner  {
 				curFig.setParent(_parent);
 				curFig.getParent().addHtmlObject(curFig);
 			}
-			curFig.transform(new AffineTransform(1, 0, 0, 1, 0, 0));
+			curFig.basicTransform(new AffineTransform(1, 0, 0, 1, 0, 0));
 		}
 		
 		// Makes sure to assign children in left to right and then top to bottom order 

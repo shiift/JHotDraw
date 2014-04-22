@@ -89,25 +89,12 @@ public class HtmlFigure extends RectangleFigure {
 		}
 	}
 	
+	@Override
 	public void basicTransform(AffineTransform tx) {
 		super.basicTransform(tx);
 		getDrawing().bringToFront(this);
-//		if(parent != null){
-//			if(!parent.contains(this.getStartPoint()) && tx.getTranslateX() <= 0){	// Moving Left
-//				this.basicTransform(new AffineTransform(1, 0, 0, 1, 10, 0));
-//			}
-//			if(!parent.contains(this.getStartPoint()) && tx.getTranslateY() <= 0){	// Moving Left
-//				this.basicTransform(new AffineTransform(1, 0, 0, 1, 0, 10));
-//			}
-//			if(!parent.contains(this.getEndPoint()) && tx.getTranslateX() >= 0){	// Moving Left
-//				this.basicTransform(new AffineTransform(1, 0, 0, 1, -10, 0));
-//			}
-//			if(!parent.contains(this.getEndPoint()) && tx.getTranslateY() >= 0){	// Moving Left
-//				this.basicTransform(new AffineTransform(1, 0, 0, 1, 0, -10));
-//			}
-//		}
 		for(int i = 0; i < figureList.size(); i++){
-			figureList.get(i).basicTransform(new AffineTransform(1, 0, 0, 1, 0, 0));;
+			figureList.get(i).basicTransform(new AffineTransform(1, 0, 0, 1, 0, 0));
 		}
 	}
 	

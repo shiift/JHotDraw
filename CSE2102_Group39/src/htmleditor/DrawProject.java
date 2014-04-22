@@ -100,7 +100,7 @@ public class DrawProject extends AbstractProject {
         scrollPane.add(placardPanel, JScrollPane.LOWER_LEFT_CORNER);
         
         Drawing draw = view.getDrawing();
-        HtmlFigure grandPa = new DivFigure(100, 100, 800, 1200);
+        HtmlFigure grandPa = new DivFigure(100, 100, 600, 800);
         grandPa.addHtmlAttribute(grandPa, "style", "background:#FFF;width:800px;margin:0 auto;border:1px solid black;", false);
         grandPa.isTopParent = true;
         grandPa.setName("pa");

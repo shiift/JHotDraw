@@ -33,8 +33,14 @@ public class HRFigure extends HtmlFigure
 	{
 		super.basicSetBounds(anchor, lead);
 		rectangle.height = 1;
-		if(getParent() != null){
-			rectangle.width = getParent().rectangle.width - 20;
+	}
+	
+	@Override
+	public void setParent(HtmlFigure parent){
+		super.setParent(parent);
+		if(parent != null){
+			basicSetBounds(new Point2D.Double(parent.rectangle.getMinX() + 10, rectangle.getMinY()),
+					new Point2D.Double(parent.rectangle.getMaxX() - 10, rectangle.getMaxY()));
 		}
 	}
 	
