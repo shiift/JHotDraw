@@ -7,7 +7,12 @@ import java.awt.geom.Rectangle2D;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import javax.swing.JOptionPane;
+
+import org.jhotdraw.app.Project;
+import org.jhotdraw.app.action.AbstractProjectAction;
 import org.jhotdraw.draw.Figure;
+import org.jhotdraw.gui.JSheet;
 
 
 
@@ -16,6 +21,7 @@ public class HtmlParentAssigner  {
 	
 	//Assigns the parents within the base figure to parse using the children of each parent.
 	public static void actionPerformed() {
+		boolean errorControl = false;
 		int size1 = Global.topParent.getDrawSpace().getFigures().size();
 		Object[] objlist = new Object[size1];
 		objlist = Global.topParent.getDrawSpace().getFigures().toArray();
@@ -49,12 +55,17 @@ public class HtmlParentAssigner  {
 
 				//Possible Parents are found, based on dimensions, and added to newly created link list for the current figure.
 				for(int j = 0; j <size; j++){
-					if(j != i && (!(figurelist.get(j) instanceof ParagraphFigure))){
+					if(j != i && (!(figurelist.get(j) instanceof ParagraphFigure || figurelist.get(j) instanceof ImgFigure))){
 						HtmlFigure curPossibleParent = figurelist.get(j);
 						Rectangle2D.Double posRec = curPossibleParent.rectangle;
 						if(posRec.x<=curRec.x && posRec.y<=curRec.y && posRec.x + posRec.width>=curRec.x + curRec.width && posRec.y + posRec.height>=curRec.y + curRec.height){
 							possibleParents.add(curPossibleParent);
 						}
+					}
+					else if((figurelist.get(j) instanceof ParagraphFigure || figurelist.get(j) instanceof ImgFigure) && errorControl==false){
+//						final Project project = getCurrentProject();
+						JSheet.showMessageSheet(null,"Objects cannot be placed over an image or text area.",JOptionPane.ERROR_MESSAGE);
+						errorControl = true;
 					}
 				}
 
