@@ -1,16 +1,30 @@
 package htmleditor;
 
+import static org.jhotdraw.draw.AttributeKeys.FONT_BOLD;
+import static org.jhotdraw.draw.AttributeKeys.FONT_FACE;
+import static org.jhotdraw.draw.AttributeKeys.FONT_ITALIC;
+import static org.jhotdraw.draw.AttributeKeys.FONT_UNDERLINED;
+
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 
 import javax.swing.Action;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
+import javax.swing.text.StyledEditorKit;
 
 import org.jhotdraw.draw.DelegationSelectionTool;
 import org.jhotdraw.draw.DrawingEditor;
@@ -18,6 +32,9 @@ import org.jhotdraw.draw.Tool;
 import org.jhotdraw.draw.ToolEvent;
 import org.jhotdraw.draw.ToolListener;
 import org.jhotdraw.draw.action.AlignAction;
+import org.jhotdraw.draw.action.AttributeAction;
+import org.jhotdraw.draw.action.AttributeToggler;
+import org.jhotdraw.draw.action.JPopupButton;
 import org.jhotdraw.draw.action.ToolBarButtonFactory;
 import org.jhotdraw.util.ResourceBundleUtil;
 
@@ -109,4 +126,98 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
     	});
     	tb.add(parentAssigner);
     }
+    
+    public static void addFontButtonsTo(JToolBar bar, DrawingEditor editor) {
+        ResourceBundleUtil labels = ResourceBundleUtil.getLAFBundle("org.jhotdraw.draw.Labels");
+        
+        JButton boldToggleButton;
+        JButton italicToggleButton;
+        JButton underlineToggleButton;
+        
+        boldToggleButton = new JButton();
+        italicToggleButton = new JButton();
+        underlineToggleButton = new JButton();
+        
+        labels.configureToolBarButton(boldToggleButton, "attributeFontBold");
+        boldToggleButton.setFocusable(false);
+        
+        labels.configureToolBarButton(italicToggleButton, "attributeFontItalic");
+        italicToggleButton.setFocusable(false);
+        
+        labels.configureToolBarButton(underlineToggleButton, "attributeFontUnderline");
+        underlineToggleButton.setFocusable(false);
+        
+//        boldToggleButton.addActionListener(new AttributeToggler(editor,
+//                FONT_BOLD, Boolean.TRUE, Boolean.FALSE,
+//                new StyledEditorKit.BoldAction()
+//                ));
+//        italicToggleButton.addActionListener(new AttributeToggler(editor,
+//                FONT_ITALIC, Boolean.TRUE, Boolean.FALSE,
+//                new StyledEditorKit.ItalicAction()
+//                ));
+//        underlineToggleButton.addActionListener(new AttributeToggler(editor,
+//                FONT_UNDERLINED, Boolean.TRUE, Boolean.FALSE,
+//                new StyledEditorKit.UnderlineAction()
+//                ));
+        
+        Action action = new StyledEditorKit.BoldAction();
+        action.putValue(Action.NAME, "Bold");
+        bar.add(action).setFocusable(false);
+
+        action = new StyledEditorKit.ItalicAction();
+        action.putValue(Action.NAME, "Italic");
+        bar.add(action).setFocusable(false);
+
+        action = new StyledEditorKit.UnderlineAction();
+        action.putValue(Action.NAME, "Underline");
+        bar.add(action).setFocusable(false);
+        
+
+//        bar.add(boldToggleButton).setFocusable(false);
+//        bar.add(italicToggleButton).setFocusable(false);
+//        bar.add(underlineToggleButton).setFocusable(false);
+    }
+    
+    protected JMenu createStyleMenu() {
+        JMenu menu = new JMenu("Style");
+
+        Action action = new StyledEditorKit.BoldAction();
+        action.putValue(Action.NAME, "Bold");
+        menu.add(action);
+
+        action = new StyledEditorKit.ItalicAction();
+        action.putValue(Action.NAME, "Italic");
+        menu.add(action);
+
+        action = new StyledEditorKit.UnderlineAction();
+        action.putValue(Action.NAME, "Underline");
+        menu.add(action);
+
+        menu.addSeparator();
+
+        menu.add(new StyledEditorKit.FontSizeAction("12", 12));
+        menu.add(new StyledEditorKit.FontSizeAction("14", 14));
+        menu.add(new StyledEditorKit.FontSizeAction("18", 18));
+
+        menu.addSeparator();
+
+        menu.add(new StyledEditorKit.FontFamilyAction("Serif",
+                                                      "Serif"));
+        menu.add(new StyledEditorKit.FontFamilyAction("SansSerif",
+                                                      "SansSerif"));
+
+        menu.addSeparator();
+
+        menu.add(new StyledEditorKit.ForegroundAction("Red",
+                                                      Color.red));
+        menu.add(new StyledEditorKit.ForegroundAction("Green",
+                                                      Color.green));
+        menu.add(new StyledEditorKit.ForegroundAction("Blue",
+                                                      Color.blue));
+        menu.add(new StyledEditorKit.ForegroundAction("Black",
+                                                      Color.black));
+
+        return menu;
+    }
+    
 }
