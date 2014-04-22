@@ -125,32 +125,32 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     }
     
     public int getTabSize() {
-        return 8;
+    	return 8;
     }
-    
+
     protected void drawText(Graphics2D g) {
-        if (getText() != null || isEditable()) {
-            
-            Font font = getFont();
-boolean isUnderlined = FONT_UNDERLINED.get(this);
-            Insets2DDouble insets = getInsets();
-            Rectangle2D.Double textRect = new Rectangle2D.Double(
-            bounds.x + insets.left,
-            bounds.y + insets.top,
-            bounds.width - insets.left - insets.right,
-            bounds.height - insets.top - insets.bottom
-            );
-            float leftMargin = (float) textRect.x;
-            float rightMargin = (float) Math.max(leftMargin + 1, textRect.x + textRect.width);
-            float verticalPos = (float) textRect.y;
-            if (leftMargin < rightMargin) {
-                float tabWidth = (float) (getTabSize() * g.getFontMetrics(font).charWidth('m'));
-                float[] tabStops = new float[(int) (textRect.width / tabWidth)];
-                for (int i=0; i < tabStops.length; i++) {
-                    tabStops[i] = (float) (textRect.x + (int) (tabWidth * (i + 1)));
-                }
-                
-                if (getText() != null) {
+    	if (getText() != null || isEditable()) {
+
+    		Font font = getFont();
+    		boolean isUnderlined = FONT_UNDERLINED.get(this);
+    		Insets2DDouble insets = getInsets();
+    		Rectangle2D.Double textRect = new Rectangle2D.Double(
+    				bounds.x + insets.left,
+    				bounds.y + insets.top,
+    				bounds.width - insets.left - insets.right,
+    				bounds.height - insets.top - insets.bottom
+    				);
+    		float leftMargin = (float) textRect.x;
+    		float rightMargin = (float) Math.max(leftMargin + 1, textRect.x + textRect.width);
+    		float verticalPos = (float) textRect.y;
+    		if (leftMargin < rightMargin) {
+    			float tabWidth = (float) (getTabSize() * g.getFontMetrics(font).charWidth('m'));
+    			float[] tabStops = new float[(int) (textRect.width / tabWidth)];
+    			for (int i=0; i < tabStops.length; i++) {
+    				tabStops[i] = (float) (textRect.x + (int) (tabWidth * (i + 1)));
+    			}
+
+    			if (getText() != null) {
                     Shape savedClipArea = g.getClip();
                     g.clip(textRect);
                     
@@ -325,29 +325,13 @@ boolean isUnderlined = FONT_UNDERLINED.get(this);
         return (isEditable() && contains(p)) ? new TextAreaTool(this) : null;
     }
     
-    
-    
-    protected void readBounds(DOMInput in) throws IOException {
-        bounds.x = in.getAttribute("x",0d);
-        bounds.y = in.getAttribute("y",0d);
-        bounds.width = in.getAttribute("w",0d);
-        bounds.height = in.getAttribute("h",0d);
-    }
-    protected void writeBounds(DOMOutput out) throws IOException {
-        out.addAttribute("x",bounds.x);
-        out.addAttribute("y",bounds.y);
-        out.addAttribute("w",bounds.width);
-        out.addAttribute("h",bounds.height);
-    }
     public void read(DOMInput in) throws IOException {
-        readBounds(in);
-        readAttributes(in);
+        super.read(in);
         textLayout = null;
     }
     
     public void write(DOMOutput out) throws IOException {
-        writeBounds(out);
-        writeAttributes(out);
+        super.write(out);
     }
     
     public TextHolder getLabelFor() {
