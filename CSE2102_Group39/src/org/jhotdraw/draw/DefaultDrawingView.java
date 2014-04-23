@@ -10,7 +10,7 @@
  * such Confidential Information and shall use it only in accordance
  * with the terms of the license agreement you entered into with
  * JHotDraw.org.
-�
+���
  */
 
 package org.jhotdraw.draw;
@@ -45,7 +45,7 @@ import org.jhotdraw.xml.XMLTransferable;
 public class DefaultDrawingView
         extends JComponent
         implements DrawingView, DrawingListener, HandleListener, EditableComponent {
-    private Drawing drawing;
+    protected Drawing drawing;
     private Set<Figure> dirtyFigures = new HashSet<Figure>();
     private Set<Figure> selectedFigures = new HashSet<Figure>();
     private int rainbow = 0;

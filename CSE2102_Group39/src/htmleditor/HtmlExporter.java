@@ -9,12 +9,13 @@ public class HtmlExporter implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		try {
-			HtmlParser.createFile(Global.topParent);
-		} catch (FileNotFoundException | UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+//		try {
+//			DefaultHtmlDrawing dHtmlDrawing = (DefaultHtmlDrawing) ((DrawProject) project).getDrawingEditor().getView();
+//			HtmlParser.createFile(Global.topParent);
+//		} catch (FileNotFoundException | UnsupportedEncodingException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 	}
 
 }
