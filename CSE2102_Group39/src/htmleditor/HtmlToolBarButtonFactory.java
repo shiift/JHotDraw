@@ -1,6 +1,7 @@
 package htmleditor;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.Collection;
@@ -97,13 +98,14 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
     	//labels.configureButton(export, "attributeFontBold");
     	parentAssigner.setText("Assign Parents");
     	parentAssigner.setFocusable(false);
+    	final HtmlParentAssigner assigner = new HtmlParentAssigner(null, editor.getView());
     	parentAssigner.addItemListener(new ItemListener() {
     		public void itemStateChanged(ItemEvent e){
     			if(e.getStateChange()==ItemEvent.SELECTED){
-    				HtmlParentAssigner.actionPerformed();
+    				assigner.actionPerformed(null);
     			}
     			else if(e.getStateChange()==ItemEvent.DESELECTED){
-    				HtmlParentAssigner.actionRelease();
+    				assigner.actionRelease();
     			}
     		}
     	});
