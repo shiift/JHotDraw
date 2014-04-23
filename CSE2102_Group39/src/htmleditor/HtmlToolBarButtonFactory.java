@@ -151,35 +151,35 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
         labels.configureToolBarButton(underlineToggleButton, "attributeFontUnderline");
         underlineToggleButton.setFocusable(false);
         
-//        boldToggleButton.addActionListener(new AttributeToggler(editor,
-//                FONT_BOLD, Boolean.TRUE, Boolean.FALSE,
-//                new StyledEditorKit.BoldAction()
-//                ));
-//        italicToggleButton.addActionListener(new AttributeToggler(editor,
-//                FONT_ITALIC, Boolean.TRUE, Boolean.FALSE,
-//                new StyledEditorKit.ItalicAction()
-//                ));
-//        underlineToggleButton.addActionListener(new AttributeToggler(editor,
-//                FONT_UNDERLINED, Boolean.TRUE, Boolean.FALSE,
-//                new StyledEditorKit.UnderlineAction()
-//                ));
+        boldToggleButton.addActionListener(new AttributeToggler(editor,
+                FONT_BOLD, Boolean.TRUE, Boolean.FALSE,
+                new StyledEditorKit.BoldAction()
+                ));
+        italicToggleButton.addActionListener(new AttributeToggler(editor,
+                FONT_ITALIC, Boolean.TRUE, Boolean.FALSE,
+                new StyledEditorKit.ItalicAction()
+                ));
+        underlineToggleButton.addActionListener(new AttributeToggler(editor,
+                FONT_UNDERLINED, Boolean.TRUE, Boolean.FALSE,
+                new StyledEditorKit.UnderlineAction()
+                ));
         
-        Action action = new StyledEditorKit.BoldAction();
-        action.putValue(Action.NAME, "Bold");
-        bar.add(action).setFocusable(false);
-
-        action = new StyledEditorKit.ItalicAction();
-        action.putValue(Action.NAME, "Italic");
-        bar.add(action).setFocusable(false);
-
-        action = new StyledEditorKit.UnderlineAction();
-        action.putValue(Action.NAME, "Underline");
-        bar.add(action).setFocusable(false);
+//        Action action = new StyledEditorKit.BoldAction();
+//        action.putValue(Action.NAME, "Bold");
+//        bar.add(action).setFocusable(false);
+//
+//        action = new StyledEditorKit.ItalicAction();
+//        action.putValue(Action.NAME, "Italic");
+//        bar.add(action).setFocusable(false);
+//
+//        action = new StyledEditorKit.UnderlineAction();
+//        action.putValue(Action.NAME, "Underline");
+//        bar.add(action).setFocusable(false);
         
 
-//        bar.add(boldToggleButton).setFocusable(false);
-//        bar.add(italicToggleButton).setFocusable(false);
-//        bar.add(underlineToggleButton).setFocusable(false);
+        bar.add(boldToggleButton).setFocusable(false);
+        bar.add(italicToggleButton).setFocusable(false);
+        bar.add(underlineToggleButton).setFocusable(false);
     }
     
 //    int start = messageBodyText.getSelectionStart();
