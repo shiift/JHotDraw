@@ -9,18 +9,54 @@ import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
+import org.jhotdraw.app.Application;
 import org.jhotdraw.app.Project;
 import org.jhotdraw.app.action.AbstractProjectAction;
+import org.jhotdraw.draw.DrawingView;
 import org.jhotdraw.draw.Figure;
 import org.jhotdraw.gui.JSheet;
 
 
 
-public class HtmlParentAssigner  {
+public class HtmlParentAssigner extends AbstractProjectAction {
 	
+	DrawingView dView;
 	
 	//Assigns the parents within the base figure to parse using the children of each parent.
-	public static void actionPerformed() {
+	public HtmlParentAssigner(){
+		this(null);
+	}
+	public HtmlParentAssigner(Application app) {
+		super(app);
+	}
+	public HtmlParentAssigner(Application app, DrawingView view){
+		this(null);
+		dView = view;
+	}
+	
+	
+	public static void actionRelease(){
+		int size1 = Global.topParent.getDrawSpace().getFigures().size();
+		Object[] objlist = new Object[size1];
+		objlist = Global.topParent.getDrawSpace().getFigures().toArray();
+		LinkedList<HtmlFigure> figurelist = new LinkedList<HtmlFigure>();
+		
+		//Tests to see if the object in the collection is an html figure and makes a list for it.
+		for(int k = 0; k<size1; k++){
+			if(objlist[k] instanceof HtmlFigure){
+				figurelist.add((HtmlFigure) objlist[k]);
+			}
+		}
+		
+		//Clears child lists to reassign them.
+		int size = figurelist.size();
+		for(int i = 0; i<size; i++){
+			figurelist.get(i).setParent(null);
+		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
 		boolean errorControl = false;
 		int size1 = Global.topParent.getDrawSpace().getFigures().size();
 		Object[] objlist = new Object[size1];
@@ -63,8 +99,9 @@ public class HtmlParentAssigner  {
 						}
 					}
 					else if((figurelist.get(j) instanceof ParagraphFigure || figurelist.get(j) instanceof ImgFigure) && errorControl==false){
-//						final Project project = getCurrentProject();
-						JSheet.showMessageSheet(null,"Objects cannot be placed over an image or text area.",JOptionPane.ERROR_MESSAGE);
+						DefaultHtmlDrawing htmldrawing = (DefaultHtmlDrawing) dView;
+						final Project project = htmldrawing.getProject();
+						JSheet.showMessageSheet(project.getComponent(),"Objects cannot be placed over an image or text area.",JOptionPane.ERROR_MESSAGE);
 						errorControl = true;
 					}
 				}
@@ -111,25 +148,6 @@ public class HtmlParentAssigner  {
 			}
 		}
 
-	}	
-	public static void actionRelease(){
-		int size1 = Global.topParent.getDrawSpace().getFigures().size();
-		Object[] objlist = new Object[size1];
-		objlist = Global.topParent.getDrawSpace().getFigures().toArray();
-		LinkedList<HtmlFigure> figurelist = new LinkedList<HtmlFigure>();
-		
-		//Tests to see if the object in the collection is an html figure and makes a list for it.
-		for(int k = 0; k<size1; k++){
-			if(objlist[k] instanceof HtmlFigure){
-				figurelist.add((HtmlFigure) objlist[k]);
-			}
-		}
-		
-		//Clears child lists to reassign them.
-		int size = figurelist.size();
-		for(int i = 0; i<size; i++){
-			figurelist.get(i).setParent(null);
-		}
 	}
 
 }
