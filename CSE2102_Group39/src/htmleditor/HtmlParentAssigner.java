@@ -17,7 +17,6 @@ import org.jhotdraw.draw.Figure;
 import org.jhotdraw.gui.JSheet;
 
 
-
 public class HtmlParentAssigner{
 	
 	DefaultHtmlDrawing dView;
