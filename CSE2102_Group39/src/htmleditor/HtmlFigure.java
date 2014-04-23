@@ -49,7 +49,6 @@ public class HtmlFigure extends RectangleFigure {
 		that.tag = "";
 		that.name = "";
 		that.data = "";
-		Global.topParent.addHtmlObject(that);
 		return that;
 	}
 

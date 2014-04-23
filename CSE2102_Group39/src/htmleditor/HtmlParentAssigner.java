@@ -18,27 +18,21 @@ import org.jhotdraw.gui.JSheet;
 
 
 
-public class HtmlParentAssigner extends AbstractProjectAction {
+public class HtmlParentAssigner{
 	
-	DrawingView dView;
+	DefaultHtmlDrawing dView;
+	
+	public HtmlParentAssigner(DrawingView view){
+		if(view != null){
+			dView = ((DefaultHtmlDrawingView) view).getDrawing();
+		}
+	}
 	
 	//Assigns the parents within the base figure to parse using the children of each parent.
-	public HtmlParentAssigner(){
-		this(null);
-	}
-	public HtmlParentAssigner(Application app) {
-		super(app);
-	}
-	public HtmlParentAssigner(Application app, DrawingView view){
-		this(null);
-		dView = view;
-	}
-	
-	
-	public static void actionRelease(){
-		int size1 = Global.topParent.getDrawSpace().getFigures().size();
+	public void actionRelease(){
+		int size1 = dView.getTopParent().getDrawSpace().getFigures().size();
 		Object[] objlist = new Object[size1];
-		objlist = Global.topParent.getDrawSpace().getFigures().toArray();
+		objlist = dView.getTopParent().getDrawSpace().getFigures().toArray();
 		LinkedList<HtmlFigure> figurelist = new LinkedList<HtmlFigure>();
 		
 		//Tests to see if the object in the collection is an html figure and makes a list for it.
@@ -55,12 +49,11 @@ public class HtmlParentAssigner extends AbstractProjectAction {
 		}
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed() {
 		boolean errorControl = false;
-		int size1 = Global.topParent.getDrawSpace().getFigures().size();
+		int size1 = dView.getTopParent().getDrawSpace().getFigures().size();
 		Object[] objlist = new Object[size1];
-		objlist = Global.topParent.getDrawSpace().getFigures().toArray();
+		objlist = dView.getTopParent().getDrawSpace().getFigures().toArray();
 		LinkedList<HtmlFigure> figurelist = new LinkedList<HtmlFigure>();
 		
 		//Tests to see if the object in the collection is an html figure and makes a list for it.
@@ -147,7 +140,6 @@ public class HtmlParentAssigner extends AbstractProjectAction {
 				}
 			}
 		}
-
 	}
 
 }

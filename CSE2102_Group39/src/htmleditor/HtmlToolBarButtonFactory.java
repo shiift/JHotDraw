@@ -98,11 +98,11 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
     	//labels.configureButton(export, "attributeFontBold");
     	parentAssigner.setText("Assign Parents");
     	parentAssigner.setFocusable(false);
-    	final HtmlParentAssigner assigner = new HtmlParentAssigner(null, editor.getView());
     	parentAssigner.addItemListener(new ItemListener() {
     		public void itemStateChanged(ItemEvent e){
+    			HtmlParentAssigner assigner = new HtmlParentAssigner(editor.getView());
     			if(e.getStateChange()==ItemEvent.SELECTED){
-    				assigner.actionPerformed(null);
+    				assigner.actionPerformed();
     			}
     			else if(e.getStateChange()==ItemEvent.DESELECTED){
     				assigner.actionRelease();

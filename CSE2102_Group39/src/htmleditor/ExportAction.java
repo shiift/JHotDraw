@@ -67,7 +67,9 @@ public class ExportAction extends AbstractProjectAction {
         project.execute(new Worker() {
             public Object construct() {
                 try {
-            		HtmlParser.createFile(Global.topParent, file);
+                	// This is a stretch
+                	DefaultHtmlDrawing dHtmlDrawing = (DefaultHtmlDrawing) ((DrawProject) project).getDrawingEditor().getView();
+            		HtmlParser.createFile(dHtmlDrawing.getTopParent(), file);
                     return null;
                 } catch (IOException e) {
                     return e;
