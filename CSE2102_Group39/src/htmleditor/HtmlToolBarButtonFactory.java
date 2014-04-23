@@ -24,6 +24,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledEditorKit;
 
 import org.jhotdraw.draw.DelegationSelectionTool;
@@ -178,46 +182,11 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
 //        bar.add(underlineToggleButton).setFocusable(false);
     }
     
-    protected JMenu createStyleMenu() {
-        JMenu menu = new JMenu("Style");
-
-        Action action = new StyledEditorKit.BoldAction();
-        action.putValue(Action.NAME, "Bold");
-        menu.add(action);
-
-        action = new StyledEditorKit.ItalicAction();
-        action.putValue(Action.NAME, "Italic");
-        menu.add(action);
-
-        action = new StyledEditorKit.UnderlineAction();
-        action.putValue(Action.NAME, "Underline");
-        menu.add(action);
-
-        menu.addSeparator();
-
-        menu.add(new StyledEditorKit.FontSizeAction("12", 12));
-        menu.add(new StyledEditorKit.FontSizeAction("14", 14));
-        menu.add(new StyledEditorKit.FontSizeAction("18", 18));
-
-        menu.addSeparator();
-
-        menu.add(new StyledEditorKit.FontFamilyAction("Serif",
-                                                      "Serif"));
-        menu.add(new StyledEditorKit.FontFamilyAction("SansSerif",
-                                                      "SansSerif"));
-
-        menu.addSeparator();
-
-        menu.add(new StyledEditorKit.ForegroundAction("Red",
-                                                      Color.red));
-        menu.add(new StyledEditorKit.ForegroundAction("Green",
-                                                      Color.green));
-        menu.add(new StyledEditorKit.ForegroundAction("Blue",
-                                                      Color.blue));
-        menu.add(new StyledEditorKit.ForegroundAction("Black",
-                                                      Color.black));
-
-        return menu;
-    }
+//    int start = messageBodyText.getSelectionStart();
+//    int end = messageBodyText.getSelectionEnd();
+//
+//    StringBuilder strBuilder = new StringBuilder(messageBodyText.getText());
+//    strBuilder.replace(start, end, "Replace:" + messageBodyText.getSelectedText() + ".");
+//    messageBodyText.setText(strBuilder.toString());
     
 }

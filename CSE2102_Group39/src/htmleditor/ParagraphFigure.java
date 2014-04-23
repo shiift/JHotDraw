@@ -30,6 +30,11 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+
 import org.jhotdraw.draw.AttributeKeys;
 import org.jhotdraw.draw.Figure;
 import org.jhotdraw.draw.FontSizeHandle;
@@ -368,4 +373,5 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     public float getFontSize() {
        return FONT_SIZE.get(this).floatValue();
     }
+
 }
