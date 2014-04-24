@@ -56,12 +56,22 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
         textPane.setParagraphAttributes(attribs,true);
         
         colorPane = new JPanel();
+        JSplitPane colorPaneContainer = new JSplitPane();
+        JTextPane colorPaneLabel = new JTextPane();
+        colorPaneLabel.setText("Color Legend");
+        colorPaneLabel.setEditable(false);
+        colorPaneLabel.setBackground(null);
+        colorPaneLabel.setParagraphAttributes(attribs,true);
+        colorPaneContainer.setOrientation(JSplitPane.VERTICAL_SPLIT);
+        colorPaneContainer.setDividerSize(0);
+        colorPaneContainer.setBorder(null);
+        colorPaneContainer.setTopComponent(colorPaneLabel);
+        colorPaneContainer.setBottomComponent(colorPane);
         
         JSplitPane headerPane = new JSplitPane();
         headerPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
-        headerPane.setDividerSize(0);
         headerPane.setBottomComponent(textPane);
-        headerPane.setTopComponent(colorPane);
+        headerPane.setTopComponent(colorPaneContainer);
         headerPane.setBorder(null);
         
 		optionsPanel = new JPanel();
@@ -71,6 +81,9 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
         mainPane.setBottomComponent(optionsPanel);
         
         add(mainPane);
+        addColorPane("div", Color.LIGHT_GRAY);
+        addColorPane("img", Color.BLUE);
+        addColorPane("p", Color.WHITE);
 	}
 	
 	@Override
