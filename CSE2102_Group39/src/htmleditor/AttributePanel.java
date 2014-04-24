@@ -131,13 +131,16 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		
 		for(Entry<String, AttributeValue> entry : sharedAttributes.entrySet()){
 			ActionListener setListener = new ActionListener() {
-	        	public void actionPerformed(ActionEvent e){
-	        		for(int i = 0; i < figureArray.length; i++){
-	        			HtmlFigure cFigure = (HtmlFigure) figureArray[i];
-	        			cFigure.addHtmlAttribute(e.getActionCommand(), new AttributeValue(attributeFields.get(e.getActionCommand()).getText()));
-	        		}
-	        	}
-	        };
+				public void actionPerformed(ActionEvent e){
+					for(int i = 0; i < figureArray.length; i++){
+						HtmlFigure cFigure = (HtmlFigure) figureArray[i];
+						cFigure.addHtmlAttribute(e.getActionCommand(), new AttributeValue(attributeFields.get(e.getActionCommand()).getText()));
+						if(cFigure instanceof ParagraphFigure){
+							((ParagraphFigure) cFigure).setFontSize(Float.parseFloat(attributeFields.get(e.getActionCommand()).getText()));
+						}
+					}
+				}
+			};
 			
 			JPanel newPanel = new JPanel();
 			newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
