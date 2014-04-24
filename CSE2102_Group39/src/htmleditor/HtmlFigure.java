@@ -85,16 +85,18 @@ public class HtmlFigure extends RectangleFigure {
 			super.basicSetBounds(anchor, lead);
 		}
 	}
-	
+
 	@Override
 	public void basicTransform(AffineTransform tx) {
 		super.basicTransform(tx);
-		getDrawing().bringToFront(this);
+		if(isTopParent == false){
+			getDrawing().bringToFront(this);
+		}
 		for(int i = 0; i < figureList.size(); i++){
 			figureList.get(i).basicTransform(new AffineTransform(1, 0, 0, 1, 0, 0));
 		}
 	}
-	
+
 	//Figure list methods
 	public LinkedList<HtmlFigure> getObjectList(){
 		return figureList;
@@ -231,7 +233,6 @@ public class HtmlFigure extends RectangleFigure {
         out.addAttribute("n", this.getName());
         out.addAttribute("t", this.getTag());
         out.addAttribute("control", fileControl);
-        System.out.println(fileControl);
         int control = 1;
         for(Entry<String, AttributeValue> entry : attributeList.entrySet()){
             out.addAttribute("n"+Integer.toString(control), entry.getKey());

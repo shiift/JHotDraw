@@ -108,10 +108,10 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         HtmlToolBarButtonFactory.addSelectionToolTo(tb, editor, drawingActions, selectionActions);
         tb.addSeparator();
         
-        AttributedFigure af;
-        CreationTool ct;
-        ConnectionTool cnt;
-        ConnectionFigure lc;
+//        AttributedFigure af;
+//        CreationTool ct;
+//        ConnectionTool cnt;
+//        ConnectionFigure lc;
         
 //        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new HtmlFigure()), "createRectangle", labels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new DivFigure()), "createDiv", htmlLabels);
@@ -129,7 +129,7 @@ public class DrawApplicationModel extends DefaultApplicationModel {
 //        lc.setLiner(new ElbowLiner());
 //        HtmlToolBarButtonFactory.addToolTo(tb, editor, new BezierTool(new BezierFigure()), "createScribble", labels);
 //        HtmlToolBarButtonFactory.addToolTo(tb, editor, new BezierTool(new BezierFigure(true)), "createPolygon", labels);
-        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new TableFigure()), "createText", labels);
+//        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new TableFigure()), "createText", labels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new TextAreaTool(new ParagraphFigure()), "createTextArea", labels);
     }    
 }

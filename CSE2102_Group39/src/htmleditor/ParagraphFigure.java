@@ -68,11 +68,9 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     public ParagraphFigure clone() {
     	super.clone();
     	ParagraphFigure that = (ParagraphFigure) super.clone();
-    	
     	that.setName("Paragraph");
     	that.setTag("p");
-    	
-    	//May not need the below line of code but was in TextAreaFigure
+    	this.addHtmlAttribute(that, "Font Size", Float.toString(that.getFontSize()));
         that.bounds = (Rectangle2D.Double) this.bounds.clone();
         return that;
     }
@@ -101,9 +99,10 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
         bounds.width = rectangle.width;
         bounds.height = rectangle.height;
         textLayout = null;
-        if(getParent() != null){
-			rectangle.width = getParent().rectangle.width - 20;
-		}
+//      Can't remember why I put this here
+//        if(getParent() != null){
+//			rectangle.width = getParent().rectangle.width - 20;
+//		}
     }
     
     public void basicTransform(AffineTransform tx) {
@@ -352,6 +351,9 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     public Font getFont() {
         return AttributeKeys.getFont(this);
     }
+//    public Font setFont(){
+//    	
+//    }
 
     public Color getTextColor() {
         return TEXT_COLOR.get(this);
@@ -363,6 +365,7 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
 
     public void setFontSize(float size) {
         FONT_SIZE.set(this, new Double(size));
+        this.getAttributeList().get("Font Size").setValue(Float.toString(this.getFontSize()));
     }
 
     public float getFontSize() {
