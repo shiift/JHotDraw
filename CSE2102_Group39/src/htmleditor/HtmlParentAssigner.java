@@ -83,18 +83,23 @@ public class HtmlParentAssigner{
 
 				//Possible Parents are found, based on dimensions, and added to newly created link list for the current figure.
 				for(int j = 0; j <size; j++){
+					HtmlFigure curPossibleParent = figurelist.get(j);
+					Rectangle2D.Double posRec = curPossibleParent.rectangle;
 					if(j != i && (!(figurelist.get(j) instanceof ParagraphFigure || figurelist.get(j) instanceof ImgFigure))){
-						HtmlFigure curPossibleParent = figurelist.get(j);
-						Rectangle2D.Double posRec = curPossibleParent.rectangle;
 						if(posRec.x<=curRec.x && posRec.y<=curRec.y && posRec.x + posRec.width>=curRec.x + curRec.width && posRec.y + posRec.height>=curRec.y + curRec.height){
 							possibleParents.add(curPossibleParent);
 						}
 					}
-					else if((figurelist.get(j) instanceof ParagraphFigure || figurelist.get(j) instanceof ImgFigure) && errorControl==false){
-						DefaultHtmlDrawing htmldrawing = (DefaultHtmlDrawing) dView;
-						final Project project = htmldrawing.getProject();
-						JSheet.showMessageSheet(project.getComponent(),"Objects cannot be placed over an image or text area.",JOptionPane.ERROR_MESSAGE);
-						errorControl = true;
+					else if((j != i) && (figurelist.get(j) instanceof ParagraphFigure || figurelist.get(j) instanceof ImgFigure) && (errorControl==false) && (curFig instanceof ParagraphFigure || curFig instanceof ImgFigure)){
+						if(figurelist.get(j) instanceof ParagraphFigure){
+							posRec = figurelist.get(j).getBounds();
+						}
+						if(posRec.x<=curRec.x && posRec.y<=curRec.y && posRec.x + posRec.width>=curRec.x + curRec.width && posRec.y + posRec.height>=curRec.y + curRec.height){
+							DefaultHtmlDrawing htmldrawing = (DefaultHtmlDrawing) dView;
+							final Project project = htmldrawing.getProject();
+							JSheet.showMessageSheet(project.getComponent(),"Objects cannot be placed over an image or text area.",JOptionPane.ERROR_MESSAGE);
+							errorControl = true;
+						}
 					}
 				}
 
