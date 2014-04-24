@@ -11,7 +11,7 @@ public class TopParentHtmlFigure extends DivFigure {
 	}
 
 	public TopParentHtmlFigure(int i, int j, int k, int l) {
-		super(i,j,k,l);
+		super(i, j, k, l);
 	}
 
 }

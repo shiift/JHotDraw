@@ -89,13 +89,17 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
      */
     public void setText(String newText) {
         setAttribute(TEXT, newText);
-        newText = newText.replaceAll("\n", "<br />");
-        newText = newText.replaceAll("\\*\\*", "<li>");
+        newText = parseText(newText);
         this.data = newText;
     }
     
+    private String parseText(String newText) {
+        newText = newText.replaceAll("\n", "<br />");
+        newText = newText.replaceAll("\\*\\*", "<li>");
+		return newText;
+	}
     
-    public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
+	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
     	super.basicSetBounds(anchor, lead);
     	bounds.x = rectangle.x;
         bounds.y = rectangle.y;

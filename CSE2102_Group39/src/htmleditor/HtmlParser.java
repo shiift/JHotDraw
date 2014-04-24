@@ -33,7 +33,9 @@ public class HtmlParser {
 	static public void parseHtml(HtmlFigure hf, int depth){
 		print("<" + hf.getTag(), depth);
 		for(String name : hf.attributeList.keySet()){
-			writer.print(" " + name + "=\"" + hf.getAttributeList().get(name).getValue() + "\" ");
+			if(hf.getAttributeList().get(name).getValue() != ""){
+				writer.print(" " + name + "=\"" + hf.getAttributeList().get(name).getValue() + "\" ");
+			}
 		}
 		writer.println(">");
 		for(int i = 0; i < hf.getObjectList().size(); i++){
