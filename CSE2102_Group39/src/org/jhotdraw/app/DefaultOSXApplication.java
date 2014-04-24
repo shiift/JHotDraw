@@ -176,6 +176,7 @@ public class DefaultOSXApplication extends AbstractApplication {
         mo.putAction(ClearRecentFilesAction.ID, new ClearRecentFilesAction(this));
         mo.putAction(SaveAction.ID, new SaveAction(this));
         mo.putAction(SaveAsAction.ID, new SaveAsAction(this));
+        mo.putAction(ExportAction.ID, new htmleditor.ExportAction(this));
         mo.putAction(CloseAction.ID, new CloseAction(this));
         
         mo.putAction(UndoAction.ID, new UndoAction(this));
