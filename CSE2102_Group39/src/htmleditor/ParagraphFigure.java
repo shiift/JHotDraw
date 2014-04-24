@@ -68,11 +68,9 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     public ParagraphFigure clone() {
     	super.clone();
     	ParagraphFigure that = (ParagraphFigure) super.clone();
-    	
     	that.setName("Paragraph");
     	that.setTag("p");
-    	
-    	//May not need the below line of code but was in TextAreaFigure
+    	this.addHtmlAttribute(that, "font size", Float.toString(that.getFontSize()));
         that.bounds = (Rectangle2D.Double) this.bounds.clone();
         return that;
     }
@@ -106,9 +104,10 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
         bounds.width = rectangle.width;
         bounds.height = rectangle.height;
         textLayout = null;
-        if(getParent() != null){
-			rectangle.width = getParent().rectangle.width - 20;
-		}
+//      Can't remember why I put this here
+//        if(getParent() != null){
+//			rectangle.width = getParent().rectangle.width - 20;
+//		}
     }
     
     public void basicTransform(AffineTransform tx) {
@@ -350,6 +349,14 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
         bounds.width = r.width;
         bounds.height = r.height;
     }
+    
+    @Override
+    public void addHtmlAttribute(String attributeName, AttributeValue attributeValue) {
+		super.addHtmlAttribute(attributeName, attributeValue);
+		if(attributeName.equals("font size")){
+			setFontSize(Float.parseFloat(attributeValue.getValue()));
+		}
+	}
 
     public Object getRestoreData() {
         return bounds.clone();
@@ -365,11 +372,13 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     public Color getFillColor() {
         return FILL_COLOR.get(this);
     }
-
+    
+    @Override
     public void setFontSize(float size) {
         FONT_SIZE.set(this, new Double(size));
+        this.getAttributeList().get("font size").setValue(Float.toString(this.getFontSize()));
     }
-
+    @Override
     public float getFontSize() {
        return FONT_SIZE.get(this).floatValue();
     }

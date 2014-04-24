@@ -144,6 +144,9 @@ public class HtmlParentAssigner{
 				}
 			}
 		}
+		for(int i = 0;i<figurelist.size();i++){
+			figurelist.get(i).basicTransform(new AffineTransform(1, 0, 0, 1, 0, 0));
+		}
 	}
 
 }

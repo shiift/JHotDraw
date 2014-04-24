@@ -85,14 +85,6 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
     public static void addExportButtonsTo(JToolBar tb, final DrawingEditor editor){
     	ResourceBundleUtil labels = ResourceBundleUtil.getLAFBundle("org.jhotdraw.draw.Labels");
 
-    	//JButton export = new JButton();
-    	//labels.configureButton(export, "attributeFontBold");
-    	//export.setText("Export");
-    	//export.setFocusable(false);
-		//export.addActionListener(new HtmlExporter());
-    	//tb.add(export);
-    	//tb.add(new AlignAction.West(editor)).setFocusable(false);
-    	
     	
     	JToggleButton parentAssigner = new JToggleButton();
     	//labels.configureButton(export, "attributeFontBold");

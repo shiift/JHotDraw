@@ -40,6 +40,7 @@ public class DrawFigureFactory extends DefaultDOMFactory {
         { TextAreaFigure.class, "ta" },
         { GroupFigure.class, "g" },
         
+        { TopParentHtmlFigure.class, "Top" },
         { HtmlFigure.class, "Html" },
         { ParagraphFigure.class, "Par" },
         { DivFigure.class, "Div" },
