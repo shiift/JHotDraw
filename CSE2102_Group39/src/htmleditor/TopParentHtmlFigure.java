@@ -9,8 +9,8 @@ import org.jhotdraw.xml.DOMOutput;
 
 public class TopParentHtmlFigure extends DivFigure {
 	
-	TopParentHtmlFigure(){
-		
+	public TopParentHtmlFigure(){
+		this(0, 0, 0, 0);	
 	}
 
 	public TopParentHtmlFigure(int i, int j, int k, int l) {
@@ -25,5 +25,4 @@ public class TopParentHtmlFigure extends DivFigure {
     	super.write(out);
     }
 	
-
 }
