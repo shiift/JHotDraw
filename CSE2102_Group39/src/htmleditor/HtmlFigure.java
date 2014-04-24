@@ -25,6 +25,7 @@ public class HtmlFigure extends RectangleFigure {
 	protected String data;
 	protected int fileControl;
 	public boolean isTopParent = false;
+	protected AttributePanel attributePanel;
 
 	/** Creates a new instance. */
 	public HtmlFigure() {
@@ -198,6 +199,7 @@ public class HtmlFigure extends RectangleFigure {
 		super.addNotify(d);
 		DefaultHtmlDrawing htmlD = (DefaultHtmlDrawing) d; 
 		addFigureListener(htmlD.getProject().getAttributePanel());
+		this.attributePanel = htmlD.getProject().getAttributePanel();
 	}
 	
 	public void read(DOMInput in) throws IOException {
@@ -241,5 +243,9 @@ public class HtmlFigure extends RectangleFigure {
         }
         writeAttributes(out);
     }
+
+	public AttributePanel getAttributePanel() {
+		return attributePanel;
+	}
 	
 }

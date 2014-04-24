@@ -95,6 +95,7 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     public void setText(String newText) {
         setAttribute(TEXT, newText);
         newText = newText.replaceAll("\n", "<br />");
+        newText = newText.replaceAll("\\*\\*", "<li>");
         this.data = newText;
     }
     
@@ -159,7 +160,7 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
                     Shape savedClipArea = g.getClip();
                     g.clip(textRect);
                     
-                    String[] paragraphs = getText().split("\n");//Strings.split(getText(), '\n');
+                    String[] paragraphs = getText().split("\n");
                     for (int i = 0; i < paragraphs.length; i++) {
                         if (paragraphs[i].length() == 0) paragraphs[i] = " ";
                         AttributedString as = new AttributedString(paragraphs[i]);
