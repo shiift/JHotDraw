@@ -1,5 +1,6 @@
 package htmleditor;
 
+import java.awt.geom.Point2D;
 import java.io.IOException;
 import java.util.Map;
 
@@ -19,10 +20,12 @@ public class TopParentHtmlFigure extends DivFigure {
 	}
 	
 	public void read(DOMInput in) throws IOException {
-		super.read(in);
+		return;
     }
     public void write(DOMOutput out) throws IOException {
     	super.write(out);
     }
-	
+    public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
+    	return;
+    }
 }

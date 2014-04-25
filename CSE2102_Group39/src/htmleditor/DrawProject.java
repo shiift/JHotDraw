@@ -265,7 +265,10 @@ public class DrawProject extends AbstractProject {
 	@Override
 	public void setFile(File newValue){
 		super.setFile(newValue);
-		view.getDrawing().setTopParent(topParent);
+		if(!topParent.equals(view.getDrawing().getTopParent())){
+			topParent = view.getDrawing().createTopParent(view);
+			view.getDrawing().sendToBack(topParent);
+		}
 	}
 
 
@@ -273,7 +276,7 @@ public class DrawProject extends AbstractProject {
 	private javax.swing.JScrollPane scrollPane;
 	private DefaultHtmlDrawingView view;
 	private AttributePanel attributePanel;
-	private TopParentHtmlFigure topParent;
+	public TopParentHtmlFigure topParent;
 	// End of variables declaration//GEN-END:variables
 
 }
