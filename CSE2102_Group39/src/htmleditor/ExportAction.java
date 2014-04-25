@@ -41,6 +41,10 @@ public class ExportAction extends AbstractProjectAction {
 	public void actionPerformed(ActionEvent evt) {
 		final Project project = getCurrentProject();
 		if (project.isEnabled()) {
+			HtmlParentAssigner hpa = new HtmlParentAssigner(((DrawProject) project).getEditor().getView());
+			hpa.actionPerformed();
+			hpa = null;
+			
 			oldFocusOwner = SwingUtilities.getWindowAncestor(project.getComponent()).getFocusOwner();
 			project.setEnabled(false);
 
