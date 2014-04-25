@@ -83,11 +83,9 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
     }
     
     public static void addExportButtonsTo(JToolBar tb, final DrawingEditor editor){
-    	ResourceBundleUtil labels = ResourceBundleUtil.getLAFBundle("org.jhotdraw.draw.Labels");
 
-    	
+    	//Assign parents Toggle Button.
     	JToggleButton parentAssigner = new JToggleButton();
-    	//labels.configureButton(export, "attributeFontBold");
     	parentAssigner.setText("Assign Parents");
     	parentAssigner.setFocusable(false);
     	parentAssigner.addItemListener(new ItemListener() {
