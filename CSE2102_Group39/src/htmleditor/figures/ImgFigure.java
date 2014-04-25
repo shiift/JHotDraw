@@ -1,4 +1,6 @@
-package htmleditor;
+package htmleditor.figures;
+
+import htmleditor.StyleBuilder;
 
 import java.awt.Color;
 import java.awt.geom.Point2D;
@@ -32,8 +34,8 @@ public class ImgFigure extends HtmlFigure
 		ImgFigure that = (ImgFigure) super.clone();
 		that.setTag("img");
 		that.setName("Image");
-		this.addHtmlAttribute(that, "src", "#");
-		this.addHtmlAttribute(that, "alt", "THIS IMAGE");
+		this.addHtmlAttribute(that, "src", "img.jpg");
+		this.addHtmlAttribute(that, "alt", "Alternate Text");
 		this.addHtmlAttribute(that, "width", "100px", false);
 		this.addHtmlAttribute(that, "height", "100px", false);
 		this.addHtmlAttribute(that, "style", _style.getStyleValueString());
@@ -46,7 +48,7 @@ public class ImgFigure extends HtmlFigure
 		this.getAttributeList().get("width").setValue(this.rectangle.width + "px");
 		this.getAttributeList().get("height").setValue(this.rectangle.height + "px");
 		if(control==false){
-			this.setAttribute(AttributeKeys.FILL_COLOR, Color.BLUE);
+			this.setAttribute(AttributeKeys.FILL_COLOR, Color.CYAN);
 			control = true;
 		}
 	}

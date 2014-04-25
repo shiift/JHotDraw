@@ -1,4 +1,4 @@
-package htmleditor;
+package htmleditor.figures;
 
 import static org.jhotdraw.draw.AttributeKeys.FILL_COLOR;
 import static org.jhotdraw.draw.AttributeKeys.FONT_SIZE;
@@ -6,6 +6,7 @@ import static org.jhotdraw.draw.AttributeKeys.FONT_UNDERLINED;
 import static org.jhotdraw.draw.AttributeKeys.STROKE_WIDTH;
 import static org.jhotdraw.draw.AttributeKeys.TEXT;
 import static org.jhotdraw.draw.AttributeKeys.TEXT_COLOR;
+import htmleditor.AttributeValue;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -60,8 +61,12 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     	ParagraphFigure that = (ParagraphFigure) super.clone();
     	that.setName("Paragraph");
     	that.setTag("p");
+    	
     	this.addHtmlAttribute(that, "size", Float.toString(that.getFontSize()));
-    	this.addHtmlAttribute(that, "style", "");
+		this.addHtmlAttribute(that, "style", _style.getStyleValueString());
+		this.addHtmlAttribute(that, "width ", "300");
+		this.addHtmlAttribute(that, "height ", "300");
+		
         that.bounds = (Rectangle2D.Double) this.bounds.clone();
         return that;
     }
@@ -85,6 +90,10 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     private String parseText(String newText) {
         newText = newText.replaceAll("\n", "<br />");
         newText = newText.replaceAll("\\*\\*", "<li>");
+        newText = newText.replaceAll("B\\^", "<strong>");
+        newText = newText.replaceAll("\\^B", "</strong>");
+        newText = newText.replaceAll("I\\^", "<em>");
+        newText = newText.replaceAll("\\^I", "</em>");
 		return newText;
 	}
     
@@ -95,11 +104,9 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
         bounds.width = rectangle.width;
         bounds.height = rectangle.height;
         textLayout = null;
-//      Can't remember why I put this here
-//        if(getParent() != null){
-//			rectangle.width = getParent().rectangle.width - 20;
-//		}
-    }
+		this.attributeList.get("width ").setValue(this.rectangle.width + "px");
+		this.attributeList.get("height ").setValue(this.rectangle.height + "px");
+	}
     
     public void basicTransform(AffineTransform tx) {
         super.basicTransform(tx);
@@ -367,7 +374,7 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     @Override
     public void setFontSize(float size) {
         FONT_SIZE.set(this, new Double(size));
-        this.getAttributeList().get("size").setValue(Float.toString(this.getFontSize()));
+        this.attributeList.get("size").setValue(Float.toString(this.getFontSize()));
     }
     @Override
     public float getFontSize() {

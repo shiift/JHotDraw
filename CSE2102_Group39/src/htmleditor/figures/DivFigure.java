@@ -1,4 +1,6 @@
-package htmleditor;
+package htmleditor.figures;
+
+import htmleditor.StyleBuilder;
 
 import java.awt.Color;
 import java.awt.geom.AffineTransform;
@@ -15,13 +17,11 @@ public class DivFigure extends HtmlFigure
 {
 
 	// Member variables for the style attribute of the div tag
-	public StyleBuilder _style = new StyleBuilder();
 	private boolean control = false;
 	
 	public DivFigure() {
-		this(0, 0, 0, 0);
+		this(0,0,0,0);
 	}
-	
 	
 	public DivFigure(double x, double y, double width, double height) {
 		super(x, y, width, height);
@@ -36,10 +36,6 @@ public class DivFigure extends HtmlFigure
 		that.setName("Division");
 		addHtmlAttribute(that, "style", _style.getStyleValueString());
 		return that;
-	}
-	
-	public void basicTransform(AffineTransform tx){
-		super.basicTransform(tx);
 	}
 	
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead){
@@ -58,12 +54,5 @@ public class DivFigure extends HtmlFigure
 					new Point2D.Double(parent.rectangle.getMaxX() - 10, rectangle.getMaxY()));
 		}
 	}
-	
-	public void read(DOMInput in) throws IOException {
-		super.read(in);
-    }
-    public void write(DOMOutput out) throws IOException {
-    	super.write(out);
-    }
 	
 }

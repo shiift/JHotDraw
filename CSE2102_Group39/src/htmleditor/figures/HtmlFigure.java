@@ -1,5 +1,10 @@
-package htmleditor;
+package htmleditor.figures;
 
+
+import htmleditor.AttributePanel;
+import htmleditor.AttributeValue;
+import htmleditor.DefaultHtmlDrawing;
+import htmleditor.StyleBuilder;
 
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
@@ -23,6 +28,7 @@ public class HtmlFigure extends RectangleFigure {
 	protected String name;
 	protected String data;
 	protected int fileControl;
+	protected StyleBuilder _style;
 	public boolean isTopParent = false;
 	protected AttributePanel attributePanel;
 
@@ -35,6 +41,7 @@ public class HtmlFigure extends RectangleFigure {
 		super(x, y, width, height);
 		figureList = new LinkedList<HtmlFigure>();
 		attributeList = new HashMap<String, AttributeValue>();
+		_style = new StyleBuilder();
 		parent = null;
 		tag = "";
 		name = "";
@@ -91,9 +98,7 @@ public class HtmlFigure extends RectangleFigure {
 	@Override
 	public void basicTransform(AffineTransform tx) {
 		super.basicTransform(tx);
-		if(isTopParent == false){
-			getDrawing().bringToFront(this);
-		}
+		getDrawing().bringToFront(this);
 		for(int i = 0; i < figureList.size(); i++){
 			figureList.get(i).basicTransform(new AffineTransform(1, 0, 0, 1, 0, 0));
 		}

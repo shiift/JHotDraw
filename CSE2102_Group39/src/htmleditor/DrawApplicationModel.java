@@ -16,7 +16,7 @@ package htmleditor;
 
 import org.jhotdraw.util.*;
 
-import htmleditor.HtmlFigure;
+import htmleditor.figures.*;
 
 import java.util.*;
 
@@ -102,7 +102,8 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new DivFigure()), "createDiv", htmlLabels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new ImgFigure()), "createImg", htmlLabels);
-        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new HRFigure()), "createHR", htmlLabels);
+        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new AFigure()), "createA", htmlLabels);
+        //HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new HRFigure()), "createHR", htmlLabels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new TextAreaTool(new ParagraphFigure()), "createTextArea", labels);
     }    
 }

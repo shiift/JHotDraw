@@ -1,5 +1,7 @@
 package htmleditor;
 
+import htmleditor.figures.DivFigure;
+
 import java.awt.geom.Point2D;
 import java.io.IOException;
 

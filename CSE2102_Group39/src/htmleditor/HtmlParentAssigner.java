@@ -1,5 +1,9 @@
 package htmleditor;
 
+import htmleditor.figures.HtmlFigure;
+import htmleditor.figures.ImgFigure;
+import htmleditor.figures.ParagraphFigure;
+
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;

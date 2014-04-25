@@ -22,8 +22,8 @@ public class DefaultHtmlDrawing extends DefaultDrawing {
 	}
 
 	public TopParentHtmlFigure createTopParent(DefaultHtmlDrawingView view){
-		topParent = new TopParentHtmlFigure(100, 100, 600, 800);
-        topParent.addHtmlAttribute(topParent, "style", "background:#FFF;width:800px;margin:0 auto;border:1px solid black;min-height:800px;", false);
+		topParent = new TopParentHtmlFigure(0, 0, 1000, 1200);
+        topParent.addHtmlAttribute(topParent, "style", "background:#FFF; width:800px; margin:0 auto; min-height:800px;", false);
         topParent.isTopParent = true;
         topParent.setName("Base Page");
 		topParent.setAttribute(AttributeKeys.FILL_COLOR, Color.LIGHT_GRAY);

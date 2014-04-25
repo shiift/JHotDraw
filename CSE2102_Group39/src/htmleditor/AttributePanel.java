@@ -1,5 +1,7 @@
 package htmleditor;
 
+import htmleditor.figures.HtmlFigure;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -101,7 +103,8 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
         // Add elements to the legend
         add(mainPane);
         addColorPane("div", Color.LIGHT_GRAY);
-        addColorPane("img", Color.BLUE);
+        addColorPane("a", Color.ORANGE);
+        addColorPane("img", Color.CYAN);
         addColorPane("p", Color.WHITE);
 	}
 	
@@ -167,7 +170,8 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 				public void actionPerformed(ActionEvent e){
 					for(int i = 0; i < figureArray.length; i++){
 						HtmlFigure cFigure = (HtmlFigure) figureArray[i];
-						cFigure.addHtmlAttribute(e.getActionCommand(), new AttributeValue(attributeFields.get(e.getActionCommand()).getText()));
+						cFigure.addHtmlAttribute(e.getActionCommand(), 
+								new AttributeValue(attributeFields.get(e.getActionCommand()).getText()));
 					}
 				}
 			};
@@ -220,9 +224,6 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 				attributeFields.get(entry.getKey()).setText(entry.getValue().getValue());
 			}
 		}
-		
-		revalidate();
-		repaint();
 	}
 
 	@Override
