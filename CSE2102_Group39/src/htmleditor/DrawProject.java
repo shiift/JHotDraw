@@ -101,7 +101,7 @@ public class DrawProject extends AbstractProject {
 		scrollPane.add(placardPanel, JScrollPane.LOWER_LEFT_CORNER);
 
 		DefaultHtmlDrawing draw = (DefaultHtmlDrawing) view.getDrawing();
-		draw.createTopParent(view);
+		topParent = draw.createTopParent(view);
 	}
 
 	public DrawingEditor getEditor() {
@@ -260,12 +260,19 @@ public class DrawProject extends AbstractProject {
 	public void setAttributePanel(AttributePanel attributePanel) {
 		this.attributePanel = attributePanel;
 	}
+	
+	@Override
+	public void setFile(File newValue){
+		super.setFile(newValue);
+		view.getDrawing().setTopParent(topParent);
+	}
 
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JScrollPane scrollPane;
 	private DefaultHtmlDrawingView view;
 	private AttributePanel attributePanel;
+	private TopParentHtmlFigure topParent;
 	// End of variables declaration//GEN-END:variables
 
 }

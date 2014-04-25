@@ -32,8 +32,17 @@ public class HtmlParser {
 	// parses html recursively
 	static public void parseHtml(HtmlFigure hf, int depth){
 		print("<" + hf.getTag(), depth);
+		int loc = 0;
 		for(String name : hf.attributeList.keySet()){
-			writer.print(" " + name + "=\"" + hf.getAttributeList().get(name).getValue() + "\" ");
+			if(name.equals("style")){
+				String location = parseLoc(hf, loc);
+				hf.getAttributeList().put(name, new AttributeValue(hf.getAttributeList().get(name).getValue()
+						+ location));
+			}
+			if(hf.getAttributeList().get(name).getValue() != ""){
+				writer.print(" " + name + "=\"" + hf.getAttributeList().get(name).getValue() + "\" ");
+			}
+			loc++;
 		}
 		writer.println(">");
 		for(int i = 0; i < hf.getObjectList().size(); i++){
@@ -45,6 +54,24 @@ public class HtmlParser {
 		print("</" + hf.getTag() + ">\n", depth);
 	}
 	
+	private static String parseLoc(HtmlFigure hf, int loc) {
+		String rString = " ";
+		if(!hf.isTopParent){
+			rString += "float:left;";
+//			rString += "margin-left:";
+//			rString += hf.rectangle.x - hf.getParent().rectangle.x;
+//			rString += "px;";
+			rString += "position: absolute;";
+			rString += "left:";
+			rString += hf.rectangle.x;
+			rString += ";";
+			rString += "top:";
+			rString += hf.rectangle.y;
+			rString += ";";
+		}
+		return rString;
+	}
+
 	static public void print(String line, int depth){
 		for(int i = 0; i < depth; i++){
 			writer.print("\t");

@@ -52,6 +52,7 @@ public class HtmlFigure extends RectangleFigure {
 		return that;
 	}
 
+	//Limits movement of the object within its parent.
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
 		super.basicSetBounds(anchor, lead);
 		if(parent != null){
@@ -86,6 +87,7 @@ public class HtmlFigure extends RectangleFigure {
 		}
 	}
 
+	//Moves the children within the parent if it moves past the bounds of the child.
 	@Override
 	public void basicTransform(AffineTransform tx) {
 		super.basicTransform(tx);
@@ -199,8 +201,10 @@ public class HtmlFigure extends RectangleFigure {
 	public void addNotify(Drawing d){
 		super.addNotify(d);
 		DefaultHtmlDrawing htmlD = (DefaultHtmlDrawing) d; 
-		addFigureListener(htmlD.getProject().getAttributePanel());
-		this.attributePanel = htmlD.getProject().getAttributePanel();
+		if(htmlD.getProject() != null){
+			addFigureListener(htmlD.getProject().getAttributePanel());
+			this.attributePanel = htmlD.getProject().getAttributePanel();
+		}
 	}
 	
 	public void read(DOMInput in) throws IOException {
@@ -210,6 +214,7 @@ public class HtmlFigure extends RectangleFigure {
 		double h = in.getAttribute("h", 0d);
 		String n = in.getAttribute("n", "null");
 		String t = in.getAttribute("t", "null");
+		isTopParent = in.getAttribute("top", false);
 		int _control = in.getAttribute("control", 0);
 		for(int i = 1; i<_control+1;i++){
 			String name = in.getAttribute("n"+Integer.toString(i), null);
@@ -233,6 +238,7 @@ public class HtmlFigure extends RectangleFigure {
         out.addAttribute("h", r.height);
         out.addAttribute("n", this.getName());
         out.addAttribute("t", this.getTag());
+        out.addAttribute("top", this.isTopParent);
         out.addAttribute("control", fileControl);
         int control = 1;
         for(Entry<String, AttributeValue> entry : attributeList.entrySet()){
