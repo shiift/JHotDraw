@@ -58,12 +58,16 @@ public class HtmlParser {
 		String rString = " ";
 		if(!hf.isTopParent){
 			rString += "float:left;";
-			rString += "margin-left:";
-			rString += hf.rectangle.x - hf.getParent().rectangle.x;
-			rString += "px;";
-//			rString += "margin-top:";
-//			rString += hf.rectangle.y - hf.getParent().rectangle.y;
+//			rString += "margin-left:";
+//			rString += hf.rectangle.x - hf.getParent().rectangle.x;
 //			rString += "px;";
+			rString += "position: absolute;";
+			rString += "left:";
+			rString += hf.rectangle.x;
+			rString += ";";
+			rString += "top:";
+			rString += hf.rectangle.y;
+			rString += ";";
 		}
 		return rString;
 	}
