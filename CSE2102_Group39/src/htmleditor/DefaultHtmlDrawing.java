@@ -21,7 +21,7 @@ public class DefaultHtmlDrawing extends DefaultDrawing {
 		return this.project;
 	}
 	
-	public void createTopParent(DefaultHtmlDrawingView view){
+	public TopParentHtmlFigure createTopParent(DefaultHtmlDrawingView view){
 		topParent = new TopParentHtmlFigure(100, 100, 600, 800);
         topParent.addHtmlAttribute(topParent, "style", "background:#FFF;width:800px;margin:0 auto;border:1px solid black;", false);
         topParent.isTopParent = true;
@@ -29,6 +29,7 @@ public class DefaultHtmlDrawing extends DefaultDrawing {
 		topParent.setAttribute(AttributeKeys.FILL_COLOR, Color.LIGHT_GRAY);
 		topParent.setParent(null);
 		view.getDrawing().add(topParent);
+		return topParent;
 	}
 	
 	public TopParentHtmlFigure getTopParent(){
