@@ -34,4 +34,8 @@ public class DefaultHtmlDrawing extends DefaultDrawing {
 	public TopParentHtmlFigure getTopParent(){
 		return topParent;
 	}
+	
+	public void setTopParent(TopParentHtmlFigure tp){
+		topParent = tp;
+	}
 }

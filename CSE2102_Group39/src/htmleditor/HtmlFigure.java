@@ -200,8 +200,10 @@ public class HtmlFigure extends RectangleFigure {
 	public void addNotify(Drawing d){
 		super.addNotify(d);
 		DefaultHtmlDrawing htmlD = (DefaultHtmlDrawing) d; 
-		addFigureListener(htmlD.getProject().getAttributePanel());
-		this.attributePanel = htmlD.getProject().getAttributePanel();
+		if(htmlD.getProject() != null){
+			addFigureListener(htmlD.getProject().getAttributePanel());
+			this.attributePanel = htmlD.getProject().getAttributePanel();
+		}
 	}
 	
 	public void read(DOMInput in) throws IOException {
