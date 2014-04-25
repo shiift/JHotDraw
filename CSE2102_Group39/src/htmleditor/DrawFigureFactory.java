@@ -14,7 +14,6 @@
 
 package htmleditor;
 
-import java.util.*;
 import org.jhotdraw.draw.*;
 import org.jhotdraw.xml.DefaultDOMFactory;
 /**

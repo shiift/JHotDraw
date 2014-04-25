@@ -10,7 +10,6 @@ import java.util.LinkedList;
 import java.util.Map.Entry;
 
 import org.jhotdraw.draw.Drawing;
-import org.jhotdraw.draw.Figure;
 import org.jhotdraw.draw.RectangleFigure;
 import org.jhotdraw.xml.DOMInput;
 import org.jhotdraw.xml.DOMOutput;

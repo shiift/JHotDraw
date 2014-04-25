@@ -2,7 +2,6 @@ package htmleditor;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collection;
@@ -26,6 +25,11 @@ import org.jhotdraw.draw.FigureListener;
 import org.jhotdraw.draw.FigureSelectionEvent;
 import org.jhotdraw.draw.FigureSelectionListener;
 
+// Two separate panels make up the AttributePanel
+// A JPanel that shows the attribute values that can be changed
+// for each HtmlFigure, and a JPanel that contains a legend
+// for what the color for each HtmlFigure represents
+
 public class AttributePanel extends JPanel implements FigureSelectionListener, FigureListener {
 	
 	private JPanel optionsPanel;
@@ -35,18 +39,23 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		
 	public AttributePanel(){
 		
+		// attributeFields are HashMaps with strings as keys and JTextFields as values
 		attributeFields = new HashMap<String, JTextField>();
 		
+		// Used for the visual appearance of the AttributePanel
 		setPreferredSize(new Dimension(250,0));
         setBorder(new EmptyBorder(30,0,0,0));
         
+        // Components are laid out vertically from top to bottom
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
+        // Vertical split across the main pane used
         JSplitPane mainPane = new JSplitPane();
         mainPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
         mainPane.setDividerSize(0);
         mainPane.setBorder(null);
         
+        // Sets the text
         JTextPane textPane = new JTextPane();
         textPane.setText("HTML Attribute Pane");
         textPane.setEditable(false);
@@ -212,6 +221,10 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		
 	}
 	
+	// Using the color parameter that is given, set it
+	// as the background of the panel created and the
+	// text parameter is put over the color and
+	// added to the colorPane to create the legend
 	public void addColorPane(String name, Color color){
 		JPanel newPanel = new JPanel();
 		newPanel.setBackground(color);

@@ -1,12 +1,12 @@
 package htmleditor;
 
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 
 
 public class HRFigure extends HtmlFigure
 {
 
+	// Style attribute of the hr tag
 	public StyleBuilder _style = new StyleBuilder();
 	
 	public HRFigure() {
@@ -28,6 +28,9 @@ public class HRFigure extends HtmlFigure
 		return that;
 	}
 	
+	// Horizontal rules are horizontal lines, meaning the height doesn't change
+	// unlike an HtmlFigure, which is a rectangle that can change height and width
+	// basicSetBounds from HtmlFigure, height stays equivalent to 1
 	@Override
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) 
 	{

@@ -3,8 +3,6 @@ package htmleditor;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.io.File;
-import java.io.IOException;
-
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -13,11 +11,9 @@ import javax.swing.UIManager;
 import org.jhotdraw.app.Application;
 import org.jhotdraw.app.Project;
 import org.jhotdraw.app.action.AbstractProjectAction;
-import org.jhotdraw.app.action.SaveAction;
 import org.jhotdraw.gui.JSheet;
 import org.jhotdraw.gui.event.SheetEvent;
 import org.jhotdraw.gui.event.SheetListener;
-import org.jhotdraw.io.ExtensionFileFilter;
 import org.jhotdraw.util.ResourceBundleUtil;
 import org.jhotdraw.util.Worker;
 

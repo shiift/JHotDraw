@@ -3,18 +3,18 @@ package htmleditor;
 import java.awt.Color;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.LinkedList;
 
 import org.jhotdraw.draw.AttributeKeys;
 import org.jhotdraw.xml.DOMInput;
 import org.jhotdraw.xml.DOMOutput;
 
+// Class for the div tag in HTML
+
 public class DivFigure extends HtmlFigure
 {
 
+	// Member variables for the style attribute of the div tag
 	public StyleBuilder _style = new StyleBuilder();
 	private boolean control = false;
 	
@@ -22,10 +22,11 @@ public class DivFigure extends HtmlFigure
 		this(0, 0, 0, 0);
 	}
 	
+	
 	public DivFigure(double x, double y, double width, double height) {
 		super(x, y, width, height);
 		setTag("div");
-		setName("div");
+		setName("Division");
 		_style.addStyleAttribute("background", "#CCC");
 	}
 	

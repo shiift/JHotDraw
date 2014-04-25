@@ -3,6 +3,8 @@ package htmleditor;
 import org.jhotdraw.draw.DefaultDrawingView;
 import org.jhotdraw.draw.Drawing;
 
+// Modified DefaultDrawingView from JHotDraw
+
 public class DefaultHtmlDrawingView extends DefaultDrawingView {
 
     public DefaultHtmlDrawing getDrawing() {

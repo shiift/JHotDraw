@@ -1,19 +1,13 @@
 package htmleditor;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
-import java.util.Collection;
 import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
-import org.jhotdraw.app.Application;
 import org.jhotdraw.app.Project;
-import org.jhotdraw.app.action.AbstractProjectAction;
 import org.jhotdraw.draw.DrawingView;
-import org.jhotdraw.draw.Figure;
 import org.jhotdraw.gui.JSheet;
 
 

@@ -16,17 +16,12 @@ package htmleditor;
 
 import org.jhotdraw.util.*;
 
-import htmleditor.HtmlFigure;
-
 import java.util.*;
 
 import javax.swing.*;
 
 import org.jhotdraw.app.*;
 import org.jhotdraw.draw.*;
-import org.jhotdraw.draw.action.*;
-
-import static org.jhotdraw.draw.AttributeKeys.*;
 /**
  * DrawApplicationModel.
  * 
@@ -80,10 +75,10 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         tb.setName(labels.getString("drawToolBarTitle"));
         list.add(tb);
         
-        tb = new JToolBar();
-        HtmlToolBarButtonFactory.addFontButtonsTo(tb, editor);
-        tb.setName("FontButtons ToolBar");
-        list.add(tb);
+//        tb = new JToolBar();
+//        HtmlToolBarButtonFactory.addFontButtonsTo(tb, editor);
+//        tb.setName("FontButtons ToolBar");
+//        list.add(tb);
 //        tb = new JToolBar();
 //        HtmlToolBarButtonFactory.addAttributesButtonsTo(tb, editor);
 //        tb.setName(labels.getString("attributesToolBarTitle"));

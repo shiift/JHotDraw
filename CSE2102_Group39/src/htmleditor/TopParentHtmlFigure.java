@@ -1,9 +1,7 @@
 package htmleditor;
 
 import java.io.IOException;
-import java.util.Map;
 
-import org.jhotdraw.draw.Figure;
 import org.jhotdraw.xml.DOMInput;
 import org.jhotdraw.xml.DOMOutput;
 

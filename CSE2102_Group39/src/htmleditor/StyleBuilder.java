@@ -2,9 +2,13 @@ package htmleditor;
 
 import java.util.HashMap;
 
+/* StyleBuilder is a HashMap with keys that are attributes of the style attribute 
+   that is a part of most HtmlFigures and values that are the values for
+   each attribute. */
+
 public class StyleBuilder 
 {
-
+	
 	public HashMap<String, String> _styleMap;
 	public String _styleValue;
 	
@@ -34,6 +38,9 @@ public class StyleBuilder
 		_styleMap.put(key, value);
 	}
 	
+	// Gets the value for the style tag by using each key in the
+	// HashMap, then colon, then the value of the attribute, which
+	// is the correct set-up for the style tag in HTML
 	public String getStyleValueString()
 	{
 		String _styleValue = "";
@@ -44,6 +51,7 @@ public class StyleBuilder
 		return _styleValue;
 	}
 	
+	// Uses the getStyleValueString for the toString method
 	@Override
 	public String toString()
 	{

@@ -12,7 +12,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Shape;
-import java.awt.font.FontRenderContext;
 import java.awt.font.LineBreakMeasurer;
 import java.awt.font.TextAttribute;
 import java.awt.font.TextLayout;
@@ -24,30 +23,16 @@ import java.io.IOException;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.StringTokenizer;
 
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-
 import org.jhotdraw.draw.AttributeKeys;
-import org.jhotdraw.draw.Figure;
 import org.jhotdraw.draw.FontSizeHandle;
 import org.jhotdraw.draw.Handle;
-import org.jhotdraw.draw.MoveHandle;
-import org.jhotdraw.draw.RelativeLocator;
-import org.jhotdraw.draw.TextAreaFigure;
 import org.jhotdraw.draw.TextAreaTool;
 import org.jhotdraw.draw.TextHolder;
-import org.jhotdraw.draw.TextTool;
 import org.jhotdraw.draw.Tool;
-import org.jhotdraw.geom.Dimension2DDouble;
-import org.jhotdraw.geom.Geom;
 import org.jhotdraw.geom.Insets2DDouble;
 import org.jhotdraw.xml.DOMInput;
 import org.jhotdraw.xml.DOMOutput;
@@ -59,7 +44,7 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     
     // cache of the TextFigure's layout
     transient private TextLayout textLayout;
-    
+	
     /** Creates a new instance. */
     public ParagraphFigure() {
         this("Text");

@@ -11,10 +11,11 @@ import org.jhotdraw.xml.DOMOutput;
 public class ImgFigure extends HtmlFigure
 {
 
+	// Width, height, and style variables are for attributes of the ImgFigure
 	public double _width;
 	public double _height;
+	public StyleBuilder _style = new StyleBuilder();	
 	private boolean control = false;
-	public StyleBuilder _style = new StyleBuilder();
 	
 	public ImgFigure() {
 		this(0, 0, 0, 0);
@@ -23,7 +24,7 @@ public class ImgFigure extends HtmlFigure
 	public ImgFigure(double x, double y, double width, double height) {
 		super(x, y, width, height);
 		setTag("img");
-		setName("img");
+		setName("Image");
 	}
 		
 	public ImgFigure clone()

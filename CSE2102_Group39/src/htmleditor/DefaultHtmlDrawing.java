@@ -13,15 +13,15 @@ public class DefaultHtmlDrawing extends DefaultDrawing {
 	public DefaultHtmlDrawing() {
     }
 	
-	public void setProject(DrawProject project){
+	public void setProject(DrawProject project) {
 		this.project = project;  
 	}
 	
-	public DrawProject getProject(){
+	public DrawProject getProject() {
 		return this.project;
 	}
 	
-	public void createTopParent(DefaultHtmlDrawingView view){
+	public void createTopParent(DefaultHtmlDrawingView view) {
 		topParent = new TopParentHtmlFigure(100, 100, 600, 800);
         topParent.addHtmlAttribute(topParent, "style", "background:#FFF;width:800px;margin:0 auto;border:1px solid black;", false);
         topParent.isTopParent = true;
@@ -31,7 +31,7 @@ public class DefaultHtmlDrawing extends DefaultDrawing {
 		view.getDrawing().add(topParent);
 	}
 	
-	public TopParentHtmlFigure getTopParent(){
+	public TopParentHtmlFigure getTopParent() {
 		return topParent;
 	}
 }
