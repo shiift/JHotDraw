@@ -9,6 +9,8 @@ import org.jhotdraw.xml.DOMOutput;
 
 public class TopParentHtmlFigure extends DivFigure {
 	
+	public DefaultHtmlDrawing dView;
+	
 	public TopParentHtmlFigure(){
 		this(0, 0, 0, 0);	
 	}

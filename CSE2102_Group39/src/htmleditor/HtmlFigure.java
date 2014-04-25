@@ -213,6 +213,7 @@ public class HtmlFigure extends RectangleFigure {
 		double h = in.getAttribute("h", 0d);
 		String n = in.getAttribute("n", "null");
 		String t = in.getAttribute("t", "null");
+		isTopParent = in.getAttribute("top", false);
 		int _control = in.getAttribute("control", 0);
 		for(int i = 1; i<_control+1;i++){
 			String name = in.getAttribute("n"+Integer.toString(i), null);
@@ -236,6 +237,7 @@ public class HtmlFigure extends RectangleFigure {
         out.addAttribute("h", r.height);
         out.addAttribute("n", this.getName());
         out.addAttribute("t", this.getTag());
+        out.addAttribute("top", this.isTopParent);
         out.addAttribute("control", fileControl);
         int control = 1;
         for(Entry<String, AttributeValue> entry : attributeList.entrySet()){

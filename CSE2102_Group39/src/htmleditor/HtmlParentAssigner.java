@@ -20,6 +20,7 @@ import org.jhotdraw.gui.JSheet;
 public class HtmlParentAssigner{
 	
 	DefaultHtmlDrawing dView;
+	boolean control = false;
 	
 	public HtmlParentAssigner(DrawingView view){
 		if(view != null){
@@ -29,6 +30,20 @@ public class HtmlParentAssigner{
 	
 	//Assigns the parents within the base figure to parse using the children of each parent.
 	public void actionRelease(){
+		if(control == false){
+			int size2 = dView.getFigures().size();
+			Object[] objlist2 = new Object[size2];
+			objlist2 = dView.getFigures().toArray();
+			for(int k = 0; k<size2; k++){
+				if(objlist2[k] instanceof HtmlFigure){
+					HtmlFigure temp = (HtmlFigure) objlist2[k];
+					if(temp.isTopParent == true){
+						dView.setTopParent((TopParentHtmlFigure) temp);
+					}
+				}
+			}
+			control = true;
+		}
 		int size1 = dView.getTopParent().getDrawSpace().getFigures().size();
 		Object[] objlist = new Object[size1];
 		objlist = dView.getTopParent().getDrawSpace().getFigures().toArray();
@@ -49,6 +64,20 @@ public class HtmlParentAssigner{
 	}
 
 	public void actionPerformed() {
+		if(control == false){
+			int size2 = dView.getFigures().size();
+			Object[] objlist2 = new Object[size2];
+			objlist2 = dView.getFigures().toArray();
+			for(int k = 0; k<size2; k++){
+				if(objlist2[k] instanceof HtmlFigure){
+					HtmlFigure temp = (HtmlFigure) objlist2[k];
+					if(temp.isTopParent == true){
+						dView.setTopParent((TopParentHtmlFigure) temp);
+					}
+				}
+			}
+			control = true;
+		}
 		boolean errorControl = false;
 		int size1 = dView.getTopParent().getDrawSpace().getFigures().size();
 		Object[] objlist = new Object[size1];
