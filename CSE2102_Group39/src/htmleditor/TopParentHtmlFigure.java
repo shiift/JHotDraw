@@ -10,6 +10,8 @@ import org.jhotdraw.xml.DOMOutput;
 
 public class TopParentHtmlFigure extends DivFigure {
 	
+	public DefaultHtmlDrawing dView;
+	
 	public TopParentHtmlFigure(){
 		this(0, 0, 0, 0);	
 	}
@@ -20,12 +22,9 @@ public class TopParentHtmlFigure extends DivFigure {
 	}
 	
 	public void read(DOMInput in) throws IOException {
-		return;
+		super.read(in);
     }
     public void write(DOMOutput out) throws IOException {
     	super.write(out);
-    }
-    public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
-    	return;
     }
 }

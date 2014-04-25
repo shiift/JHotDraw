@@ -41,7 +41,7 @@ public class DrawFigureFactory extends DefaultDOMFactory {
         { GroupFigure.class, "g" },
         
         { DefaultHtmlDrawing.class, "Def" },
-        { TopParentHtmlFigure.class, "TopParentDamnItLiam" },
+        { TopParentHtmlFigure.class, "TopParent" },
         { HtmlFigure.class, "Html" },
         { ParagraphFigure.class, "Par" },
         { DivFigure.class, "Div" },
