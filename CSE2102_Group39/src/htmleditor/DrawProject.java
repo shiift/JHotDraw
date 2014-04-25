@@ -266,7 +266,6 @@ public class DrawProject extends AbstractProject {
 	public void setFile(File newValue){
 		super.setFile(newValue);
 		view.getDrawing().setTopParent(topParent);
-		topParent.dView = view.getDrawing();
 	}
 
 
