@@ -53,6 +53,7 @@ public class HtmlFigure extends RectangleFigure {
 		return that;
 	}
 
+	//Limits movement of the object within its parent.
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
 		super.basicSetBounds(anchor, lead);
 		if(parent != null){
@@ -87,6 +88,7 @@ public class HtmlFigure extends RectangleFigure {
 		}
 	}
 
+	//Moves the children within the parent if it moves past the bounds of the child.
 	@Override
 	public void basicTransform(AffineTransform tx) {
 		super.basicTransform(tx);

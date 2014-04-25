@@ -79,14 +79,6 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         addCreationButtonsTo(tb, editor);
         tb.setName(labels.getString("drawToolBarTitle"));
         list.add(tb);
-//        tb = new JToolBar();
-//        HtmlToolBarButtonFactory.addAttributesButtonsTo(tb, editor);
-//        tb.setName(labels.getString("attributesToolBarTitle"));
-//        list.add(tb);
-//        tb = new JToolBar();
-//        HtmlToolBarButtonFactory.addAlignmentButtonsTo(tb, editor);
-//        tb.setName(labels.getString("alignmentToolBarTitle"));
-//        list.add(tb);
         
         tb = new JToolBar();
         HtmlToolBarButtonFactory.addExportButtonsTo(tb, editor);
@@ -108,28 +100,9 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         HtmlToolBarButtonFactory.addSelectionToolTo(tb, editor, drawingActions, selectionActions);
         tb.addSeparator();
         
-//        AttributedFigure af;
-//        CreationTool ct;
-//        ConnectionTool cnt;
-//        ConnectionFigure lc;
-        
-//        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new HtmlFigure()), "createRectangle", labels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new DivFigure()), "createDiv", htmlLabels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new ImgFigure()), "createImg", htmlLabels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new HRFigure()), "createHR", htmlLabels);
-//        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new DiamondFigure()), "createDiamond", labels);
-//        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new TriangleFigure()), "createTriangle", labels);
-//        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new LineFigure()), "createLine", labels);
-//        HtmlToolBarButtonFactory.addToolTo(tb, editor, ct = new CreationTool(new LineFigure()), "createArrow", labels);
-//       af = (AttributedFigure) ct.getPrototype();
-//        af.setAttribute(END_DECORATION, new ArrowTip(0.35, 12, 11.3));
-//        HtmlToolBarButtonFactory.addToolTo(tb, editor, new ConnectionTool(new LineConnectionFigure()), "createLineConnection", labels);
-//        HtmlToolBarButtonFactory.addToolTo(tb, editor, cnt = new ConnectionTool(new LineConnectionFigure()), "createElbowConnection", labels);
-//     lc =  cnt.getPrototype();
-//        lc.setLiner(new ElbowLiner());
-//        HtmlToolBarButtonFactory.addToolTo(tb, editor, new BezierTool(new BezierFigure()), "createScribble", labels);
-//        HtmlToolBarButtonFactory.addToolTo(tb, editor, new BezierTool(new BezierFigure(true)), "createPolygon", labels);
-//        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new TableFigure()), "createText", labels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new TextAreaTool(new ParagraphFigure()), "createTextArea", labels);
     }    
 }

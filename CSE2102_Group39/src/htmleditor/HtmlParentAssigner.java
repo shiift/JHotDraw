@@ -28,8 +28,10 @@ public class HtmlParentAssigner{
 		}
 	}
 	
-	//Assigns the parents within the base figure to parse using the children of each parent.
+	//Clears the parents of each object for free movement of objects.
 	public void actionRelease(){
+		
+		//First assigns the top parent with the list of figures, necessary for when loading saved files.
 		if(control == false){
 			int size2 = dView.getFigures().size();
 			Object[] objlist2 = new Object[size2];
@@ -63,7 +65,9 @@ public class HtmlParentAssigner{
 		}
 	}
 
-	public void actionPerformed() {
+	//Assigns the parents within the base figure to parse using the children of each parent.
+	public void actionPerformed() {	
+		//First assigns the top parent with the list of figures, necessary for when loading saved files.
 		if(control == false){
 			int size2 = dView.getFigures().size();
 			Object[] objlist2 = new Object[size2];
@@ -162,14 +166,13 @@ public class HtmlParentAssigner{
 					HtmlFigure curFig = curIter.get(0);
 					for(int j = 1; j<curIter.size();j++){
 						HtmlFigure curComp = curIter.get(j);
-						if((curComp.rectangle.x<=curFig.rectangle.x && curComp.rectangle.y<(curFig.rectangle.y+curFig.rectangle.height))){
+						if(((curComp.rectangle.x<=curFig.rectangle.x && curComp.rectangle.y<=curFig.rectangle.y )|| curComp.rectangle.y<=curFig.rectangle.y)){
 							curFig = curComp;
 							control = j;
 						}
 					}
 					curIter.remove(control);
 					list[i].addHtmlObject(curFig);
-					//TODO test to see if it gets stuck in an unbounded loop
 				}
 			}
 		}

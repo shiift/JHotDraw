@@ -40,6 +40,7 @@ public class DrawFigureFactory extends DefaultDOMFactory {
         { TextAreaFigure.class, "ta" },
         { GroupFigure.class, "g" },
         
+        //Necessary for saving and loading the html objects.
         { DefaultHtmlDrawing.class, "Def" },
         { TopParentHtmlFigure.class, "TopParent" },
         { HtmlFigure.class, "Html" },
