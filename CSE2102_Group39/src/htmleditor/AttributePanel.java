@@ -25,9 +25,9 @@ import org.jhotdraw.draw.FigureListener;
 import org.jhotdraw.draw.FigureSelectionEvent;
 import org.jhotdraw.draw.FigureSelectionListener;
 
-// Two separate panels make up the AttributePanel
-// A JPanel that shows the attribute values that can be changed
-// for each HtmlFigure, and a JPanel that contains a legend
+// A JSplitPane makes up the AttributePanel
+// The top panel is for the legend and the bottom panel
+// is for the attributes of each HtmlFigures
 // for what the color for each HtmlFigure represents
 
 public class AttributePanel extends JPanel implements FigureSelectionListener, FigureListener {
@@ -55,7 +55,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
         mainPane.setDividerSize(0);
         mainPane.setBorder(null);
         
-        // Sets the text
+        // Adds a textPane as a header for the HTML Attribute Pane, text centered
         JTextPane textPane = new JTextPane();
         textPane.setText("HTML Attribute Pane");
         textPane.setEditable(false);
@@ -64,7 +64,11 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
         StyleConstants.setAlignment(attribs , StyleConstants.ALIGN_CENTER);
         textPane.setParagraphAttributes(attribs,true);
         
+        // The colorPane is instantiated
         colorPane = new JPanel();
+        
+        // The colorPaneContainer is made up of the colorPane and the 
+        // colorPaneLabel, which just is text that says Color Legend
         JSplitPane colorPaneContainer = new JSplitPane();
         JTextPane colorPaneLabel = new JTextPane();
         colorPaneLabel.setText("Color Legend");
@@ -77,18 +81,24 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
         colorPaneContainer.setTopComponent(colorPaneLabel);
         colorPaneContainer.setBottomComponent(colorPane);
         
+        // The headerPane has the top component as the legend
+        // and the bottom component as the text "Html Attribute Pane"
         JSplitPane headerPane = new JSplitPane();
         headerPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
         headerPane.setBottomComponent(textPane);
         headerPane.setTopComponent(colorPaneContainer);
         headerPane.setBorder(null);
         
+        // Instantiates the optionsPanel with vertical set-up
 		optionsPanel = new JPanel();
 		optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
         
+		// The top of the mainPane is the legend and text
+		// and the bottom pane is the optionsPanel for the attributes of each HtmlFigure
         mainPane.setTopComponent(headerPane);
         mainPane.setBottomComponent(optionsPanel);
         
+        // Add elements to the legend
         add(mainPane);
         addColorPane("div", Color.LIGHT_GRAY);
         addColorPane("img", Color.BLUE);
@@ -97,25 +107,36 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	
 	@Override
 	public void selectionChanged(FigureSelectionEvent evt) {
+		// Clears the attributes when you select a different figure in the view
 		attributeFields.clear();
 		optionsPanel.removeAll();
 		
+		// Get the currently selected figures in the view
 		Collection<Figure> figureCol = evt.getView().getSelectedFigures();
 		figureArray = figureCol.toArray(new HtmlFigure[figureCol.size()]);
 		
+		// Create a HashMap of all of the Attributes as well as all of the
+		// attributes that are shared between the various figures that are selected
 		HashMap<String, AttributeValue> allAttributes = new HashMap<String, AttributeValue>();
 		HashMap<String, AttributeValue> sharedAttributes = new HashMap<String, AttributeValue>();
 		
+		// Set up the namePanel and make it set up horizontally
 		JPanel namePanel = new JPanel();
 		namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.X_AXIS));
 		JTextField objectName = new JTextField();
 		
+		// If only one figure is selected, then the sharedAttributes are just the attributes
+		// Of that figure and the text is set to the name of the figure
 		if(figureArray.length == 1){
 			sharedAttributes = figureArray[0].getAttributeList();
 			objectName.setText(figureArray[0].getName());
 		}else{
+		// For each figure selected
 			for(int i = 0; i < figureArray.length; i++){
 				HtmlFigure cFigure = (HtmlFigure) figureArray[i];
+		        // For each entry of the attribute HashMap of the HtmlFigure, if all of the
+				// HtmlFigures have that attribute, then it goes into the sharedAttribute HashMap
+				// If it is editable, then it is put in allAttributes
 				for(Entry<String, AttributeValue> entry : cFigure.getAttributeList().entrySet()){
 					if(allAttributes.containsKey(entry.getKey())){
 						sharedAttributes.put(entry.getKey(), entry.getValue());
@@ -132,12 +153,15 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 			}
 		}
 
+		// Add the HtmlFigure's name (or "Multiple Figures") to the optionsPanel
 		objectName.setMaximumSize(new Dimension(100, 30));
 		objectName.setEditable(false);
 		namePanel.add(objectName);
 		
 		optionsPanel.add(namePanel);
 		
+		// For each attribute that is shared, for each HtmlFigure that is
+		// selected, add the changed attribute to the HashMap in the HtmlFigure
 		for(Entry<String, AttributeValue> entry : sharedAttributes.entrySet()){
 			ActionListener setListener = new ActionListener() {
 				public void actionPerformed(ActionEvent e){
@@ -151,6 +175,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 				}
 			};
 			
+			// 
 			JPanel newPanel = new JPanel();
 			newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
 			
