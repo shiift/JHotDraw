@@ -61,8 +61,8 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     }
     public ParagraphFigure(String text) {
         setText(text);
-        setTag("p");
-		setName("Paragraph");
+        setTag("font");
+		setName("Font");
     }
     
     public ParagraphFigure clone() {
@@ -70,7 +70,8 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     	ParagraphFigure that = (ParagraphFigure) super.clone();
     	that.setName("Paragraph");
     	that.setTag("p");
-    	this.addHtmlAttribute(that, "font size", Float.toString(that.getFontSize()));
+    	this.addHtmlAttribute(that, "size", Float.toString(that.getFontSize()));
+    	this.addHtmlAttribute(that, "style", "");
         that.bounds = (Rectangle2D.Double) this.bounds.clone();
         return that;
     }
@@ -353,7 +354,7 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     @Override
     public void addHtmlAttribute(String attributeName, AttributeValue attributeValue) {
 		super.addHtmlAttribute(attributeName, attributeValue);
-		if(attributeName.equals("font size")){
+		if(attributeName.equals("size")){
 			setFontSize(Float.parseFloat(attributeValue.getValue()));
 		}
 	}
@@ -376,7 +377,7 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     @Override
     public void setFontSize(float size) {
         FONT_SIZE.set(this, new Double(size));
-        this.getAttributeList().get("font size").setValue(Float.toString(this.getFontSize()));
+        this.getAttributeList().get("size").setValue(Float.toString(this.getFontSize()));
     }
     @Override
     public float getFontSize() {
