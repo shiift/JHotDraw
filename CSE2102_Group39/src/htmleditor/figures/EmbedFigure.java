@@ -1,17 +1,19 @@
 package htmleditor.figures;
 
+import htmleditor.AttributeValue;
 import htmleditor.StyleBuilder;
 
 import java.awt.Color;
 import java.awt.geom.Point2D;
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.jhotdraw.draw.AttributeKeys;
 import org.jhotdraw.xml.DOMInput;
 import org.jhotdraw.xml.DOMOutput;
 
 /** Creates an image for HTML*/
-public class ImgFigure extends HtmlFigure
+public class EmbedFigure extends HtmlFigure
 {
 
 	// Width, height, and style variables are for attributes of the ImgFigure
@@ -19,23 +21,23 @@ public class ImgFigure extends HtmlFigure
 	public double _height;	
 	private boolean control = false;
 	
-	public ImgFigure() {
+	public EmbedFigure() {
 		this(0, 0, 0, 0);
 	}
 	
-	public ImgFigure(double x, double y, double width, double height) {
+	public EmbedFigure(double x, double y, double width, double height) {
 		super(x, y, width, height);
-		setTag("img");
-		setName("Image");
+		setTag("embed");
+		setName("Video");
 	}
 		
-	public ImgFigure clone()
+	public EmbedFigure clone()
 	{
-		ImgFigure that = (ImgFigure) super.clone();
-		that.setTag("img");
-		that.setName("Image");
-		this.addHtmlAttribute(that, "src", "img.jpg");
-		this.addHtmlAttribute(that, "alt", "Alternate Text");
+		EmbedFigure that = (EmbedFigure) super.clone();
+		that.setTag("embed");
+		that.setName("Video");
+		this.addHtmlAttribute(that, "src", "Video id");
+		this.addHtmlAttribute(that, "type", "application/x-shockwave-flash");
 		this.addHtmlAttribute(that, "width", "100px", false);
 		this.addHtmlAttribute(that, "height", "100px", false);
 		return that;
@@ -47,9 +49,22 @@ public class ImgFigure extends HtmlFigure
 		this.getAttributeList().get("width").setValue(this.rectangle.width + "px");
 		this.getAttributeList().get("height").setValue(this.rectangle.height + "px");
 		if(control==false){
-			this.setAttribute(AttributeKeys.FILL_COLOR, Color.CYAN);
+			this.setAttribute(AttributeKeys.FILL_COLOR, Color.PINK);
 			control = true;
 		}
 	}
+	
+	public void setSrc(String name)
+	{
+		String value = getAttributeList().get(name).getValue();
+		value = "http://www.youtube.com/v/" + value;
+		getAttributeList().get(name).setValue(value);
+	}
+	
+//	@Override
+//	public HashMap<String, AttributeValue> getAttributeList() {
+//		setSrc("src");
+//		return attributeList;
+//	}
 		
 }

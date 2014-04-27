@@ -8,6 +8,7 @@ import java.util.Map;
 import org.jhotdraw.draw.AttributeKeys;
 import org.jhotdraw.draw.Figure;
 
+// Anchor Figure for links
 public class AFigure extends ParagraphFigure {
 
 	private boolean control = false;
@@ -23,6 +24,7 @@ public class AFigure extends ParagraphFigure {
 		setName("Anchor");
     }
     
+    /** Only one attribute, href, which creates the link */
     public AFigure clone() {
     	super.clone();
     	AFigure that = (AFigure) super.clone();
@@ -33,6 +35,7 @@ public class AFigure extends ParagraphFigure {
         return that;
     }
     
+    /** Color on the view will be orange */
     public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) 
 	{
 		super.basicSetBounds(anchor, lead);

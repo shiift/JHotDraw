@@ -1,5 +1,6 @@
 package htmleditor;
 
+import htmleditor.figures.EmbedFigure;
 import htmleditor.figures.HtmlFigure;
 import htmleditor.figures.ParagraphFigure;
 
@@ -27,9 +28,12 @@ public class HtmlParser {
 		print("<" + hf.getTag(), depth);
 		int loc = 0;
 		for(String name : hf.getAttributeList().keySet()){
-				if(hf.getAttributeList().get(name).getValue() != ""){
+//			if(hf instanceof EmbedFigure && name == "src") {
+//				((EmbedFigure)hf).setSrc("src");
+//			}
+			if(hf.getAttributeList().get(name).getValue() != ""){
 					writer.print(" " + name + "=\"" + hf.getAttributeList().get(name).getValue() + "\" ");
-				}
+			}
 			
 			loc++;
 		}
