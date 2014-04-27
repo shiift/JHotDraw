@@ -62,10 +62,7 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
     	AbstractTextFigure that = (AbstractTextFigure) super.clone();
     	that.setName("Paragraph");
     	that.setTag("p");
-    	
-//    	this.addHtmlAttribute(that, "size", Float.toString(that.getFontSize()));
-//		this.addHtmlAttribute(that, "width ", "300");
-//		this.addHtmlAttribute(that, "height ", "300");
+    	that.addStyle("font-family", "Times New Roman");
 
         that.bounds = (Rectangle2D.Double) this.bounds.clone();
         return that;
