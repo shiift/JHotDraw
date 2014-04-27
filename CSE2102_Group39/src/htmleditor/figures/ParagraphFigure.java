@@ -83,17 +83,24 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
      */
     public void setText(String newText) {
         setAttribute(TEXT, newText);
-        newText = parseText(newText);
     }
     
-    private String parseText(String newText) {
-        newText = newText.replaceAll("\n", "<br />");
-        newText = newText.replaceAll("\\*\\*", "<li>");
-        newText = newText.replaceAll("B\\^", "<strong>");
-        newText = newText.replaceAll("\\^B", "</strong>");
-        newText = newText.replaceAll("I\\^", "<em>");
-        newText = newText.replaceAll("\\^I", "</em>");
-		return newText;
+    public String getParsedText() {
+    	String parsedText = getText();
+    	
+    	parsedText = parsedText.replaceAll("<", "&lt;");
+    	parsedText = parsedText.replaceAll(">", "&gt;");
+    	parsedText = parsedText.replaceAll("\\ \\ ", "&nbsp;&nbsp;");
+    	parsedText = parsedText.replaceAll("\"", "&quot;");
+    	parsedText = parsedText.replaceAll("\'", "&#39;");
+    	
+        parsedText = parsedText.replaceAll("\n", "<br />");
+        parsedText = parsedText.replaceAll("\\*\\*", "<li>");
+        parsedText = parsedText.replaceAll("B\\^", "<strong>");
+        parsedText = parsedText.replaceAll("\\^B", "</strong>");
+        parsedText = parsedText.replaceAll("I\\^", "<em>");
+        parsedText = parsedText.replaceAll("\\^I", "</em>");
+		return parsedText;
 	}
     
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
