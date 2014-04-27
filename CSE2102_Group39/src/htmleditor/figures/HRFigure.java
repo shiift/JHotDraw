@@ -14,7 +14,7 @@ public class HRFigure extends HtmlFigure
 	}
 	
 	public HRFigure(double x, double y, double width, double height) {
-		super(x, y, width, 1);
+		super(x, y, width, height);
 		setTag("hr");
 		setName("Horizontal Rule");
 	}
@@ -32,7 +32,7 @@ public class HRFigure extends HtmlFigure
 	@Override
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
 		super.basicSetBounds(anchor, lead);
-		rectangle.height = 1;
+		rectangle.height = 10;
 	}
 	
 	@Override
