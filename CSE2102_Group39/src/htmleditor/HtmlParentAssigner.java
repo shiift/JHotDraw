@@ -135,19 +135,27 @@ public class HtmlParentAssigner{
 				}
 
 				//Possible Parents list is searched to find the smallest of the possible parents and assign it as such.
-				HtmlFigure _parent = possibleParents.get(0);
-				if(possibleParents.size() > 1){
-					for(int j = 1; j<possibleParents.size(); j++){
-						Rectangle2D.Double curParRec = _parent.rectangle;
-						HtmlFigure posPar = possibleParents.get(j);
-						Rectangle2D.Double posParRec = posPar.rectangle;
-						if(posParRec.x>=curParRec.x && posParRec.y>=curParRec.x && posParRec.x + posParRec.width <= curParRec.x + curParRec.width && posParRec.y + posParRec.height <= curParRec.y + curParRec.height){
-							_parent = posPar;
+				if(possibleParents.size() != 0){
+					HtmlFigure _parent = possibleParents.get(0);
+					if(possibleParents.size() > 1){
+						for(int j = 1; j<possibleParents.size(); j++){
+							Rectangle2D.Double curParRec = _parent.rectangle;
+							HtmlFigure posPar = possibleParents.get(j);
+							Rectangle2D.Double posParRec = posPar.rectangle;
+							if(posParRec.x>=curParRec.x && posParRec.y>=curParRec.x && posParRec.x + posParRec.width <= curParRec.x + curParRec.width && posParRec.y + posParRec.height <= curParRec.y + curParRec.height){
+								_parent = posPar;
+							}
 						}
 					}
+					curFig.setParent(_parent);
+					curFig.getParent().addHtmlObject(curFig);
 				}
-				curFig.setParent(_parent);
-				curFig.getParent().addHtmlObject(curFig);
+				else{
+					DefaultHtmlDrawing htmldrawing = (DefaultHtmlDrawing) dView;
+					final Project project = htmldrawing.getProject();
+					JSheet.showMessageSheet(project.getComponent(),"Objects cannot be placed outside of the Base Area.",JOptionPane.ERROR_MESSAGE);
+					errorControl = true;
+				}
 			}
 			curFig.basicTransform(new AffineTransform(1, 0, 0, 1, 0, 0));
 		}
