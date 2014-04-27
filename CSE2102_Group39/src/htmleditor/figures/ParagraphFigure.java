@@ -4,12 +4,10 @@ public class ParagraphFigure extends AbstractTextFigure {
 	
     /** Creates a new instance. */
     public ParagraphFigure() {
-        this("Text");
+        super();
     }
     public ParagraphFigure(String text) {
-        setText(text);
-        setTag("font");
-		setName("Font");
+        super(text);
     }
     
     public ParagraphFigure clone() {

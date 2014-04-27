@@ -29,6 +29,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
+import org.jhotdraw.draw.AttributeKey;
 import org.jhotdraw.draw.AttributeKeys;
 import org.jhotdraw.draw.FontSizeHandle;
 import org.jhotdraw.draw.Handle;
@@ -53,8 +54,6 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
     }
     public AbstractTextFigure(String text) {
         setText(text);
-        setTag("font");
-		setName("Font");
     }
     
     public AbstractTextFigure clone() {
@@ -62,7 +61,8 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
     	AbstractTextFigure that = (AbstractTextFigure) super.clone();
     	that.setName("Paragraph");
     	that.setTag("p");
-    	that.addStyle("font-family", "Times New Roman");
+    	that.addStyle("font-family", "Verdana");
+    	that.addStyle("font-size", "12px");
 
         that.bounds = (Rectangle2D.Double) this.bounds.clone();
         return that;
@@ -79,6 +79,7 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
      * Sets the text shown by the text figure.
      */
     public void setText(String newText) {
+    	newText = newText.replaceAll("\t", "");
         setAttribute(TEXT, newText);
     }
     
@@ -137,7 +138,6 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
 
     protected void drawText(Graphics2D g) {
     	if (getText() != null || isEditable()) {
-
     		Font font = getFont();
     		boolean isUnderlined = FONT_UNDERLINED.get(this);
     		Insets2DDouble insets = getInsets();
@@ -377,6 +377,10 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
     		restoreTo(size);
     		this.invalidate();
     	}
+    	if(key.equals("font-size")){
+    		value = value.replaceAll("[^\\d.]", "");
+    		setFontSize(Float.parseFloat(value));
+    	}
     }
 
     public Object getRestoreData() {
@@ -397,11 +401,21 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
     @Override
     public void setFontSize(float size) {
         FONT_SIZE.set(this, new Double(size));
-        this.attributeList.get("size").setValue(Float.toString(this.getFontSize()));
+        this.addStyle("font-size", String.valueOf(this.getFontSize()));
     }
     @Override
     public float getFontSize() {
        return FONT_SIZE.get(this).floatValue();
     }
-
+    
+    @Override
+    public void setAttribute(AttributeKey key, Object newValue) {
+    	super.setAttribute(key, newValue);
+    	if(key.equals(AttributeKeys.FONT_FACE)){
+    		Font newFont = (Font) newValue;
+    		addStyle("font-family", newFont.getFamily());
+    		this.attributePanel.repaint();
+    		this.attributePanel.invalidate();
+    	}
+    }
 }
