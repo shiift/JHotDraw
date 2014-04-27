@@ -7,6 +7,7 @@ import static org.jhotdraw.draw.AttributeKeys.STROKE_WIDTH;
 import static org.jhotdraw.draw.AttributeKeys.TEXT;
 import static org.jhotdraw.draw.AttributeKeys.TEXT_COLOR;
 import htmleditor.AttributeValue;
+import htmleditor.DefaultHtmlDrawing;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -355,6 +356,24 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
 			setFontSize(Float.parseFloat(attributeValue.getValue()));
 		}
 	}
+    
+    @Override
+    public void setStyle(String key, String value){
+    	super.setStyle(key, value);
+    	if(key.equals("width") || key.equals("height")){
+    		value = value.replaceAll("[^\\d.]", "");
+    		Rectangle2D.Double size = new Rectangle2D.Double();
+			size = (java.awt.geom.Rectangle2D.Double) bounds.clone();
+	    	if(key.equals("width")){
+	    		size.width = Double.parseDouble(value);
+	    	}
+	    	if(key.equals("height")){
+	    		size.height = Double.parseDouble(value);
+	    	}
+    		restoreTo(size);
+    		this.invalidate();
+    	}
+    }
 
     public Object getRestoreData() {
         return bounds.clone();
