@@ -46,7 +46,7 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     
     // cache of the TextFigure's layout
     transient private TextLayout textLayout;
-	
+
     /** Creates a new instance. */
     public ParagraphFigure() {
         this("Text");
@@ -66,7 +66,7 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
 //    	this.addHtmlAttribute(that, "size", Float.toString(that.getFontSize()));
 //		this.addHtmlAttribute(that, "width ", "300");
 //		this.addHtmlAttribute(that, "height ", "300");
-		
+
         that.bounds = (Rectangle2D.Double) this.bounds.clone();
         return that;
     }

@@ -5,34 +5,34 @@ import java.awt.geom.Point2D;
 
 import org.jhotdraw.draw.AttributeKeys;
 
-public class UlFigure extends ParagraphFigure
+public class OlFigure extends ParagraphFigure
 {
 
-private boolean control = false;
+	private boolean control = false;
 
-	public UlFigure() {
-		setTag("ul");
-		setName("Unordered List");
+	public OlFigure() {
+		setTag("ol");
+		setName("Ordered List");
 	}
-	
-	public UlFigure clone() {
+
+	public OlFigure clone() {
 		super.clone();
-		UlFigure that = (UlFigure) super.clone();
-		that.setName("Unordered List");
-		that.setTag("ul");
+		OlFigure that = (OlFigure) super.clone();
+		that.setName("Ordered List");
+		that.setTag("ol");
 		return that;
 	}
-    
-    public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) 
+
+	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) 
 	{
 		super.basicSetBounds(anchor, lead);
 		if(control==false){
-			this.setAttribute(AttributeKeys.FILL_COLOR, Color.GREEN);
+			this.setAttribute(AttributeKeys.FILL_COLOR, Color.YELLOW);
 			control = true;
 		}
 	}
-    
-    @Override
+
+	@Override
 	public String getParsedText()
 	{
 		String parsedText = super.getParsedText();
@@ -40,5 +40,6 @@ private boolean control = false;
 		parsedText = parsedText.concat("</li>");
 		return parsedText;
 	}
-    
+
 }
+
