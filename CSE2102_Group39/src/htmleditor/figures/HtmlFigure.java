@@ -266,5 +266,9 @@ public class HtmlFigure extends RectangleFigure {
 	public AttributePanel getAttributePanel() {
 		return attributePanel;
 	}
+
+	public void setStyle(String key, String value) {
+		addStyle(key,value);
+	}
 	
 }
