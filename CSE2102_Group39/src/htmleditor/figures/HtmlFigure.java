@@ -27,6 +27,7 @@ public class HtmlFigure extends RectangleFigure {
 	protected String tag;
 	protected String name;
 	protected int fileControl;
+	protected int StyleControl;
 	protected StyleBuilder _style;
 	public boolean isTopParent = false;
 	protected AttributePanel attributePanel;
@@ -194,21 +195,31 @@ public class HtmlFigure extends RectangleFigure {
 	public int getControl(){
 		return fileControl;
 	}
+	public void setSControl(int c){
+		StyleControl = c;
+	}
+	public int getSControl(){
+		return StyleControl;
+	}
 	
 	// Style methods
 	public void addStyle(String key, String value)
 	{
 		_style.addStyleAttribute(key, value);
+		StyleControl++;
 	}
 	
 	public String getStyle(String key)
 	{
 		return _style.getStyleValue(key);
 	}
-	
 	public String getStyleString()
 	{
 		return _style.getStyleValueString();
+	}
+	public void removeStyle(String key){
+		_style.removeStyleAttribute(key);
+		StyleControl--;
 	}
 	
 	public HashMap<String, String> getStyleMap(){
@@ -234,6 +245,8 @@ public class HtmlFigure extends RectangleFigure {
 		String t = in.getAttribute("t", "null");
 		isTopParent = in.getAttribute("top", false);
 		int _control = in.getAttribute("control", 0);
+		int _control2 = in.getAttribute("scontrol", 0);
+		_style = new StyleBuilder();
 		for(int i = 1; i<_control+1;i++){
 			String name = in.getAttribute("n"+Integer.toString(i), null);
 			String value = in.getAttribute("v"+Integer.toString(i), null);
@@ -242,7 +255,15 @@ public class HtmlFigure extends RectangleFigure {
 				this.addHtmlAttribute(name, new AttributeValue(value,edit));
 			}
 		}
+		for(int i = 1; i<_control2+1;i++){
+			String name = in.getAttribute("n"+Integer.toString(i), null);
+			String value = in.getAttribute("v"+Integer.toString(i), null);
+			if(name!=null){
+				this._style.addStyleAttribute(name, value);
+			}
+		}
 		this.setControl(_control);
+		this.setSControl(_control2);
 		this.setTag(t);
 		this.setName(n);
 		setBounds(new Point2D.Double(x,y), new Point2D.Double(x+w,y+h));
@@ -258,11 +279,18 @@ public class HtmlFigure extends RectangleFigure {
         out.addAttribute("t", this.getTag());
         out.addAttribute("top", this.isTopParent);
         out.addAttribute("control", fileControl);
+        out.addAttribute("scontrol", StyleControl);
         int control = 1;
         for(Entry<String, AttributeValue> entry : attributeList.entrySet()){
             out.addAttribute("n"+Integer.toString(control), entry.getKey());
             out.addAttribute("v"+Integer.toString(control), entry.getValue().getValue());
             out.addAttribute("e"+Integer.toString(control), entry.getValue().isEditable());
+            control++;
+        }
+        control = 1;
+        for(Entry<String, String> entry : _style.getStyleMap().entrySet()){
+            out.addAttribute("sn"+Integer.toString(control), entry.getKey());
+            out.addAttribute("sv"+Integer.toString(control), entry.getValue());
             control++;
         }
         writeAttributes(out);
