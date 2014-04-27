@@ -5,30 +5,46 @@ import java.awt.geom.Point2D;
 
 import org.jhotdraw.draw.AttributeKeys;
 
-public class UlFigure extends HtmlFigure
+public class UlFigure extends ParagraphFigure
 {
 
 private boolean control = false;
 	
-    /** Creates a new instance. */
-    public UlFigure() {
-        this("Ul Text");
-    }
-    
-    public UlFigure(String text) {  
-        setTag("ul");
+	//public LiFigure _list;
+//	public ParagraphFigure _list;
+//
+//    /** Creates a new instance. */
+//    
+//    public UlFigure() {  
+//        setTag("ul");
+//		setName("Unordered List");
+//		//_list = new LiFigure();
+//		_list = new ParagraphFigure("text");
+//    }
+//    
+//    public UlFigure clone() {
+//    	super.clone();
+//    	UlFigure that = (UlFigure) super.clone();
+//    	that.setName("Unordered List");
+//    	that.setTag("ul");
+//    	//that._list = new LiFigure();
+//    	that._list.clone();
+//    	
+//        return that;
+//    }
+
+	public UlFigure() {
+		setTag("ul");
 		setName("Unordered List");
-    }
-    
-    public UlFigure clone() {
-    	super.clone();
-    	UlFigure that = (UlFigure) super.clone();
-    	that.setName("Unordered List");
-    	that.setTag("ul");
-    	//that.(new LiFigure());
-    	
-        return that;
-    }
+	}
+	
+	public UlFigure clone() {
+		super.clone();
+		UlFigure that = (UlFigure) super.clone();
+		that.setName("Unordered List");
+		that.setTag("ul");
+		return that;
+	}
     
     public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) 
 	{
@@ -38,5 +54,14 @@ private boolean control = false;
 			control = true;
 		}
 	}
+    
+    @Override
+    public String parseText(String newText)
+    {
+    	super.parseText(newText);
+    	newText = newText.replaceAll("<br />", "</li>");
+    	newText = newText.replaceAll("-", "</li>");
+    	return newText;
+    }
 	
 }

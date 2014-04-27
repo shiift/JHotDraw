@@ -41,16 +41,6 @@ private boolean control = false;
 		}
 	}
     
-    public String getText() {
-        return (String) getAttribute(TEXT);
-    }
-    
-    public void setText(String newText)
-    {
-    	setAttribute(TEXT, newText);
-        newText = parseText(newText);
-    }
-    
     @Override
     public String parseText(String newText)
     {
