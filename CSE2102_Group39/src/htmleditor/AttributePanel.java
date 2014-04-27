@@ -300,6 +300,11 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 				attributeFields.get(entry.getKey()).setText(entry.getValue().getValue());
 			}
 		}
+		for(Entry<String, String> entry : figure.getStyleMap().entrySet()){
+			if(styleFields.containsKey(entry.getKey())){
+				styleFields.get(entry.getKey()).setText(entry.getValue());
+			}
+		}
 	}
 
 	@Override
