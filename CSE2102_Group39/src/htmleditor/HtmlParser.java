@@ -1,7 +1,7 @@
 package htmleditor;
 
+import htmleditor.figures.AbstractTextFigure;
 import htmleditor.figures.HtmlFigure;
-import htmleditor.figures.ParagraphFigure;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,8 +35,8 @@ public class HtmlParser {
 		}
 		writer.print(" style=\"" + hf.getStyleString() + " position:absolute;\" ");
 		writer.println(">");
-		if(hf instanceof ParagraphFigure){
-			writer.print(((ParagraphFigure) hf).getParsedText());
+		if(hf instanceof AbstractTextFigure){
+			writer.print(((AbstractTextFigure) hf).getParsedText());
 		}
 		for(int i = 0; i < hf.getObjectList().size(); i++){
 			parseHtml(hf.getObjectList().get(i), depth + 1);

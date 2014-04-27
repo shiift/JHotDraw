@@ -2,7 +2,7 @@ package htmleditor;
 
 import htmleditor.figures.HtmlFigure;
 import htmleditor.figures.ImgFigure;
-import htmleditor.figures.ParagraphFigure;
+import htmleditor.figures.AbstractTextFigure;
 
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
@@ -104,7 +104,7 @@ public class HtmlParentAssigner{
 			//Current Figure loop.
 			if(curFig.isTopParent == false){
 				Rectangle2D.Double curRec = new Rectangle2D.Double();
-				if(curFig instanceof ParagraphFigure){
+				if(curFig instanceof AbstractTextFigure){
 					curRec = curFig.getBounds();
 				}
 				else{
@@ -116,13 +116,13 @@ public class HtmlParentAssigner{
 				for(int j = 0; j <size; j++){
 					HtmlFigure curPossibleParent = figurelist.get(j);
 					Rectangle2D.Double posRec = curPossibleParent.rectangle;
-					if(j != i && (!(figurelist.get(j) instanceof ParagraphFigure || figurelist.get(j) instanceof ImgFigure))){
+					if(j != i && (!(figurelist.get(j) instanceof AbstractTextFigure || figurelist.get(j) instanceof ImgFigure))){
 						if(posRec.x<=curRec.x && posRec.y<=curRec.y && posRec.x + posRec.width>=curRec.x + curRec.width && posRec.y + posRec.height>=curRec.y + curRec.height){
 							possibleParents.add(curPossibleParent);
 						}
 					}
-					else if((j != i) && (figurelist.get(j) instanceof ParagraphFigure || figurelist.get(j) instanceof ImgFigure) && (errorControl==false) && (curFig instanceof ParagraphFigure || curFig instanceof ImgFigure)){
-						if(figurelist.get(j) instanceof ParagraphFigure){
+					else if((j != i) && (figurelist.get(j) instanceof AbstractTextFigure || figurelist.get(j) instanceof ImgFigure) && (errorControl==false) && (curFig instanceof AbstractTextFigure || curFig instanceof ImgFigure)){
+						if(figurelist.get(j) instanceof AbstractTextFigure){
 							posRec = figurelist.get(j).getBounds();
 						}
 						if(posRec.x<=curRec.x && posRec.y<=curRec.y && posRec.x + posRec.width>=curRec.x + curRec.width && posRec.y + posRec.height>=curRec.y + curRec.height){

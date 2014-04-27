@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 
 import org.jhotdraw.draw.AttributeKeys;
 
-public class UlFigure extends ParagraphFigure
+public class UlFigure extends AbstractTextFigure
 {
 
 private boolean control = false;
