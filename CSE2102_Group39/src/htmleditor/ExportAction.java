@@ -94,5 +94,7 @@ public class ExportAction extends AbstractProjectAction {
 		if (oldFocusOwner != null) {
 			oldFocusOwner.requestFocus();
 		}
+		HtmlParentAssigner hpa = new HtmlParentAssigner(((DrawProject) project).getEditor().getView());
+		hpa.actionRelease();
 	}
 }

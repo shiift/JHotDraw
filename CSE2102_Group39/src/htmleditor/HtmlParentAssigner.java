@@ -2,7 +2,7 @@ package htmleditor;
 
 import htmleditor.figures.HtmlFigure;
 import htmleditor.figures.ImgFigure;
-import htmleditor.figures.ParagraphFigure;
+import htmleditor.figures.AbstractTextFigure;
 
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
@@ -104,7 +104,7 @@ public class HtmlParentAssigner{
 			//Current Figure loop.
 			if(curFig.isTopParent == false){
 				Rectangle2D.Double curRec = new Rectangle2D.Double();
-				if(curFig instanceof ParagraphFigure){
+				if(curFig instanceof AbstractTextFigure){
 					curRec = curFig.getBounds();
 				}
 				else{
@@ -115,21 +115,14 @@ public class HtmlParentAssigner{
 				//Possible Parents are found, based on dimensions, and added to newly created link list for the current figure.
 				for(int j = 0; j <size; j++){
 					HtmlFigure curPossibleParent = figurelist.get(j);
+					
 					Rectangle2D.Double posRec = curPossibleParent.rectangle;
-					if(j != i && (!(figurelist.get(j) instanceof ParagraphFigure || figurelist.get(j) instanceof ImgFigure))){
+					if(figurelist.get(j) instanceof AbstractTextFigure){
+						posRec = figurelist.get(j).getBounds();
+					}
+					if(j != i){
 						if(posRec.x<=curRec.x && posRec.y<=curRec.y && posRec.x + posRec.width>=curRec.x + curRec.width && posRec.y + posRec.height>=curRec.y + curRec.height){
 							possibleParents.add(curPossibleParent);
-						}
-					}
-					else if((j != i) && (figurelist.get(j) instanceof ParagraphFigure || figurelist.get(j) instanceof ImgFigure) && (errorControl==false) && (curFig instanceof ParagraphFigure || curFig instanceof ImgFigure)){
-						if(figurelist.get(j) instanceof ParagraphFigure){
-							posRec = figurelist.get(j).getBounds();
-						}
-						if(posRec.x<=curRec.x && posRec.y<=curRec.y && posRec.x + posRec.width>=curRec.x + curRec.width && posRec.y + posRec.height>=curRec.y + curRec.height){
-							DefaultHtmlDrawing htmldrawing = (DefaultHtmlDrawing) dView;
-							final Project project = htmldrawing.getProject();
-							JSheet.showMessageSheet(project.getComponent(),"Objects cannot be placed over an image or text area.",JOptionPane.ERROR_MESSAGE);
-							errorControl = true;
 						}
 					}
 				}
@@ -164,25 +157,23 @@ public class HtmlParentAssigner{
 		HtmlFigure[] list = new HtmlFigure[figurelist.size()]; 
 		figurelist.toArray(list);
 		for(int i = 0;i<figurelist.size();i++){
-			
-			LinkedList<HtmlFigure> curIter = list[i].getObjectList();
+			HtmlFigure curParent =  list[i];
+			LinkedList<HtmlFigure> curIter = curParent.getObjectList();
 			if(curIter.size()>1){
-				list[i].clearFigureList();
-//				while(curIter.isEmpty()==false){
-//					int control = 0;
-//					HtmlFigure curFig = curIter.get(0);
-//					for(int j = 1; j<curIter.size();j++){
-//						HtmlFigure curComp = curIter.get(j);
-//						if(((curComp.rectangle.x<=curFig.rectangle.x && curComp.rectangle.y<=curFig.rectangle.y )|| curComp.rectangle.y<=curFig.rectangle.y)){
-//							curFig = curComp;
-//							control = j;
-//						}
-//					}
-//					curIter.remove(control);
-//					list[i].addHtmlObject(curFig);
-//				}
-				
-				
+				curParent.clearFigureList();
+				while(curIter.isEmpty()==false){
+					int control = 0;
+					HtmlFigure curFig = curIter.get(0);
+					for(int j = 1; j<curIter.size();j++){
+						HtmlFigure curComp = curIter.get(j);
+						if(curComp.getLayer()<curFig.getLayer()){
+							curFig = curComp;
+							control = j;
+						}
+					}
+					curIter.remove(control);
+					curParent.addHtmlObject(curFig);
+				}
 			}
 		}
 		for(int i = 0;i<figurelist.size();i++){

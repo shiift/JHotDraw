@@ -85,20 +85,20 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
     public static void addExportButtonsTo(JToolBar tb, final DrawingEditor editor){
 
     	//Assign parents Toggle Button.
-    	JToggleButton parentAssigner = new JToggleButton();
-    	parentAssigner.setText("Assign Parents");
-    	parentAssigner.setFocusable(false);
-    	parentAssigner.addItemListener(new ItemListener() {
-    		public void itemStateChanged(ItemEvent e){
-    			HtmlParentAssigner assigner = new HtmlParentAssigner(editor.getView());
-    			if(e.getStateChange()==ItemEvent.SELECTED){
-    				assigner.actionPerformed();
-    			}
-    			else if(e.getStateChange()==ItemEvent.DESELECTED){
-    				assigner.actionRelease();
-    			}
-    		}
-    	});
-    	tb.add(parentAssigner);
+//    	JToggleButton parentAssigner = new JToggleButton();
+//    	parentAssigner.setText("Assign Parents");
+//    	parentAssigner.setFocusable(false);
+//    	parentAssigner.addItemListener(new ItemListener() {
+//    		public void itemStateChanged(ItemEvent e){
+//    			HtmlParentAssigner assigner = new HtmlParentAssigner(editor.getView());
+//    			if(e.getStateChange()==ItemEvent.SELECTED){
+//    				assigner.actionPerformed();
+//    			}
+//    			else if(e.getStateChange()==ItemEvent.DESELECTED){
+//    				assigner.actionRelease();
+//    			}
+//    		}
+//    	});
+//    	tb.add(parentAssigner);
     }
 }

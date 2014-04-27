@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 
 import org.jhotdraw.draw.AttributeKeys;
 
-public class OlFigure extends ParagraphFigure
+public class OlFigure extends AbstractTextFigure
 {
 
 	private boolean control = false;

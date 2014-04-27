@@ -290,45 +290,27 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 			}
 		};
 		
-		JPanel newPanel = new JPanel();
-		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
 		
-		newPanel.add(new JLabel("New Style"));
-		
-		JTextField newField = new JTextField("Name");
-		newField.setMaximumSize(new Dimension(50, 30));
-		
-		JTextField newField2 = new JTextField("Value");
-		newField2.setMaximumSize(new Dimension(50, 30));
-		
-		JButton newButton = new JButton("Add Style");
-		newButton.addActionListener(setListener);
-		
-		
-		newPanel.add(newField);
-		newPanel.add(newField2);
-		newPanel.add(newButton);
-		optionsPanel.add(newPanel);
-		
-		
-//		JButton addStyleB = new JButton();
-//		addStyleB.setText("Add Style");
-//		addStyleB.setAlignmentX(CENTER_ALIGNMENT);
-//		addStyleB.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e) {
-//			for(int i = 0; i < figureArray.length; i++){
-//				HtmlFigure cFigure = (HtmlFigure) figureArray[i];
-//				createStyle(cFigure);
-//			}
-//		}});
-//		optionsPanel.add(addStyleB);
+		JButton addStyleB = new JButton();
+		addStyleB.setText("Add Style");
+		addStyleB.setAlignmentX(CENTER_ALIGNMENT);
+		addStyleB.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e) {
+			for(int i = 0; i < figureArray.length; i++){
+				HtmlFigure cFigure = (HtmlFigure) figureArray[i];
+				createStyle(cFigure);
+			}
+		}});
+		optionsPanel.add(addStyleB);
 
 		revalidate();
 		repaint();
 	}
 
-//	public void createStyle(HtmlFigure hf){
-//		JSheet.showInputSheet(this,"Please enter Specs",JOptionPane.ERROR_MESSAGE);
-//	}
+	public void createStyle(HtmlFigure hf){
+		String name = JOptionPane.showInputDialog(this.getParent(), "What is the style name?");
+		String value = JOptionPane.showInputDialog(this.getParent(), "What is the style value?");
+		hf.addStyle(name, value);
+	}
 	
 	@Override
 	public void figureAreaInvalidated(FigureEvent e) {
