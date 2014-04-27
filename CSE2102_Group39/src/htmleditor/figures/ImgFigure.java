@@ -50,11 +50,5 @@ public class ImgFigure extends HtmlFigure
 			control = true;
 		}
 	}
-	public void read(DOMInput in) throws IOException {
-		super.read(in);
-    }
-    public void write(DOMOutput out) throws IOException {
-    	super.write(out);
-    }
 		
 }

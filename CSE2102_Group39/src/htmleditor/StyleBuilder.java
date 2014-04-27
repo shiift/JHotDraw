@@ -46,7 +46,7 @@ public class StyleBuilder
 		String _styleValue = "";
 		for (String key: _styleMap.keySet())
 		{
-			_styleValue += key + ":" + _styleMap.get(key) + ";";
+			_styleValue += key + ":" + _styleMap.get(key) + "; ";
 		}
 		return _styleValue;
 	}
