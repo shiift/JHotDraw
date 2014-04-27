@@ -107,12 +107,15 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
         
         // Add elements to the legend
         add(mainPane);
+
         addColorPane("div", Color.LIGHT_GRAY, "Division");
         addColorPane("a", Color.ORANGE, "Anchor");
         addColorPane("img", Color.CYAN, "Image");
         addColorPane("p", Color.WHITE, "Paragraph");
         addColorPane("ul", Color.GREEN, "Unordered List");
         addColorPane("ol", Color.YELLOW, "Ordered List");
+        addColorPane("emb", Color.PINK, "Embedded Video");
+
 	}
 	
 	@Override

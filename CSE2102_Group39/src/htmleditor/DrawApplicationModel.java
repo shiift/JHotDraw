@@ -81,6 +81,11 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         list.add(tb);
         
         tb = new JToolBar();
+        ToolBarButtonFactory.addAttributesButtonsTo(tb, editor);
+        tb.setName(labels.getString("attributesToolBarTitle"));
+        list.add(tb);
+        
+        tb = new JToolBar();
         HtmlToolBarButtonFactory.addExportButtonsTo(tb, editor);
         tb.setName("Export ToolBar");
         list.add(tb);
@@ -107,5 +112,6 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new TextAreaTool(new ParagraphFigure()), "createTextArea", labels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new UlFigure()), "createUl", htmlLabels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new OlFigure()), "createOl", htmlLabels);
+        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new EmbedFigure()), "createEmbed", htmlLabels);
     }    
 }
