@@ -107,13 +107,15 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
         
         // Add elements to the legend
         add(mainPane);
-        addColorPane("div", Color.LIGHT_GRAY);
-        addColorPane("a", Color.ORANGE);
-        addColorPane("img", Color.CYAN);
-        addColorPane("p", Color.WHITE);
-        addColorPane("ul", Color.GREEN);
-        addColorPane("ol", Color.YELLOW);
-        addColorPane("emb", Color.PINK);
+
+        addColorPane("div", Color.LIGHT_GRAY, "Division");
+        addColorPane("a", Color.ORANGE, "Anchor");
+        addColorPane("img", Color.CYAN, "Image");
+        addColorPane("p", Color.WHITE, "Paragraph");
+        addColorPane("ul", Color.GREEN, "Unordered List");
+        addColorPane("ol", Color.YELLOW, "Ordered List");
+        addColorPane("emb", Color.PINK, "Embedded Video");
+
 	}
 	
 	@Override
@@ -195,13 +197,24 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 					}
 				}
 			};
+			ActionListener setListenerRemove = new ActionListener() {
+				public void actionPerformed(ActionEvent e){
+					for(int i = 0; i < figureArray.length; i++){
+						HtmlFigure cFigure = (HtmlFigure) figureArray[i];
+						cFigure.removeHtmlAttribute(e.getActionCommand());
+					}
+				}
+			};
 			
 			JPanel newPanel = new JPanel();
 			newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
 			
-			newPanel.add(new JLabel(entry.getKey()));
+			JLabel label = new JLabel(entry.getKey());
+			label.setToolTipText(entry.getKey());
+			newPanel.add(label);
 			
 			JTextField newField = new JTextField(entry.getValue().getValue());
+			newField.setToolTipText(entry.getValue().getValue());
 			newField.setMaximumSize(new Dimension(100, 30));
 			newField.setEditable(entry.getValue().isEditable());
 			
@@ -213,10 +226,28 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 			newButton.setActionCommand(entry.getKey());
 			newButton.setEnabled(entry.getValue().isEditable());
 			
+			JButton newButtonR = new JButton("Remove");
+			newButtonR.addActionListener(setListenerRemove);
+			newButtonR.setActionCommand(entry.getKey());
+			newButtonR.setEnabled(entry.getValue().isEditable());
+			
 			newPanel.add(newButton);
+			newPanel.add(newButtonR);
 			
 			optionsPanel.add(newPanel);
 		}
+		
+		//Add Attribute
+		JButton addAttribute = new JButton();
+		addAttribute.setText("Add Attribute");
+		addAttribute.setAlignmentX(CENTER_ALIGNMENT);
+		addAttribute.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e) {
+			for(int i = 0; i < figureArray.length; i++){
+				HtmlFigure cFigure = (HtmlFigure) figureArray[i];
+				createAttribute(cFigure);
+			}
+		}});
+		optionsPanel.add(addAttribute);
 		
 		
 		// StyleBuilder Fields
@@ -260,13 +291,24 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 					}
 				}
 			};
+			ActionListener setListenerRemove = new ActionListener() {
+				public void actionPerformed(ActionEvent e){
+					for(int i = 0; i < figureArray.length; i++){
+						HtmlFigure cFigure = (HtmlFigure) figureArray[i];
+						cFigure.removeStyle(e.getActionCommand());
+					}
+				}
+			};
 			
 			JPanel newPanel = new JPanel();
 			newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
 			
-			newPanel.add(new JLabel(entry.getKey()));
+			JLabel label = new JLabel(entry.getKey());
+			label.setToolTipText(entry.getKey());
+			newPanel.add(label);
 			
 			JTextField newField = new JTextField(entry.getValue());
+			newField.setToolTipText(entry.getValue());
 			newField.setMaximumSize(new Dimension(100, 30));
 			
 			newPanel.add(newField);
@@ -276,20 +318,15 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 			newButton.addActionListener(setListener);
 			newButton.setActionCommand(entry.getKey());
 			
+			JButton newButtonR = new JButton("Remove");
+			newButtonR.addActionListener(setListenerRemove);
+			newButtonR.setActionCommand(entry.getKey());
+			
 			newPanel.add(newButton);
+			newPanel.add(newButtonR);
 			
 			optionsPanel.add(newPanel);
 		}
-		
-		ActionListener setListener = new ActionListener() {
-			public void actionPerformed(ActionEvent e){
-				for(int i = 0; i < figureArray.length; i++){
-					HtmlFigure cFigure = (HtmlFigure) figureArray[i];
-					cFigure.setStyle(e.getActionCommand(), 
-							styleFields.get(e.getActionCommand()).getText());
-				}
-			}
-		};
 		
 		
 		JButton addStyleB = new JButton();
@@ -311,6 +348,11 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		String name = JOptionPane.showInputDialog(this.getParent(), "What is the style name?");
 		String value = JOptionPane.showInputDialog(this.getParent(), "What is the style value?");
 		hf.addStyle(name, value);
+	}
+	public void createAttribute(HtmlFigure hf){
+		String name = JOptionPane.showInputDialog(this.getParent(), "What is the attribute name?");
+		String value = JOptionPane.showInputDialog(this.getParent(), "What is the attribute value?");
+		hf.addHtmlAttribute(hf, name, value);
 	}
 	
 	@Override
@@ -363,14 +405,16 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	// as the background of the panel created and the
 	// text parameter is put over the color and
 	// added to the colorPane to create the legend
-	public void addColorPane(String name, Color color){
+	public void addColorPane(String name, Color color, String text){
 		JPanel newPanel = new JPanel();
 		newPanel.setBackground(color);
 		JTextPane figureText = new JTextPane();
 		figureText.setBackground(null);
 		figureText.setText(name);
+		figureText.setToolTipText(text);
 		newPanel.add(figureText);
 		newPanel.setSize(new Dimension(20, 20));
+		newPanel.setToolTipText(text);
 		colorPane.add(newPanel);
 		revalidate();
 		repaint();

@@ -3,6 +3,7 @@ package htmleditor.figures;
 import htmleditor.StyleBuilder;
 
 import java.awt.Color;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.io.IOException;
 
@@ -44,12 +45,17 @@ public class ImgFigure extends HtmlFigure
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) 
 	{
 		super.basicSetBounds(anchor, lead);
-		this.getAttributeList().get("width").setValue(this.rectangle.width + "px");
-		this.getAttributeList().get("height").setValue(this.rectangle.height + "px");
 		if(control==false){
 			this.setAttribute(AttributeKeys.FILL_COLOR, Color.CYAN);
 			control = true;
 		}
+	}
+	
+	@Override
+	public void basicTransform(AffineTransform tx) {
+		super.basicTransform(tx);
+		this.getAttributeList().get("width").setValue(this.rectangle.width + "px");
+		this.getAttributeList().get("height").setValue(this.rectangle.height + "px");
 	}
 		
 }
