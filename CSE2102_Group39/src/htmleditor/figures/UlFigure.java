@@ -12,22 +12,21 @@ private boolean control = false;
 	
     /** Creates a new instance. */
     public UlFigure() {
-        this("Link Text");
+        this("Ul Text");
     }
     
-    public UlFigure(String text) {
-        //setText(text);
-        setTag("a");
-		setName("Anchor");
+    public UlFigure(String text) {  
+        setTag("ul");
+		setName("Unordered List");
     }
     
-    public AFigure clone() {
+    public UlFigure clone() {
     	super.clone();
-    	AFigure that = (AFigure) super.clone();
-    	that.setName("Anchor");
-    	that.setTag("a");
+    	UlFigure that = (UlFigure) super.clone();
+    	that.setName("Unordered List");
+    	that.setTag("ul");
+    	//that.(new LiFigure());
     	
-    	this.addHtmlAttribute(that, "href", "http://www.web.com");
         return that;
     }
     
@@ -35,7 +34,7 @@ private boolean control = false;
 	{
 		super.basicSetBounds(anchor, lead);
 		if(control==false){
-			this.setAttribute(AttributeKeys.FILL_COLOR, Color.ORANGE);
+			this.setAttribute(AttributeKeys.FILL_COLOR, Color.GREEN);
 			control = true;
 		}
 	}
