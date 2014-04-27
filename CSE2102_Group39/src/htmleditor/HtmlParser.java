@@ -1,6 +1,7 @@
 package htmleditor;
 
 import htmleditor.figures.HtmlFigure;
+import htmleditor.figures.ParagraphFigure;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,17 +27,17 @@ public class HtmlParser {
 		print("<" + hf.getTag(), depth);
 		int loc = 0;
 		for(String name : hf.getAttributeList().keySet()){
-			if(name.equals("style")){
-				String location = parseLoc(hf, loc);
-				writer.print(" " + name + "=\"" + hf.getAttributeList().get(name).getValue() + location + "\" ");
-			}else{
 				if(hf.getAttributeList().get(name).getValue() != ""){
 					writer.print(" " + name + "=\"" + hf.getAttributeList().get(name).getValue() + "\" ");
 				}
-			}
+			
 			loc++;
 		}
+		writer.print(" style=\"" + hf.getStyleString() + "\" ");
 		writer.println(">");
+		if(hf instanceof ParagraphFigure){
+			writer.print(((ParagraphFigure) hf).getText());
+		}
 		for(int i = 0; i < hf.getObjectList().size(); i++){
 			parseHtml(hf.getObjectList().get(i), depth + 1);
 		}
