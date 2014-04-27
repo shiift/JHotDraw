@@ -13,6 +13,7 @@ import java.util.Map.Entry;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
@@ -21,11 +22,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
+import org.jhotdraw.app.Project;
 import org.jhotdraw.draw.Figure;
 import org.jhotdraw.draw.FigureEvent;
 import org.jhotdraw.draw.FigureListener;
 import org.jhotdraw.draw.FigureSelectionEvent;
 import org.jhotdraw.draw.FigureSelectionListener;
+import org.jhotdraw.gui.JSheet;
 
 // A JSplitPane makes up the AttributePanel
 // The top panel is for the legend and the bottom panel
@@ -275,18 +278,56 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 			optionsPanel.add(newPanel);
 		}
 		
+		ActionListener setListener = new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				for(int i = 0; i < figureArray.length; i++){
+					HtmlFigure cFigure = (HtmlFigure) figureArray[i];
+					cFigure.setStyle(e.getActionCommand(), 
+							styleFields.get(e.getActionCommand()).getText());
+				}
+			}
+		};
+		
+		JPanel newPanel = new JPanel();
+		newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
+		
+		newPanel.add(new JLabel("New Style"));
+		
+		JTextField newField = new JTextField("Name");
+		newField.setMaximumSize(new Dimension(50, 30));
+		
+		JTextField newField2 = new JTextField("Value");
+		newField2.setMaximumSize(new Dimension(50, 30));
+		
+		JButton newButton = new JButton("Add Style");
+		newButton.addActionListener(setListener);
+		
+		
+		newPanel.add(newField);
+		newPanel.add(newField2);
+		newPanel.add(newButton);
+		optionsPanel.add(newPanel);
+		
+		
 //		JButton addStyleB = new JButton();
 //		addStyleB.setText("Add Style");
 //		addStyleB.setAlignmentX(CENTER_ALIGNMENT);
-//		addStyleB.addActionListener(arg0);
-//		addStyleB.setActionCommand();
+//		addStyleB.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e) {
+//			for(int i = 0; i < figureArray.length; i++){
+//				HtmlFigure cFigure = (HtmlFigure) figureArray[i];
+//				createStyle(cFigure);
+//			}
+//		}});
 //		optionsPanel.add(addStyleB);
 
-		
 		revalidate();
 		repaint();
 	}
 
+//	public void createStyle(HtmlFigure hf){
+//		JSheet.showInputSheet(this,"Please enter Specs",JOptionPane.ERROR_MESSAGE);
+//	}
+	
 	@Override
 	public void figureAreaInvalidated(FigureEvent e) {
 		// TODO Auto-generated method stub
