@@ -1,5 +1,7 @@
 package htmleditor.figures;
 
+import static org.jhotdraw.draw.AttributeKeys.TEXT;
+
 import java.awt.Color;
 import java.awt.geom.Point2D;
 
@@ -38,14 +40,22 @@ private boolean control = false;
 			control = true;
 		}
 	}
-   
+    
+    public String getText() {
+        return (String) getAttribute(TEXT);
+    }
+    
+    public void setText(String newText)
+    {
+    	setAttribute(TEXT, newText);
+        newText = parseText(newText);
+    }
+    
+    @Override
     public String parseText(String newText)
     {
-    	 newText = newText.replaceAll("\n", "<li>");
-         newText = newText.replaceAll("B\\^", "<strong>");
-         newText = newText.replaceAll("\\^B", "</strong>");
-         newText = newText.replaceAll("I\\^", "<em>");
-         newText = newText.replaceAll("\\^I", "</em>");
+    	super.parseText(newText);
+    	newText = newText.replaceAll("<br />", "</li><li>");
     	return newText;
     }
 	

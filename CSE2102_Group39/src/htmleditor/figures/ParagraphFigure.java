@@ -85,7 +85,7 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
         newText = parseText(newText);
     }
     
-    private String parseText(String newText) {
+    protected String parseText(String newText) {
         newText = newText.replaceAll("\n", "<br />");
         newText = newText.replaceAll("\\*\\*", "<li>");
         newText = newText.replaceAll("B\\^", "<strong>");
