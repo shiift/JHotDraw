@@ -9,29 +9,6 @@ public class UlFigure extends ParagraphFigure
 {
 
 private boolean control = false;
-	
-	//public LiFigure _list;
-//	public ParagraphFigure _list;
-//
-//    /** Creates a new instance. */
-//    
-//    public UlFigure() {  
-//        setTag("ul");
-//		setName("Unordered List");
-//		//_list = new LiFigure();
-//		_list = new ParagraphFigure("text");
-//    }
-//    
-//    public UlFigure clone() {
-//    	super.clone();
-//    	UlFigure that = (UlFigure) super.clone();
-//    	that.setName("Unordered List");
-//    	that.setTag("ul");
-//    	//that._list = new LiFigure();
-//    	that._list.clone();
-//    	
-//        return that;
-//    }
 
 	public UlFigure() {
 		setTag("ul");
@@ -56,12 +33,12 @@ private boolean control = false;
 	}
     
     @Override
-    public String parseText(String newText)
-    {
-    	super.parseText(newText);
-    	newText = newText.replaceAll("<br />", "</li>");
-    	newText = newText.replaceAll("-", "</li>");
-    	return newText;
-    }
-	
+	public String getParsedText()
+	{
+		String parsedText = super.getParsedText();
+		parsedText = parsedText.replaceAll("<br />", "</li>");
+		parsedText = parsedText.concat("</li>");
+		return parsedText;
+	}
+    
 }

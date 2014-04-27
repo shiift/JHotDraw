@@ -10,22 +10,6 @@ public class OlFigure extends ParagraphFigure
 
 	private boolean control = false;
 
-	//    /** Creates a new instance. */
-	//    public OlFigure() {  
-	//        setTag("ol");
-	//		setName("Ordered List");
-	//    }
-	//    
-	//    public OlFigure clone() {
-	//    	super.clone();
-	//    	OlFigure that = (OlFigure) super.clone();
-	//    	that.setName("Ordered List");
-	//    	that.setTag("ol");
-	//    	//that.(new LiFigure());
-	//    	
-	//        return that;
-	//    }
-
 	public OlFigure() {
 		setTag("ol");
 		setName("Ordered List");
@@ -35,7 +19,7 @@ public class OlFigure extends ParagraphFigure
 		super.clone();
 		OlFigure that = (OlFigure) super.clone();
 		that.setName("Ordered List");
-		that.setTag("ul");
+		that.setTag("ol");
 		return that;
 	}
 
@@ -43,18 +27,18 @@ public class OlFigure extends ParagraphFigure
 	{
 		super.basicSetBounds(anchor, lead);
 		if(control==false){
-			this.setAttribute(AttributeKeys.FILL_COLOR, Color.GREEN);
+			this.setAttribute(AttributeKeys.FILL_COLOR, Color.YELLOW);
 			control = true;
 		}
 	}
 
 	@Override
-	public String parseText(String newText)
+	public String getParsedText()
 	{
-		super.parseText(newText);
-		newText = newText.replaceAll("<br />", "</li>");
-		newText = newText.replaceAll("-", "</li>");
-		return newText;
+		String parsedText = super.getParsedText();
+		parsedText = parsedText.replaceAll("<br />", "</li>");
+		parsedText = parsedText.concat("</li>");
+		return parsedText;
 	}
 
 }
