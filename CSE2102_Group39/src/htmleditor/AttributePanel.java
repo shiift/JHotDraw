@@ -275,6 +275,14 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 			optionsPanel.add(newPanel);
 		}
 		
+//		JButton addStyleB = new JButton();
+//		addStyleB.setText("Add Style");
+//		addStyleB.setAlignmentX(CENTER_ALIGNMENT);
+//		addStyleB.addActionListener(arg0);
+//		addStyleB.setActionCommand();
+//		optionsPanel.add(addStyleB);
+
+		
 		revalidate();
 		repaint();
 	}
