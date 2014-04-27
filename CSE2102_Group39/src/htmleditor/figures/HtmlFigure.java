@@ -256,8 +256,8 @@ public class HtmlFigure extends RectangleFigure {
 			}
 		}
 		for(int i = 1; i<_control2+1;i++){
-			String name = in.getAttribute("n"+Integer.toString(i), null);
-			String value = in.getAttribute("v"+Integer.toString(i), null);
+			String name = in.getAttribute("sn"+Integer.toString(i), null);
+			String value = in.getAttribute("sv"+Integer.toString(i), null);
 			if(name!=null){
 				this._style.addStyleAttribute(name, value);
 			}
