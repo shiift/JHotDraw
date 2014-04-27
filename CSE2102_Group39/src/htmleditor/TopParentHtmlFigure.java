@@ -24,6 +24,8 @@ public class TopParentHtmlFigure extends HtmlFigure {
 
 	public TopParentHtmlFigure(int i, int j, int k, int l) {
 		super(i,j,k,l);
+		this.setTag("div");
+		this.setName("Base Page");
 		this.isTopParent = true;
 	}
 	
