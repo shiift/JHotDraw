@@ -15,8 +15,7 @@ public class ImgFigure extends HtmlFigure
 
 	// Width, height, and style variables are for attributes of the ImgFigure
 	public double _width;
-	public double _height;
-	public StyleBuilder _style = new StyleBuilder();	
+	public double _height;	
 	private boolean control = false;
 	
 	public ImgFigure() {
