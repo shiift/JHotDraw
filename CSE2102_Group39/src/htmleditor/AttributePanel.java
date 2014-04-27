@@ -176,7 +176,6 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 				}
 			};
 			
-			// 
 			JPanel newPanel = new JPanel();
 			newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
 			
@@ -198,6 +197,10 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 			
 			optionsPanel.add(newPanel);
 		}
+		
+		
+		// StyleBuilder Fields
+		
 		
 		revalidate();
 		repaint();
