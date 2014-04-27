@@ -226,7 +226,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 			newButton.setActionCommand(entry.getKey());
 			newButton.setEnabled(entry.getValue().isEditable());
 			
-			JButton newButtonR = new JButton("Remove");
+			JButton newButtonR = new JButton("X");
 			newButtonR.addActionListener(setListenerRemove);
 			newButtonR.setActionCommand(entry.getKey());
 			newButtonR.setEnabled(entry.getValue().isEditable());
@@ -318,7 +318,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 			newButton.addActionListener(setListener);
 			newButton.setActionCommand(entry.getKey());
 			
-			JButton newButtonR = new JButton("Remove");
+			JButton newButtonR = new JButton("X");
 			newButtonR.addActionListener(setListenerRemove);
 			newButtonR.setActionCommand(entry.getKey());
 			
