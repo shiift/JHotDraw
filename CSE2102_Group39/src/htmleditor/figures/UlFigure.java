@@ -2,23 +2,21 @@ package htmleditor.figures;
 
 import java.awt.Color;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.util.Map;
 
 import org.jhotdraw.draw.AttributeKeys;
-import org.jhotdraw.draw.Figure;
 
-public class AFigure extends ParagraphFigure {
+public class UlFigure extends HtmlFigure
+{
 
-	private boolean control = false;
+private boolean control = false;
 	
     /** Creates a new instance. */
-    public AFigure() {
+    public UlFigure() {
         this("Link Text");
     }
     
-    public AFigure(String text) {
-        setText(text);
+    public UlFigure(String text) {
+        //setText(text);
         setTag("a");
 		setName("Anchor");
     }
@@ -41,5 +39,5 @@ public class AFigure extends ParagraphFigure {
 			control = true;
 		}
 	}
-
+	
 }

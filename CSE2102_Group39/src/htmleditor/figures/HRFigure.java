@@ -23,7 +23,6 @@ public class HRFigure extends HtmlFigure
 		HRFigure that = (HRFigure) super.clone();
 		that.setTag("hr");
 		that.setName("Horizontal Rule");
-		this.addHtmlAttribute(that, "style", _style.getStyleValueString());
 		return that;
 	}
 	

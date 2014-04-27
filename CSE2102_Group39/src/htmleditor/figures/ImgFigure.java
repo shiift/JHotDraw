@@ -37,7 +37,6 @@ public class ImgFigure extends HtmlFigure
 		this.addHtmlAttribute(that, "alt", "Alternate Text");
 		this.addHtmlAttribute(that, "width", "100px", false);
 		this.addHtmlAttribute(that, "height", "100px", false);
-		this.addHtmlAttribute(that, "style", _style.getStyleValueString());
 		return that;
 	}
 	
