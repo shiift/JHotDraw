@@ -62,9 +62,9 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     	that.setName("Paragraph");
     	that.setTag("p");
     	
-    	this.addHtmlAttribute(that, "size", Float.toString(that.getFontSize()));
-		this.addHtmlAttribute(that, "width ", "300");
-		this.addHtmlAttribute(that, "height ", "300");
+//    	this.addHtmlAttribute(that, "size", Float.toString(that.getFontSize()));
+//		this.addHtmlAttribute(that, "width ", "300");
+//		this.addHtmlAttribute(that, "height ", "300");
 		
         that.bounds = (Rectangle2D.Double) this.bounds.clone();
         return that;
@@ -101,9 +101,11 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
         bounds.y = rectangle.y;
         bounds.width = rectangle.width;
         bounds.height = rectangle.height;
+        this.addStyle("width",bounds.width+"px");
+        this.addStyle("height",bounds.height+"px");
         textLayout = null;
-		this.attributeList.get("width ").setValue(this.rectangle.width + "px");
-		this.attributeList.get("height ").setValue(this.rectangle.height + "px");
+//		this.attributeList.get("width ").setValue(this.rectangle.width + "px");
+//		this.attributeList.get("height ").setValue(this.rectangle.height + "px");
 	}
     
     public void basicTransform(AffineTransform tx) {
