@@ -54,6 +54,9 @@ public class HtmlFigure extends RectangleFigure {
 		that.parent = null;
 		that.tag = "";
 		that.name = "";
+
+        this.addStyle("top", String.valueOf(rectangle.x));
+        this.addStyle("left", String.valueOf(rectangle.y));
 		return that;
 	}
 
@@ -90,6 +93,8 @@ public class HtmlFigure extends RectangleFigure {
 		}else{
 			super.basicSetBounds(anchor, lead);
 		}
+        this.setStyle("left", String.valueOf(rectangle.x));
+		this.setStyle("top", String.valueOf(rectangle.y));
 	}
 
 	//Moves the children within the parent if it moves past the bounds of the child.
@@ -269,6 +274,18 @@ public class HtmlFigure extends RectangleFigure {
 
 	public void setStyle(String key, String value) {
 		addStyle(key,value);
+		if(key.equals("top") || key.equals("left")){
+    		value = value.replaceAll("[^\\d.]", "");
+    		Rectangle2D.Double size = (java.awt.geom.Rectangle2D.Double) rectangle.clone();
+	    	if(key.equals("top")){
+	    		size.y = Double.parseDouble(value);
+	    	}
+	    	if(key.equals("left")){
+	    		size.x = Double.parseDouble(value);
+	    	}
+    		restoreTo(size);
+    		invalidate();
+    	}
 	}
 	
 }
