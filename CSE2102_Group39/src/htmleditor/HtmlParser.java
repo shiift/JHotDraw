@@ -1,6 +1,7 @@
 package htmleditor;
 
 import htmleditor.figures.AbstractTextFigure;
+import htmleditor.figures.EmbedFigure;
 import htmleditor.figures.HtmlFigure;
 
 import java.io.File;
@@ -28,6 +29,9 @@ public class HtmlParser {
 		int loc = 0;
 		for(String name : hf.getAttributeList().keySet()){
 				if(hf.getAttributeList().get(name).getValue() != ""){
+					if(hf instanceof EmbedFigure && name == "src") {
+						((EmbedFigure) hf).setSrc();
+					}
 					writer.print(" " + name + "=\"" + hf.getAttributeList().get(name).getValue() + "\" ");
 				}
 

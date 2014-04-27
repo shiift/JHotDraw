@@ -54,17 +54,11 @@ public class EmbedFigure extends HtmlFigure
 		}
 	}
 	
-	public void setSrc(String name)
+	public void setSrc()
 	{
-		String value = getAttributeList().get(name).getValue();
+		String value = getAttributeList().get("src").getValue();
 		value = "http://www.youtube.com/v/" + value;
-		getAttributeList().get(name).setValue(value);
+		getAttributeList().get("src").setValue(value);
 	}
-	
-//	@Override
-//	public HashMap<String, AttributeValue> getAttributeList() {
-//		setSrc("src");
-//		return attributeList;
-//	}
 		
 }
