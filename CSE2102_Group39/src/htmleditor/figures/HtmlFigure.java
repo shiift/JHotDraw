@@ -206,6 +206,10 @@ public class HtmlFigure extends RectangleFigure {
 		return _style.getStyleValueString();
 	}
 	
+	public HashMap<String, String> getStyleMap(){
+		return _style.getStyleMap();
+	}
+	
 	@Override
 	public void addNotify(Drawing d){
 		super.addNotify(d);

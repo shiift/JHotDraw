@@ -38,11 +38,13 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	private JPanel colorPane;
 	private HtmlFigure[] figureArray;
 	private HashMap<String, JTextField> attributeFields;
+	private HashMap<String, JTextField> styleFields;
 		
 	public AttributePanel(){
 		
 		// attributeFields are HashMaps with strings as keys and JTextFields as values
 		attributeFields = new HashMap<String, JTextField>();
+		styleFields = new HashMap<String, JTextField>();
 		
 		// Used for the visual appearance of the AttributePanel
 		setPreferredSize(new Dimension(250,0));
@@ -126,7 +128,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		// Set up the namePanel and make it set up horizontally
 		JPanel namePanel = new JPanel();
 		namePanel.setLayout(new BoxLayout(namePanel, BoxLayout.X_AXIS));
-		JTextField objectName = new JTextField();
+		JTextPane objectName = new JTextPane();
 		
 		// If only one figure is selected, then the sharedAttributes are just the attributes
 		// Of that figure and the text is set to the name of the figure
@@ -157,11 +159,23 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		}
 
 		// Add the HtmlFigure's name (or "Multiple Figures") to the optionsPanel
-		objectName.setMaximumSize(new Dimension(100, 30));
+		objectName.setMaximumSize(new Dimension(400, 30));
 		objectName.setEditable(false);
+		objectName.setBackground(null);
+		SimpleAttributeSet attribs = new SimpleAttributeSet();
+		StyleConstants.setAlignment(attribs , StyleConstants.ALIGN_CENTER);
+		objectName.setParagraphAttributes(attribs,true);
 		namePanel.add(objectName);
 		
 		optionsPanel.add(namePanel);
+		
+		JTextField attributeTitle = new JTextField();
+		attributeTitle.setText("Attributes");
+		attributeTitle.setMaximumSize(new Dimension(100, 30));
+		attributeTitle.setEditable(false);
+		attributeTitle.setBorder(null);
+		attributeTitle.setAlignmentX(CENTER_ALIGNMENT);
+		optionsPanel.add(attributeTitle);
 		
 		// For each attribute that is shared, for each HtmlFigure that is
 		// selected, add the changed attribute to the HashMap in the HtmlFigure
@@ -200,7 +214,66 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		
 		
 		// StyleBuilder Fields
+		styleFields.clear();
 		
+		JTextField styleBuilderTitle = new JTextField();
+		styleBuilderTitle.setText("Styles");
+		styleBuilderTitle.setEditable(false);
+        styleBuilderTitle.setBackground(null);
+        styleBuilderTitle.setMaximumSize(new Dimension(100, 30));
+        styleBuilderTitle.setBorder(null);
+        styleBuilderTitle.setAlignmentX(CENTER_ALIGNMENT);
+        
+		optionsPanel.add(styleBuilderTitle);
+
+		HashMap<String, String> allStyles = new HashMap<String, String>();
+		HashMap<String, String> sharedStyles = new HashMap<String, String>();
+		
+		if(figureArray.length == 1){
+			sharedStyles = figureArray[0].getStyleMap();
+		}else{
+		// For each figure selected
+			for(int i = 0; i < figureArray.length; i++){
+				HtmlFigure cFigure = (HtmlFigure) figureArray[i];
+				for(Entry<String, String> entry : cFigure.getStyleMap().entrySet()){
+					if(allStyles.containsKey(entry.getKey())){
+						sharedStyles.put(entry.getKey(), entry.getValue());
+					}
+					allStyles.put(entry.getKey(), entry.getValue());
+				}
+			}
+		}
+		
+		for(Entry<String, String> entry : sharedStyles.entrySet()){
+			ActionListener setListener = new ActionListener() {
+				public void actionPerformed(ActionEvent e){
+					for(int i = 0; i < figureArray.length; i++){
+						HtmlFigure cFigure = (HtmlFigure) figureArray[i];
+						cFigure.addStyle(e.getActionCommand(), 
+								styleFields.get(e.getActionCommand()).getText());
+					}
+				}
+			};
+			
+			JPanel newPanel = new JPanel();
+			newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
+			
+			newPanel.add(new JLabel(entry.getKey()));
+			
+			JTextField newField = new JTextField(entry.getValue());
+			newField.setMaximumSize(new Dimension(100, 30));
+			
+			newPanel.add(newField);
+			styleFields.put(entry.getKey(), newField);
+			
+			JButton newButton = new JButton("Set " + entry.getKey());
+			newButton.addActionListener(setListener);
+			newButton.setActionCommand(entry.getKey());
+			
+			newPanel.add(newButton);
+			
+			optionsPanel.add(newPanel);
+		}
 		
 		revalidate();
 		repaint();
