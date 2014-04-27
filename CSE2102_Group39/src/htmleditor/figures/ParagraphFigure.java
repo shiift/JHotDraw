@@ -29,6 +29,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
+import org.jhotdraw.draw.AttributeKey;
 import org.jhotdraw.draw.AttributeKeys;
 import org.jhotdraw.draw.FontSizeHandle;
 import org.jhotdraw.draw.Handle;
@@ -388,7 +389,10 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     public Font getFont() {
         return AttributeKeys.getFont(this);
     }
-
+//    public void setFont(Font f) {
+//        AttributeKeys.FONT_FACE = f;
+//    }
+    
     public Color getTextColor() {
         return TEXT_COLOR.get(this);
     }
