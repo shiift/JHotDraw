@@ -11,7 +11,7 @@ import org.jhotdraw.draw.Figure;
 public class AFigure extends AbstractTextFigure {
 
 	private boolean control = false;
-	
+
     /** Creates a new instance. */
     public AFigure() {
         this("Link Text");

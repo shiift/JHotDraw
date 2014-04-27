@@ -36,6 +36,7 @@ public class DivFigure extends HtmlFigure
 		return that;
 	}
 	
+	/** Color on the view will be light gray */
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead){
 		super.basicSetBounds(anchor, lead);
 		if(control==false){
