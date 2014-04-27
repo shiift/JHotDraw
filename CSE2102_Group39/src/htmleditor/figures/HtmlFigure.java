@@ -50,6 +50,7 @@ public class HtmlFigure extends RectangleFigure {
 		HtmlFigure that = (HtmlFigure) super.clone();
 		that.figureList = new LinkedList<HtmlFigure>();
 		that.attributeList = new HashMap<String, AttributeValue>();
+		that._style = new StyleBuilder();
 		that.parent = null;
 		that.tag = "";
 		that.name = "";
@@ -187,6 +188,22 @@ public class HtmlFigure extends RectangleFigure {
 	}
 	public int getControl(){
 		return fileControl;
+	}
+	
+	// Style methods
+	public void addStyle(String key, String value)
+	{
+		_style.addStyleAttribute(key, value);
+	}
+	
+	public String getStyle(String key)
+	{
+		return _style.getStyleValue(key);
+	}
+	
+	public String getStyleString()
+	{
+		return _style.getStyleValueString();
 	}
 	
 	@Override

@@ -63,7 +63,6 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     	that.setTag("p");
     	
     	this.addHtmlAttribute(that, "size", Float.toString(that.getFontSize()));
-		this.addHtmlAttribute(that, "style", _style.getStyleValueString());
 		this.addHtmlAttribute(that, "width ", "300");
 		this.addHtmlAttribute(that, "height ", "300");
 		

@@ -27,14 +27,12 @@ public class DivFigure extends HtmlFigure
 		super(x, y, width, height);
 		setTag("div");
 		setName("Division");
-		_style.addStyleAttribute("background", "#CCC");
 	}
 	
 	public DivFigure clone(){
 		DivFigure that = (DivFigure) super.clone();
 		that.setTag("div");
 		that.setName("Division");
-		addHtmlAttribute(that, "style", _style.getStyleValueString());
 		return that;
 	}
 	
