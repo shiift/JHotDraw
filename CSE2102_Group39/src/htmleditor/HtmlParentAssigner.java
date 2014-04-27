@@ -164,25 +164,23 @@ public class HtmlParentAssigner{
 		HtmlFigure[] list = new HtmlFigure[figurelist.size()]; 
 		figurelist.toArray(list);
 		for(int i = 0;i<figurelist.size();i++){
-			
-			LinkedList<HtmlFigure> curIter = list[i].getObjectList();
+			HtmlFigure curParent =  list[i];
+			LinkedList<HtmlFigure> curIter = curParent.getObjectList();
 			if(curIter.size()>1){
-				list[i].clearFigureList();
-//				while(curIter.isEmpty()==false){
-//					int control = 0;
-//					HtmlFigure curFig = curIter.get(0);
-//					for(int j = 1; j<curIter.size();j++){
-//						HtmlFigure curComp = curIter.get(j);
-//						if(((curComp.rectangle.x<=curFig.rectangle.x && curComp.rectangle.y<=curFig.rectangle.y )|| curComp.rectangle.y<=curFig.rectangle.y)){
-//							curFig = curComp;
-//							control = j;
-//						}
-//					}
-//					curIter.remove(control);
-//					list[i].addHtmlObject(curFig);
-//				}
-				
-				
+				curParent.clearFigureList();
+				while(curIter.isEmpty()==false){
+					int control = 0;
+					HtmlFigure curFig = curIter.get(0);
+					for(int j = 1; j<curIter.size();j++){
+						HtmlFigure curComp = curIter.get(j);
+						if(curComp.getLayer()<curFig.getLayer()){
+							curFig = curComp;
+							control = j;
+						}
+					}
+					curIter.remove(control);
+					curParent.addHtmlObject(curFig);
+				}
 			}
 		}
 		for(int i = 0;i<figurelist.size();i++){
