@@ -2,7 +2,7 @@ package htmleditor;
 
 import htmleditor.figures.HtmlFigure;
 import htmleditor.figures.ImgFigure;
-import htmleditor.figures.ParagraphFigure;
+import htmleditor.figures.AbstractTextFigure;
 
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
@@ -104,7 +104,7 @@ public class HtmlParentAssigner{
 			//Current Figure loop.
 			if(curFig.isTopParent == false){
 				Rectangle2D.Double curRec = new Rectangle2D.Double();
-				if(curFig instanceof ParagraphFigure){
+				if(curFig instanceof AbstractTextFigure){
 					curRec = curFig.getBounds();
 				}
 				else{
@@ -117,7 +117,7 @@ public class HtmlParentAssigner{
 					HtmlFigure curPossibleParent = figurelist.get(j);
 					
 					Rectangle2D.Double posRec = curPossibleParent.rectangle;
-					if(figurelist.get(j) instanceof ParagraphFigure){
+					if(figurelist.get(j) instanceof AbstractTextFigure){
 						posRec = figurelist.get(j).getBounds();
 					}
 					if(j != i){

@@ -29,7 +29,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-import org.jhotdraw.draw.AttributeKey;
 import org.jhotdraw.draw.AttributeKeys;
 import org.jhotdraw.draw.FontSizeHandle;
 import org.jhotdraw.draw.Handle;
@@ -40,7 +39,7 @@ import org.jhotdraw.geom.Insets2DDouble;
 import org.jhotdraw.xml.DOMInput;
 import org.jhotdraw.xml.DOMOutput;
 
-public class ParagraphFigure extends HtmlFigure implements TextHolder {
+public abstract class AbstractTextFigure extends HtmlFigure implements TextHolder {
 	private Rectangle2D.Double bounds = new Rectangle2D.Double();
     private boolean editable = true;
     private final static BasicStroke dashes = new BasicStroke(1f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0f, new float[] {4f, 4f}, 0f);
@@ -49,18 +48,18 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     transient private TextLayout textLayout;
 
     /** Creates a new instance. */
-    public ParagraphFigure() {
+    public AbstractTextFigure() {
         this("Text");
     }
-    public ParagraphFigure(String text) {
+    public AbstractTextFigure(String text) {
         setText(text);
         setTag("font");
 		setName("Font");
     }
     
-    public ParagraphFigure clone() {
+    public AbstractTextFigure clone() {
     	super.clone();
-    	ParagraphFigure that = (ParagraphFigure) super.clone();
+    	AbstractTextFigure that = (AbstractTextFigure) super.clone();
     	that.setName("Paragraph");
     	that.setTag("p");
     	
@@ -389,10 +388,7 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     public Font getFont() {
         return AttributeKeys.getFont(this);
     }
-//    public void setFont(Font f) {
-//        AttributeKeys.FONT_FACE = f;
-//    }
-    
+
     public Color getTextColor() {
         return TEXT_COLOR.get(this);
     }

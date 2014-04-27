@@ -8,7 +8,7 @@ import java.util.Map;
 import org.jhotdraw.draw.AttributeKeys;
 import org.jhotdraw.draw.Figure;
 
-public class AFigure extends ParagraphFigure {
+public class AFigure extends AbstractTextFigure {
 
 	private boolean control = false;
 	
