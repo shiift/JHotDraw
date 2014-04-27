@@ -84,7 +84,6 @@ public class ParagraphFigure extends HtmlFigure implements TextHolder {
     public void setText(String newText) {
         setAttribute(TEXT, newText);
         newText = parseText(newText);
-        this.data = newText;
     }
     
     private String parseText(String newText) {

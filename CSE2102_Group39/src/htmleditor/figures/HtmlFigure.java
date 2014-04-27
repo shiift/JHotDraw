@@ -26,7 +26,6 @@ public class HtmlFigure extends RectangleFigure {
 	protected HtmlFigure parent;
 	protected String tag;
 	protected String name;
-	protected String data;
 	protected int fileControl;
 	protected StyleBuilder _style;
 	public boolean isTopParent = false;
@@ -45,7 +44,6 @@ public class HtmlFigure extends RectangleFigure {
 		parent = null;
 		tag = "";
 		name = "";
-		data = "";
 	}
 
 	public HtmlFigure clone() {
@@ -55,7 +53,6 @@ public class HtmlFigure extends RectangleFigure {
 		that.parent = null;
 		that.tag = "";
 		that.name = "";
-		that.data = "";
 		return that;
 	}
 
@@ -165,16 +162,6 @@ public class HtmlFigure extends RectangleFigure {
 	public Drawing getDrawSpace(){
 		return this.getDrawing();
 	}
-
-	//isData methods
-	public String getData(){
-		return this.data;
-	}
-
-	public void setData(String data){
-		this.data = data;
-	}
-
 
 	// Tag methods
 	public String getTag() {

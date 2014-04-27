@@ -40,9 +40,6 @@ public class HtmlParser {
 		for(int i = 0; i < hf.getObjectList().size(); i++){
 			parseHtml(hf.getObjectList().get(i), depth + 1);
 		}
-		if(!hf.getData().equals("")){
-			print(hf.getData() + "\n", depth);
-		}
 		print("</" + hf.getTag() + ">\n", depth);
 	}
 	
