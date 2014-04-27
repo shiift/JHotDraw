@@ -164,22 +164,25 @@ public class HtmlParentAssigner{
 		HtmlFigure[] list = new HtmlFigure[figurelist.size()]; 
 		figurelist.toArray(list);
 		for(int i = 0;i<figurelist.size();i++){
+			
 			LinkedList<HtmlFigure> curIter = list[i].getObjectList();
 			if(curIter.size()>1){
 				list[i].clearFigureList();
-				while(curIter.isEmpty()==false){
-					int control = 0;
-					HtmlFigure curFig = curIter.get(0);
-					for(int j = 1; j<curIter.size();j++){
-						HtmlFigure curComp = curIter.get(j);
-						if(((curComp.rectangle.x<=curFig.rectangle.x && curComp.rectangle.y<=curFig.rectangle.y )|| curComp.rectangle.y<=curFig.rectangle.y)){
-							curFig = curComp;
-							control = j;
-						}
-					}
-					curIter.remove(control);
-					list[i].addHtmlObject(curFig);
-				}
+//				while(curIter.isEmpty()==false){
+//					int control = 0;
+//					HtmlFigure curFig = curIter.get(0);
+//					for(int j = 1; j<curIter.size();j++){
+//						HtmlFigure curComp = curIter.get(j);
+//						if(((curComp.rectangle.x<=curFig.rectangle.x && curComp.rectangle.y<=curFig.rectangle.y )|| curComp.rectangle.y<=curFig.rectangle.y)){
+//							curFig = curComp;
+//							control = j;
+//						}
+//					}
+//					curIter.remove(control);
+//					list[i].addHtmlObject(curFig);
+//				}
+				
+				
 			}
 		}
 		for(int i = 0;i<figurelist.size();i++){
