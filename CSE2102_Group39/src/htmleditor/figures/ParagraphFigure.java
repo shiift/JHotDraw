@@ -15,5 +15,4 @@ public class ParagraphFigure extends AbstractTextFigure {
     public ParagraphFigure clone() {
     	return (ParagraphFigure) super.clone();
     }
-
 }
