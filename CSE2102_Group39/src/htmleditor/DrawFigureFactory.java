@@ -19,6 +19,7 @@ import htmleditor.figures.DivFigure;
 import htmleditor.figures.EmbedFigure;
 import htmleditor.figures.HRFigure;
 import htmleditor.figures.HtmlFigure;
+import htmleditor.figures.IFrameFigure;
 import htmleditor.figures.ImgFigure;
 import htmleditor.figures.OlFigure;
 import htmleditor.figures.ParagraphFigure;
@@ -61,6 +62,7 @@ public class DrawFigureFactory extends DefaultDOMFactory {
         { EmbedFigure.class, "Emb" },
         { OlFigure.class, "Ol" },
         { UlFigure.class, "Ul" },
+        { IFrameFigure.class, "IFrame" },
         
         { ArrowTip.class, "arrowTip" },
         { ChopBoxConnector.class, "rConnector" },

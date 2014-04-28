@@ -384,14 +384,13 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	//Input methods for new user created Styles and Attributes.
 	public void createStyle(HtmlFigure hf){
 		String name = JOptionPane.showInputDialog(this.getParent(), "What is the style name?");
-		if(name.equals("")){ return; }
+		if(name == null || name.equals("")){ return; }
 		String value = JOptionPane.showInputDialog(this.getParent(), "What is the style value?");
 		hf.addStyle(name, value);
 	}
 	public void createAttribute(HtmlFigure hf){
 		String name = JOptionPane.showInputDialog(this.getParent(), "What is the attribute name?");
-		System.out.println("test" + name + "test");
-		if(name.equals("")){ return; }
+		if(name == null || name.equals("")){ return; }
 		String value = JOptionPane.showInputDialog(this.getParent(), "What is the attribute value?");
 		hf.addHtmlAttribute(hf, name, value);
 	}

@@ -32,7 +32,7 @@ public class HRFigure extends HtmlFigure
 	@Override
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
 		super.basicSetBounds(anchor, lead);
-		rectangle.height = 10;
+		rectangle.height = 1;
 		this.setStyle("width", String.valueOf(rectangle.width));
 	}
 	
