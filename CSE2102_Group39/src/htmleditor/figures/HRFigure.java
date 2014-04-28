@@ -21,6 +21,8 @@ public class HRFigure extends HtmlFigure
 		HRFigure that = (HRFigure) super.clone();
 		that.setTag("hr");
 		that.setName("Horizontal Rule");
+        that.addStyle("width", String.valueOf(rectangle.width));
+        
 		return that;
 	}
 	
@@ -31,15 +33,7 @@ public class HRFigure extends HtmlFigure
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
 		super.basicSetBounds(anchor, lead);
 		rectangle.height = 10;
-	}
-	
-	@Override
-	public void setParent(HtmlFigure parent) {
-		super.setParent(parent);
-		if(parent != null){
-			basicSetBounds(new Point2D.Double(parent.rectangle.getMinX() + 10, rectangle.getMinY()),
-					new Point2D.Double(parent.rectangle.getMaxX() - 10, rectangle.getMaxY()));
-		}
+		this.setStyle("width", String.valueOf(rectangle.width));
 	}
 	
 }

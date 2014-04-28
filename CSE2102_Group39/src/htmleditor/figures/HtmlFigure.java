@@ -315,5 +315,9 @@ public class HtmlFigure extends RectangleFigure {
     		invalidate();
     	}
 	}
+
+	public AttributeValue getAttributeValue(String name) {
+		return attributeList.get(name);
+	}
 	
 }

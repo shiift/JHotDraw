@@ -45,10 +45,10 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	private HtmlFigure[] figureArray;
 	private HashMap<String, JTextField> attributeFields;
 	private HashMap<String, JTextField> styleFields;
-
+	private FigureSelectionEvent _evt;
 	private int xValue = 0;
 	private int yValue = 0;
-		
+	
 	public AttributePanel(){
 
 		// attributeFields are HashMaps with strings as keys and JTextFields as values
@@ -128,6 +128,8 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 
 	@Override
 	public void selectionChanged(FigureSelectionEvent evt) {
+		_evt = evt;
+		
 		// Clears the attributes when you select a different figure in the view
 		attributeFields.clear();
 		optionsPanel.removeAll();
@@ -203,6 +205,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 						cFigure.addHtmlAttribute(e.getActionCommand(), 
 								new AttributeValue(attributeFields.get(e.getActionCommand()).getText()));
 					}
+					paneChanged();
 				}
 			};
 			ActionListener setListenerRemove = new ActionListener() {
@@ -211,6 +214,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 						HtmlFigure cFigure = (HtmlFigure) figureArray[i];
 						cFigure.removeHtmlAttribute(e.getActionCommand());
 					}
+					paneChanged();
 				}
 			};
 
@@ -263,6 +267,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 				HtmlFigure cFigure = (HtmlFigure) figureArray[i];
 				createAttribute(cFigure);
 			}
+			paneChanged();
 		}});
 		optionsPanel.add(addAttribute);
 
@@ -306,6 +311,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 						cFigure.setStyle(e.getActionCommand(), 
 								styleFields.get(e.getActionCommand()).getText());
 					}
+					paneChanged();
 				}
 			};
 			ActionListener setListenerRemove = new ActionListener() {
@@ -314,6 +320,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 						HtmlFigure cFigure = (HtmlFigure) figureArray[i];
 						cFigure.removeStyle(e.getActionCommand());
 					}
+					paneChanged();
 				}
 			};
 
@@ -365,6 +372,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 				HtmlFigure cFigure = (HtmlFigure) figureArray[i];
 				createStyle(cFigure);
 			}
+			paneChanged();
 		}});
 		optionsPanel.add(addStyleB);
 
@@ -375,11 +383,14 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	//Input methods for new user created Styles and Attributes.
 	public void createStyle(HtmlFigure hf){
 		String name = JOptionPane.showInputDialog(this.getParent(), "What is the style name?");
+		if(name.equals("")){ return; }
 		String value = JOptionPane.showInputDialog(this.getParent(), "What is the style value?");
 		hf.addStyle(name, value);
 	}
 	public void createAttribute(HtmlFigure hf){
 		String name = JOptionPane.showInputDialog(this.getParent(), "What is the attribute name?");
+		System.out.println("test" + name + "test");
+		if(name.equals("")){ return; }
 		String value = JOptionPane.showInputDialog(this.getParent(), "What is the attribute value?");
 		hf.addHtmlAttribute(hf, name, value);
 	}
@@ -458,6 +469,10 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		colorPane.add(newPanel, c);
 		revalidate();
 		repaint();
+	}
+	
+	public void paneChanged(){
+		selectionChanged(_evt);
 	}
 
 }

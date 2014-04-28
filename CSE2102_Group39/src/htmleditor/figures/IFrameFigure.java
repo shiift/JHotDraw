@@ -20,9 +20,9 @@ public class IFrameFigure extends HtmlFigure
 		setName("IFrame");
 	}
 		
-	public ImgFigure clone()
+	public IFrameFigure clone()
 	{
-		ImgFigure that = (ImgFigure) super.clone();
+		IFrameFigure that = (IFrameFigure) super.clone();
 		that.setTag("iframe");
 		that.setName("IFrame");
 		this.addHtmlAttribute(that, "src", "Enter Website");
