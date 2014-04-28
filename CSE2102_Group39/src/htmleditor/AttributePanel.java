@@ -4,12 +4,16 @@ import htmleditor.figures.HtmlFigure;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -39,10 +43,13 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	
 	private JPanel optionsPanel;
 	private JPanel colorPane;
+	private GridBagConstraints c;
 	private HtmlFigure[] figureArray;
 	private HashMap<String, JTextField> attributeFields;
 	private HashMap<String, JTextField> styleFields;
 	private FigureSelectionEvent _evt;
+	private int xValue = 0;
+	private int yValue = 0;
 		
 	public AttributePanel(){
 		
@@ -73,7 +80,8 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
         textPane.setParagraphAttributes(attribs,true);
         
         // The colorPane is instantiated
-        colorPane = new JPanel();
+        colorPane = new JPanel(new GridBagLayout());
+        c = new GridBagConstraints();
         
         // The colorPaneContainer is made up of the colorPane and the 
         // colorPaneLabel, which just is text that says Color Legend
@@ -427,8 +435,19 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		figureText.setToolTipText(text);
 		newPanel.add(figureText);
 		newPanel.setSize(new Dimension(20, 20));
+		newPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		newPanel.setToolTipText(text);
-		colorPane.add(newPanel);
+		c.gridx = xValue;
+		c.gridy = yValue;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.insets = new Insets(5, 5, 5, 5);
+		xValue++;
+		if (xValue == 4)
+		{
+			xValue = 0;
+			yValue++;
+		}
+		colorPane.add(newPanel, c);
 		revalidate();
 		repaint();
 	}
