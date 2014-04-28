@@ -17,6 +17,7 @@ import org.jhotdraw.gui.event.SheetListener;
 import org.jhotdraw.util.ResourceBundleUtil;
 import org.jhotdraw.util.Worker;
 
+// The action within the file menu that begins the exporting process.
 public class ExportAction extends AbstractProjectAction {
 	public final static String ID = "export";
 	protected boolean saveAs;
@@ -34,6 +35,7 @@ public class ExportAction extends AbstractProjectAction {
 		labels.configureAction(this, ID);
 	}
 
+	//The action that directly begins the exporting process.
 	public void actionPerformed(ActionEvent evt) {
 		final Project project = getCurrentProject();
 		if (project.isEnabled()) {
@@ -63,6 +65,7 @@ public class ExportAction extends AbstractProjectAction {
 		}
 	}
 
+	//The file manager that saves the project in the exported format.
 	protected void saveToFile(final Project project, final File file) {
 		project.execute(new Worker() {
 			public Object construct() {

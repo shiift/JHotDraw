@@ -23,7 +23,7 @@ public class HtmlParser {
 		writer.close();
 	}
 
-	// parses html recursively
+	// Parses html recursively
 	static public void parseHtml(HtmlFigure hf, int depth){
 		print("<" + hf.getTag(), depth);
 		int loc = 0;

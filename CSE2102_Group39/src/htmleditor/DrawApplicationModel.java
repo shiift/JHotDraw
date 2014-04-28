@@ -35,6 +35,8 @@ import static org.jhotdraw.draw.AttributeKeys.*;
  * @author Werner Randelshofer.
  * @version 1.0 June 10, 2006 Created.
  */
+
+//Modified DefaultApplicationModel to add custom tools among other usages.
 public class DrawApplicationModel extends DefaultApplicationModel {
     /**
      * This editor is shared by all projects.
@@ -85,10 +87,6 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         tb.setName(labels.getString("attributesToolBarTitle"));
         list.add(tb);
         
-        tb = new JToolBar();
-        HtmlToolBarButtonFactory.addExportButtonsTo(tb, editor);
-        tb.setName("Export ToolBar");
-        list.add(tb);
         return list;
     }
     private void addCreationButtonsTo(JToolBar tb, DrawingEditor editor) {

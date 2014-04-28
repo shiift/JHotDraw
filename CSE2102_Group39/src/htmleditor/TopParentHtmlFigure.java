@@ -1,19 +1,14 @@
 package htmleditor;
 
-import htmleditor.figures.DivFigure;
 import htmleditor.figures.HtmlFigure;
 
-import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 
-import org.jhotdraw.draw.AttributeKeys;
-import org.jhotdraw.draw.FigureListener;
-import org.jhotdraw.geom.Geom;
 import org.jhotdraw.xml.DOMInput;
 import org.jhotdraw.xml.DOMOutput;
 
+//The base page that starts with the editor.
 public class TopParentHtmlFigure extends HtmlFigure {
 	
 	public DefaultHtmlDrawing dView;

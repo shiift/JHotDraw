@@ -1,7 +1,6 @@
 package htmleditor;
 
 import htmleditor.figures.HtmlFigure;
-import htmleditor.figures.ImgFigure;
 import htmleditor.figures.AbstractTextFigure;
 
 import java.awt.geom.AffineTransform;
@@ -143,6 +142,7 @@ public class HtmlParentAssigner{
 					curFig.setParent(_parent);
 					curFig.getParent().addHtmlObject(curFig);
 				}
+				//Throws an error if the figure is outside of the main base page.
 				else{
 					DefaultHtmlDrawing htmldrawing = (DefaultHtmlDrawing) dView;
 					final Project project = htmldrawing.getProject();
