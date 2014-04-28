@@ -7,7 +7,6 @@ import static org.jhotdraw.draw.AttributeKeys.STROKE_WIDTH;
 import static org.jhotdraw.draw.AttributeKeys.TEXT;
 import static org.jhotdraw.draw.AttributeKeys.TEXT_COLOR;
 import htmleditor.AttributeValue;
-import htmleditor.DefaultHtmlDrawing;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

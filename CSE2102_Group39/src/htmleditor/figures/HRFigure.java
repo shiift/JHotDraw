@@ -1,7 +1,5 @@
 package htmleditor.figures;
 
-import htmleditor.StyleBuilder;
-
 import java.awt.geom.Point2D;
 
 

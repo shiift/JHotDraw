@@ -1,15 +1,10 @@
 package htmleditor;
 
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.util.Collection;
 import java.util.HashMap;
 
 import javax.swing.Action;
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
@@ -18,7 +13,6 @@ import org.jhotdraw.draw.DrawingEditor;
 import org.jhotdraw.draw.Tool;
 import org.jhotdraw.draw.ToolEvent;
 import org.jhotdraw.draw.ToolListener;
-import org.jhotdraw.draw.action.AlignAction;
 import org.jhotdraw.draw.action.ToolBarButtonFactory;
 import org.jhotdraw.util.ResourceBundleUtil;
 
@@ -80,25 +74,5 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
         t.setFocusable(false);
         group.add(t);
         tb.add(t);
-    }
-    
-    public static void addExportButtonsTo(JToolBar tb, final DrawingEditor editor){
-
-    	//Assign parents Toggle Button.
-//    	JToggleButton parentAssigner = new JToggleButton();
-//    	parentAssigner.setText("Assign Parents");
-//    	parentAssigner.setFocusable(false);
-//    	parentAssigner.addItemListener(new ItemListener() {
-//    		public void itemStateChanged(ItemEvent e){
-//    			HtmlParentAssigner assigner = new HtmlParentAssigner(editor.getView());
-//    			if(e.getStateChange()==ItemEvent.SELECTED){
-//    				assigner.actionPerformed();
-//    			}
-//    			else if(e.getStateChange()==ItemEvent.DESELECTED){
-//    				assigner.actionRelease();
-//    			}
-//    		}
-//    	});
-//    	tb.add(parentAssigner);
     }
 }

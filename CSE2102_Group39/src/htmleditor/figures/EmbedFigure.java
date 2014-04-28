@@ -1,16 +1,11 @@
 package htmleditor.figures;
 
 import htmleditor.AttributeValue;
-import htmleditor.StyleBuilder;
 
 import java.awt.Color;
 import java.awt.geom.Point2D;
-import java.io.IOException;
-import java.util.HashMap;
 
 import org.jhotdraw.draw.AttributeKeys;
-import org.jhotdraw.xml.DOMInput;
-import org.jhotdraw.xml.DOMOutput;
 
 /** Creates an image for HTML*/
 public class EmbedFigure extends HtmlFigure

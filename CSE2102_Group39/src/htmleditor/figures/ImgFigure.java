@@ -1,15 +1,10 @@
 package htmleditor.figures;
 
-import htmleditor.StyleBuilder;
-
 import java.awt.Color;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
-import java.io.IOException;
 
 import org.jhotdraw.draw.AttributeKeys;
-import org.jhotdraw.xml.DOMInput;
-import org.jhotdraw.xml.DOMOutput;
 
 /** Creates an image for HTML*/
 public class ImgFigure extends HtmlFigure

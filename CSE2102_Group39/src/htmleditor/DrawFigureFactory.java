@@ -16,10 +16,13 @@ package htmleditor;
 
 import htmleditor.figures.AFigure;
 import htmleditor.figures.DivFigure;
+import htmleditor.figures.EmbedFigure;
 import htmleditor.figures.HRFigure;
 import htmleditor.figures.HtmlFigure;
 import htmleditor.figures.ImgFigure;
+import htmleditor.figures.OlFigure;
 import htmleditor.figures.ParagraphFigure;
+import htmleditor.figures.UlFigure;
 
 import org.jhotdraw.draw.*;
 import org.jhotdraw.xml.DefaultDOMFactory;
@@ -55,6 +58,9 @@ public class DrawFigureFactory extends DefaultDOMFactory {
         { ImgFigure.class, "Img" },
         { HRFigure.class, "HR" },
         { AFigure.class, "Anchor" },
+        { EmbedFigure.class, "Emb" },
+        { OlFigure.class, "Ol" },
+        { UlFigure.class, "Ul" },
         
         { ArrowTip.class, "arrowTip" },
         { ChopBoxConnector.class, "rConnector" },
