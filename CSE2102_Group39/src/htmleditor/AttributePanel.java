@@ -6,12 +6,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -421,10 +423,12 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		figureText.setToolTipText(text);
 		newPanel.add(figureText);
 		newPanel.setSize(new Dimension(20, 20));
+		newPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		newPanel.setToolTipText(text);
 		c.gridx = xValue;
 		c.gridy = yValue;
 		c.fill = GridBagConstraints.HORIZONTAL;
+		c.insets = new Insets(5, 5, 5, 5);
 		xValue++;
 		if (xValue == 4)
 		{
