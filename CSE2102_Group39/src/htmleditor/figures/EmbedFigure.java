@@ -1,5 +1,7 @@
 package htmleditor.figures;
 
+import htmleditor.AttributeValue;
+
 import java.awt.Color;
 import java.awt.geom.Point2D;
 
@@ -30,7 +32,7 @@ public class EmbedFigure extends HtmlFigure
 		that.setTag("embed");
 		that.setName("Video");
 		this.addHtmlAttribute(that, "src", "Video id");
-		this.addHtmlAttribute(that, "type", "application/x-shockwave-flash");
+		this.addHtmlAttribute(that, "type", "application/x-shockwave-flash", false);
 		this.addHtmlAttribute(that, "width", "100px", false);
 		this.addHtmlAttribute(that, "height", "100px", false);
 		return that;
@@ -47,11 +49,13 @@ public class EmbedFigure extends HtmlFigure
 		}
 	}
 	
-	public void setSrc()
-	{
-		String value = getAttributeList().get("src").getValue();
-		value = "http://www.youtube.com/v/" + value;
-		getAttributeList().get("src").setValue(value);
+	public AttributeValue getAttributeValue(String name) {
+		AttributeValue newAtt = super.getAttributeValue(name);
+		if(name.equals("src")){
+			String value = "http://www.youtube.com/v/" + newAtt.getValue();
+			newAtt = new AttributeValue(value);
+		}
+		return newAtt;
 	}
 		
 }
