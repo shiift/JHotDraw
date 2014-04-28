@@ -1,6 +1,7 @@
 package htmleditor;
 
 import htmleditor.figures.HtmlFigure;
+import htmleditor.figures.TopParentHtmlFigure;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -381,7 +382,51 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 			paneChanged();
 		}});
 		optionsPanel.add(addStyleB);
-
+		
+//		final TopParentHtmlFigure topP = ((DefaultHtmlDrawingView) _evt.getView()).getDrawing().getTopParent();
+//		
+//		ActionListener setPageListener = new ActionListener() {
+//			public void actionPerformed(ActionEvent e){
+//				topP.setName(e.getActionCommand());
+//				paneChanged();
+//			}
+//		};
+//		
+//		JTextField pageBuilderTitle = new JTextField();
+//		pageBuilderTitle.setText("Page Options");
+//		pageBuilderTitle.setEditable(false);
+//		pageBuilderTitle.setBackground(null);
+//		pageBuilderTitle.setMaximumSize(new Dimension(100, 30));
+//		pageBuilderTitle.setBorder(null);
+//		pageBuilderTitle.setAlignmentX(CENTER_ALIGNMENT);
+//		optionsPanel.add(pageBuilderTitle);
+//
+//		JPanel pnamePanel = new JPanel();
+//		pnamePanel.setLayout(new BoxLayout(pnamePanel, BoxLayout.X_AXIS));
+//		
+//		JLabel nameLabel = new JLabel();
+//		nameLabel.setText("Page Name");
+//		nameLabel.setToolTipText("Page Name");
+//		pnamePanel.add(nameLabel);
+//		if(topP==null){
+//			System.out.println("wodnoqnd-");
+//		}
+//		
+//		JTextField nameField = new JTextField();
+//		nameField.setText(topP.getPageName());
+//		nameField.setToolTipText(topP.getPageName());
+//		nameField.setMaximumSize(new Dimension(100, 30));
+//		pnamePanel.add(nameField);
+//		
+//		JButton nameButton = new JButton();
+//		nameButton.addActionListener(setPageListener);
+//		nameButton.setActionCommand(topP.getName());
+//		pnamePanel.add(nameButton);
+//		
+//		optionsPanel.add(pnamePanel);
+//		
+		
+		
 		revalidate();
 		repaint();
 	}

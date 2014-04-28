@@ -1,5 +1,7 @@
 package htmleditor;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Collection;
 
 import javax.swing.Action;
@@ -73,5 +75,24 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
         t.setFocusable(false);
         group.add(t);
         tb.add(t);
+    }
+    public static void addExportButtonsTo(JToolBar tb, final DrawingEditor editor){
+
+    	//Assign parents Toggle Button.
+    	JToggleButton parentAssigner = new JToggleButton();
+    	parentAssigner.setText("Contains Objects");
+    	parentAssigner.setFocusable(false);
+    	parentAssigner.addItemListener(new ItemListener() {
+    		public void itemStateChanged(ItemEvent e){
+    			HtmlParentAssigner assigner = new HtmlParentAssigner(editor.getView());
+    			if(e.getStateChange()==ItemEvent.SELECTED){
+    				assigner.actionPerformed();
+    			}
+    			else if(e.getStateChange()==ItemEvent.DESELECTED){
+    				assigner.actionRelease();
+    			}
+    		}
+    	});
+    	tb.add(parentAssigner);
     }
 }
