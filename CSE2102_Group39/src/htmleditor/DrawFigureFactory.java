@@ -23,6 +23,7 @@ import htmleditor.figures.IFrameFigure;
 import htmleditor.figures.ImgFigure;
 import htmleditor.figures.OlFigure;
 import htmleditor.figures.ParagraphFigure;
+import htmleditor.figures.TopParentHtmlFigure;
 import htmleditor.figures.UlFigure;
 
 import org.jhotdraw.draw.*;

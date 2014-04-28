@@ -31,7 +31,7 @@ public class EmbedFigure extends HtmlFigure
 		EmbedFigure that = (EmbedFigure) super.clone();
 		that.setTag("embed");
 		that.setName("Video");
-		this.addHtmlAttribute(that, "src", "Video id");
+		this.addHtmlAttribute(that, "src", "Youtube Video ID");
 		this.addHtmlAttribute(that, "type", "application/x-shockwave-flash", false);
 		this.addHtmlAttribute(that, "width", "100px", false);
 		this.addHtmlAttribute(that, "height", "100px", false);

@@ -2,6 +2,7 @@ package htmleditor;
 
 import htmleditor.figures.HtmlFigure;
 import htmleditor.figures.AbstractTextFigure;
+import htmleditor.figures.TopParentHtmlFigure;
 
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
