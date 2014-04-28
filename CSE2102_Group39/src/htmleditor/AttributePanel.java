@@ -4,12 +4,16 @@ import htmleditor.figures.HtmlFigure;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -37,10 +41,14 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 
 	private JPanel optionsPanel;
 	private JPanel colorPane;
+	private GridBagConstraints c;
 	private HtmlFigure[] figureArray;
 	private HashMap<String, JTextField> attributeFields;
 	private HashMap<String, JTextField> styleFields;
 
+	private int xValue = 0;
+	private int yValue = 0;
+		
 	public AttributePanel(){
 
 		// attributeFields are HashMaps with strings as keys and JTextFields as values
@@ -49,51 +57,53 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 
 		// Used for the visual appearance of the AttributePanel
 		setPreferredSize(new Dimension(250,0));
-		setBorder(new EmptyBorder(30,0,0,0));
-		
-		// Components are laid out vertically from top to bottom
-		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-		// Vertical split across the main pane used
-		JSplitPane mainPane = new JSplitPane();
-		mainPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
-		mainPane.setDividerSize(0);
-
-		// Adds a textPane as a header for the HTML Attribute Pane, text centered
-		JTextPane textPane = new JTextPane();
-		textPane.setText("HTML Attribute Pane");
-		textPane.setEditable(false);
-		textPane.setBackground(null);
-		SimpleAttributeSet attribs = new SimpleAttributeSet();
-		StyleConstants.setAlignment(attribs , StyleConstants.ALIGN_CENTER);
-		textPane.setParagraphAttributes(attribs,true);
-
-		// The colorPane is instantiated
-		colorPane = new JPanel();
-
-		// The colorPaneContainer is made up of the colorPane and the 
-		// colorPaneLabel, which just is text that says Color Legend
-		JSplitPane colorPaneContainer = new JSplitPane();
-		JTextPane colorPaneLabel = new JTextPane();
-		colorPaneLabel.setText("Color Legend");
-		colorPaneLabel.setEditable(false);
-		colorPaneLabel.setBackground(null);
-		colorPaneLabel.setParagraphAttributes(attribs,true);
-		colorPaneContainer.setOrientation(JSplitPane.VERTICAL_SPLIT);
-		colorPaneContainer.setDividerSize(0);
-		colorPaneContainer.setBorder(null);
-		colorPaneContainer.setTopComponent(colorPaneLabel);
-		colorPaneContainer.setBottomComponent(colorPane);
-
-		// The headerPane has the top component as the legend
-		// and the bottom component as the text "Html Attribute Pane"
-		JSplitPane headerPane = new JSplitPane();
-		headerPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
-		headerPane.setBottomComponent(textPane);
-		headerPane.setTopComponent(colorPaneContainer);
-		headerPane.setBorder(null);
-
-		// Instantiates the optionsPanel with vertical set-up
+        setBorder(new EmptyBorder(30,0,0,0));
+        
+        // Components are laid out vertically from top to bottom
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        
+        // Vertical split across the main pane used
+        JSplitPane mainPane = new JSplitPane();
+        mainPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
+        mainPane.setDividerSize(0);
+        mainPane.setBorder(null);
+        
+        // Adds a textPane as a header for the HTML Attribute Pane, text centered
+        JTextPane textPane = new JTextPane();
+        textPane.setText("HTML Attribute Pane");
+        textPane.setEditable(false);
+        textPane.setBackground(null);
+        SimpleAttributeSet attribs = new SimpleAttributeSet();
+        StyleConstants.setAlignment(attribs , StyleConstants.ALIGN_CENTER);
+        textPane.setParagraphAttributes(attribs,true);
+        
+        // The colorPane is instantiated
+        colorPane = new JPanel(new GridBagLayout());
+        c = new GridBagConstraints();
+        
+        // The colorPaneContainer is made up of the colorPane and the 
+        // colorPaneLabel, which just is text that says Color Legend
+        JSplitPane colorPaneContainer = new JSplitPane();
+        JTextPane colorPaneLabel = new JTextPane();
+        colorPaneLabel.setText("Color Legend");
+        colorPaneLabel.setEditable(false);
+        colorPaneLabel.setBackground(null);
+        colorPaneLabel.setParagraphAttributes(attribs,true);
+        colorPaneContainer.setOrientation(JSplitPane.VERTICAL_SPLIT);
+        colorPaneContainer.setDividerSize(0);
+        colorPaneContainer.setBorder(null);
+        colorPaneContainer.setTopComponent(colorPaneLabel);
+        colorPaneContainer.setBottomComponent(colorPane);
+        
+        // The headerPane has the top component as the legend
+        // and the bottom component as the text "Html Attribute Pane"
+        JSplitPane headerPane = new JSplitPane();
+        headerPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
+        headerPane.setBottomComponent(textPane);
+        headerPane.setTopComponent(colorPaneContainer);
+        headerPane.setBorder(null);
+        
+        // Instantiates the optionsPanel with vertical set-up
 		optionsPanel = new JPanel();
 		optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
 
@@ -105,13 +115,14 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		// Add elements to the legend
 		add(mainPane);
 
-		addColorPane("div", Color.LIGHT_GRAY, "Division");
-		addColorPane("a", Color.ORANGE, "Anchor");
-		addColorPane("img", Color.CYAN, "Image");
-		addColorPane("p", Color.WHITE, "Paragraph");
-		addColorPane("ul", Color.GREEN, "Unordered List");
-		addColorPane("ol", Color.YELLOW, "Ordered List");
-		addColorPane("emb", Color.PINK, "Embedded Video");
+        addColorPane("div", Color.LIGHT_GRAY, "Division");
+        addColorPane("a", Color.ORANGE, "Anchor");
+        addColorPane("img", Color.CYAN, "Image");
+        addColorPane("p", Color.WHITE, "Paragraph");
+        addColorPane("ul", Color.GREEN, "Unordered List");
+        addColorPane("ol", Color.YELLOW, "Ordered List");
+        addColorPane("embed", Color.PINK, "Embedded Video");
+        addColorPane("iframe", Color.BLUE, "Embedded Web Page");
 
 	}
 
@@ -432,8 +443,19 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		figureText.setToolTipText(text);
 		newPanel.add(figureText);
 		newPanel.setSize(new Dimension(20, 20));
+		newPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		newPanel.setToolTipText(text);
-		colorPane.add(newPanel);
+		c.gridx = xValue;
+		c.gridy = yValue;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.insets = new Insets(5, 5, 5, 5);
+		xValue++;
+		if (xValue == 4)
+		{
+			xValue = 0;
+			yValue++;
+		}
+		colorPane.add(newPanel, c);
 		revalidate();
 		repaint();
 	}

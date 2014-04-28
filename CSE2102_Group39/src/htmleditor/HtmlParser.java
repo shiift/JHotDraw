@@ -2,6 +2,7 @@ package htmleditor;
 
 import htmleditor.figures.AbstractTextFigure;
 import htmleditor.figures.EmbedFigure;
+import htmleditor.figures.HRFigure;
 import htmleditor.figures.HtmlFigure;
 
 import java.io.File;
