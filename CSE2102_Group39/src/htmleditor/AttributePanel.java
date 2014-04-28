@@ -264,9 +264,12 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		addAttribute.setText("Add Attribute");
 		addAttribute.setAlignmentX(CENTER_ALIGNMENT);
 		addAttribute.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e) {
-			for(int i = 0; i < figureArray.length; i++){
-				HtmlFigure cFigure = (HtmlFigure) figureArray[i];
-				createAttribute(cFigure);
+			String[] nameval = createAttribute();
+			if(!nameval[0].equals("")){
+				for(int i = 0; i < figureArray.length; i++){
+					HtmlFigure cFigure = (HtmlFigure) figureArray[i];
+					cFigure.addHtmlAttribute(cFigure, nameval[0], nameval[1]);
+				}
 			}
 			paneChanged();
 		}});
@@ -369,9 +372,12 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		addStyleB.setText("Add Style");
 		addStyleB.setAlignmentX(CENTER_ALIGNMENT);
 		addStyleB.addActionListener(new ActionListener(){public void actionPerformed(ActionEvent e) {
-			for(int i = 0; i < figureArray.length; i++){
-				HtmlFigure cFigure = (HtmlFigure) figureArray[i];
-				createStyle(cFigure);
+			String[] nameval = createStyle();
+			if(!nameval[0].equals("")){
+				for(int i = 0; i < figureArray.length; i++){
+					HtmlFigure cFigure = (HtmlFigure) figureArray[i];
+					cFigure.addStyle(nameval[0], nameval[1]);
+				}
 			}
 			paneChanged();
 		}});
@@ -426,17 +432,17 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	}
 
 	//Input methods for new user created Styles and Attributes.
-	public void createStyle(HtmlFigure hf){
+	public String[] createStyle(){
 		String name = JOptionPane.showInputDialog(this.getParent(), "What is the style name?");
-		if(name == null || name.equals("")){ return; }
+		if(name == null || name.equals("")){ return new String[]{"",""}; }
 		String value = JOptionPane.showInputDialog(this.getParent(), "What is the style value?");
-		hf.addStyle(name, value);
+		return new String[]{name, value};
 	}
-	public void createAttribute(HtmlFigure hf){
+	public String[] createAttribute(){
 		String name = JOptionPane.showInputDialog(this.getParent(), "What is the attribute name?");
-		if(name == null || name.equals("")){ return; }
+		if(name == null || name.equals("")){ return new String[]{"",""}; }
 		String value = JOptionPane.showInputDialog(this.getParent(), "What is the attribute value?");
-		hf.addHtmlAttribute(hf, name, value);
+		return new String[]{name, value};
 	}
 	
 	@Override
