@@ -113,6 +113,6 @@ public class DrawApplicationModel extends DefaultApplicationModel {
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new UlFigure()), "createUl", htmlLabels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new OlFigure()), "createOl", htmlLabels);
         HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new EmbedFigure()), "createEmbed", htmlLabels);
-        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new IFrameFigure()), "createRectangle", labels);
+        HtmlToolBarButtonFactory.addToolTo(tb, editor, new CreationTool(new IFrameFigure()), "createIFrame", htmlLabels);
     }    
 }

@@ -35,7 +35,7 @@ public class IFrameFigure extends ImgFigure
 	{
 		super.basicSetBounds(anchor, lead);
 		if(control==false){
-			this.setAttribute(AttributeKeys.FILL_COLOR, Color.WHITE);
+			this.setAttribute(AttributeKeys.FILL_COLOR, Color.BLUE);
 			control = true;
 		}
 	}
