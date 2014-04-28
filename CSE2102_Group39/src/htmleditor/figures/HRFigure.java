@@ -1,6 +1,7 @@
 package htmleditor.figures;
 
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 
 public class HRFigure extends HtmlFigure
@@ -35,5 +36,18 @@ public class HRFigure extends HtmlFigure
 		rectangle.height = 1;
 		this.setStyle("width", String.valueOf(rectangle.width));
 	}
+	
+	@Override
+    public void setStyle(String key, String value){
+    	super.setStyle(key, value);
+    	if(key.equals("width")){
+    		value = value.replaceAll("[^\\d.]", "");
+    		Rectangle2D.Double size = new Rectangle2D.Double();
+			size = (java.awt.geom.Rectangle2D.Double) rectangle.clone();
+	    	size.width = Double.parseDouble(value);
+    		restoreTo(size);
+    		this.invalidate();
+    	}
+    }
 	
 }

@@ -25,9 +25,9 @@ public class IFrameFigure extends HtmlFigure
 		IFrameFigure that = (IFrameFigure) super.clone();
 		that.setTag("iframe");
 		that.setName("IFrame");
-		this.addHtmlAttribute(that, "src", "Enter Website");
-		this.addHtmlAttribute(that, "width", "100px", false);
-		this.addHtmlAttribute(that, "height", "100px", false);
+		that.addHtmlAttribute(that, "src", "Enter Website");
+		that.addStyle("width", String.valueOf(rectangle.width));
+		that.addStyle("height", String.valueOf(rectangle.height));
 		return that;
 	}
 	
@@ -38,6 +38,8 @@ public class IFrameFigure extends HtmlFigure
 			this.setAttribute(AttributeKeys.FILL_COLOR, Color.BLUE);
 			control = true;
 		}
+		this.setStyle("width", String.valueOf(rectangle.width));
+		this.setStyle("height", String.valueOf(rectangle.height));
 	}
 	
 }

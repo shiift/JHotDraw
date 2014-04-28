@@ -80,16 +80,16 @@ public class HtmlFigure extends RectangleFigure {
 				}		
 			}
 			if(rectangle.x + rectangle.width >= pRectangle.x + pRectangle.width){
-				rectangle.x = pRectangle.x + pRectangle.width - rectangle.width - 10;
+				rectangle.x = pRectangle.x + pRectangle.width - rectangle.width;
 			}
 			if(rectangle.y + rectangle.height >= pRectangle.y + pRectangle.height){
-				rectangle.y = pRectangle.y + pRectangle.height - rectangle.height - 10;
+				rectangle.y = pRectangle.y + pRectangle.height - rectangle.height;
 			}
-			if(rectangle.width > pRectangle.width - 20){
-				rectangle.width = pRectangle.width - 20;
+			if(rectangle.width > pRectangle.width){
+				rectangle.width = pRectangle.width;
 			}
-			if(rectangle.height >= pRectangle.height - 20){
-				rectangle.height = pRectangle.height - 20;
+			if(rectangle.height >= pRectangle.height){
+				rectangle.height = pRectangle.height;
 			}
 		}else{
 			super.basicSetBounds(anchor, lead);
