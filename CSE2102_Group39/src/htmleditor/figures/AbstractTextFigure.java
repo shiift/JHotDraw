@@ -413,8 +413,6 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
     	if(key.equals(AttributeKeys.FONT_FACE)){
     		Font newFont = (Font) newValue;
     		addStyle("font-family", newFont.getFamily());
-    		this.attributePanel.repaint();
-    		this.attributePanel.invalidate();
     	}
     }
 }
