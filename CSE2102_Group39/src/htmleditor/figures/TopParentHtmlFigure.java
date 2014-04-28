@@ -1,6 +1,6 @@
-package htmleditor;
+package htmleditor.figures;
 
-import htmleditor.figures.HtmlFigure;
+import htmleditor.DefaultHtmlDrawing;
 
 import java.awt.geom.Point2D;
 import java.io.IOException;

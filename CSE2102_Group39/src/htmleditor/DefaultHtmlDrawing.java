@@ -1,5 +1,7 @@
 package htmleditor;
 
+import htmleditor.figures.TopParentHtmlFigure;
+
 import java.awt.Color;
 
 import org.jhotdraw.draw.AttributeKeys;
