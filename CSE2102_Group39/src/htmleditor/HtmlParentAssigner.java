@@ -63,7 +63,7 @@ public class HtmlParentAssigner{
 	}
 
 	//Assigns the parents within the base figure to parse using the children of each parent.
-	public void actionPerformed() {	
+	public boolean actionPerformed() {	
 		//First assigns the top parent with the list of figures, necessary for when loading saved files.
 		if(control == false){
 			int size2 = dView.getFigures().size();
@@ -179,6 +179,7 @@ public class HtmlParentAssigner{
 		for(int i = 0;i<figurelist.size();i++){
 			figurelist.get(i).basicTransform(new AffineTransform(1, 0, 0, 1, 0, 0));
 		}
+		return errorControl;
 	}
 
 }
