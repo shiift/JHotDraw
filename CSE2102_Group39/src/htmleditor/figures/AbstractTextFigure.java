@@ -45,7 +45,7 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
     private final static BasicStroke dashes = new BasicStroke(1f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0f, new float[] {4f, 4f}, 0f);
     
     // cache of the TextFigure's layout
-    transient private TextLayout textLayout;
+       transient private TextLayout textLayout;
 
     /** Creates a new instance. */
     public AbstractTextFigure() {

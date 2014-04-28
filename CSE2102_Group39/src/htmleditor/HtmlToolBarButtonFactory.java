@@ -1,7 +1,6 @@
 package htmleditor;
 
 import java.util.Collection;
-import java.util.HashMap;
 
 import javax.swing.Action;
 import javax.swing.ButtonGroup;
@@ -29,8 +28,8 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
         ResourceBundleUtil labels = ResourceBundleUtil.getLAFBundle("org.jhotdraw.draw.Labels");
         
         JToggleButton t;
-        Tool tool;
-        HashMap<String,Object> attributes;
+//        Tool tool;
+//        HashMap<String,Object> attributes;
         
         ButtonGroup group;
         if (tb.getClientProperty("toolButtonGroup") instanceof ButtonGroup) {

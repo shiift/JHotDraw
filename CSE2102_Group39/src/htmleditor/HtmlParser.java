@@ -1,8 +1,6 @@
 package htmleditor;
 
 import htmleditor.figures.AbstractTextFigure;
-import htmleditor.figures.EmbedFigure;
-import htmleditor.figures.HRFigure;
 import htmleditor.figures.HtmlFigure;
 
 import java.io.File;
@@ -27,13 +25,13 @@ public class HtmlParser {
 	// Parses html recursively
 	static public void parseHtml(HtmlFigure hf, int depth){
 		print("<" + hf.getTag(), depth);
-		int loc = 0;
+//		int loc = 0;
 		for(String name : hf.getAttributeList().keySet()){
 				if(hf.getAttributeValue(name).getValue() != ""){
 					writer.print(" " + name + "=\"" + hf.getAttributeValue(name).getValue() + "\" ");
 				}
 
-			loc++;
+//			loc++;
 		}
 		writer.print(" style=\"" + hf.getStyleString() + " position:absolute;\" ");
 		writer.println(">");
@@ -46,10 +44,10 @@ public class HtmlParser {
 		print("</" + hf.getTag() + ">\n", depth);
 	}
 
-	private static String parseLoc(HtmlFigure hf, int loc) {
-		String rString = " position: absolute; left: " + hf.rectangle.x + "; top: " + hf.rectangle.y + ";";
-		return rString;
-	}
+//	private static String parseLoc(HtmlFigure hf, int loc) {
+//		String rString = " position: absolute; left: " + hf.rectangle.x + "; top: " + hf.rectangle.y + ";";
+//		return rString;
+//	}
 
 	static public void print(String line, int depth){
 		for(int i = 0; i < depth; i++){

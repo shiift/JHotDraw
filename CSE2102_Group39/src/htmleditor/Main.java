@@ -14,8 +14,6 @@
 
 package htmleditor;
 
-import javax.swing.*;
-
 import org.jhotdraw.app.*;
 /**
  * Main.
