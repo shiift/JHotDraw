@@ -3,6 +3,7 @@ package htmleditor.figures;
 
 import java.awt.Color;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 import org.jhotdraw.draw.AttributeKeys;
 
@@ -28,6 +29,8 @@ public class DivFigure extends HtmlFigure
 		DivFigure that = (DivFigure) super.clone();
 		that.setTag("div");
 		that.setName("Division");
+		that.addStyle("width", String.valueOf(rectangle.width));
+		that.addStyle("height", String.valueOf(rectangle.height));
 		return that;
 	}
 	
@@ -38,15 +41,26 @@ public class DivFigure extends HtmlFigure
 			this.setAttribute(AttributeKeys.FILL_COLOR, Color.LIGHT_GRAY);
 			control = true;
 		}
+		this.setStyle("width", String.valueOf(rectangle.width));
+		this.setStyle("height", String.valueOf(rectangle.height));
 	}
 	
 	@Override
-	public void setParent(HtmlFigure parent){
-		super.setParent(parent);
-		if(parent != null){
-			basicSetBounds(new Point2D.Double(parent.rectangle.getMinX() + 10, rectangle.getMinY()),
-					new Point2D.Double(parent.rectangle.getMaxX() - 10, rectangle.getMaxY()));
-		}
-	}
+    public void setStyle(String key, String value){
+    	super.setStyle(key, value);
+    	if(key.equals("width") || key.equals("height")){
+    		value = value.replaceAll("[^\\d.]", "");
+    		Rectangle2D.Double size = new Rectangle2D.Double();
+			size = (java.awt.geom.Rectangle2D.Double) rectangle.clone();
+	    	if(key.equals("width")){
+	    		size.width = Double.parseDouble(value);
+	    	}
+	    	if(key.equals("height")){
+	    		size.height = Double.parseDouble(value);
+	    	}
+    		restoreTo(size);
+    		this.invalidate();
+    	}
+    }
 	
 }
