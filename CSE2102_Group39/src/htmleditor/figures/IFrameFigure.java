@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 
 import org.jhotdraw.draw.AttributeKeys;
 
-public class IFrameFigure extends ImgFigure
+public class IFrameFigure extends HtmlFigure
 {
 
 	private boolean control = false;
