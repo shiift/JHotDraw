@@ -12,6 +12,8 @@ import org.jhotdraw.xml.DOMOutput;
 public class TopParentHtmlFigure extends HtmlFigure {
 	
 	public DefaultHtmlDrawing dView;
+	private String PageName = "Name";
+	private String PageColor = "white";
 	
 	public TopParentHtmlFigure(){
 		this(0, 0, 0, 0);	
@@ -33,5 +35,18 @@ public class TopParentHtmlFigure extends HtmlFigure {
     }
     public void write(DOMOutput out) throws IOException {
     	super.write(out);
+    }
+    
+    public String getPageColor(){
+    	return PageColor;
+    }
+    public String getPageName(){
+    	return PageName;
+    }
+    public void setPageColor(String color){
+    	PageColor = color;
+    }
+    public void setPageName(String name){
+    	PageName = name;
     }
 }
