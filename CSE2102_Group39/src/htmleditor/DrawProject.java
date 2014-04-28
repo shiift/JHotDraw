@@ -19,6 +19,8 @@ import org.jhotdraw.io.ExtensionFileFilter;
 import org.jhotdraw.undo.*;
 import org.jhotdraw.util.*;
 
+import htmleditor.figures.TopParentHtmlFigure;
+
 import java.awt.*;
 import java.beans.*;
 import java.io.*;
