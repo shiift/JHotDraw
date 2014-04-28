@@ -37,7 +37,7 @@ public class EmbedFigure extends HtmlFigure
 		that.setTag("embed");
 		that.setName("Video");
 		this.addHtmlAttribute(that, "src", "Video id");
-		this.addHtmlAttribute(that, "type", "application/x-shockwave-flash");
+		this.addHtmlAttribute(that, "type", "application/x-shockwave-flash", false);
 		this.addHtmlAttribute(that, "width", "100px", false);
 		this.addHtmlAttribute(that, "height", "100px", false);
 		return that;

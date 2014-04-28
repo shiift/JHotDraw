@@ -236,6 +236,10 @@ public class DrawProject extends AbstractProject {
 	 */
 	// <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
 	private void initComponents() {
+		JSplitPane mainPane = new JSplitPane();
+		mainPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
+		mainPane.setBorder(null);
+		
 		setAttributePanel(new AttributePanel());
 
 		scrollPane = new javax.swing.JScrollPane();
@@ -247,8 +251,10 @@ public class DrawProject extends AbstractProject {
 		scrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setViewportView(view);
 
-		add(scrollPane, java.awt.BorderLayout.CENTER);
-		add(attributePanel, java.awt.BorderLayout.WEST);
+		mainPane.setLeftComponent(attributePanel);
+		mainPane.setRightComponent(scrollPane);
+		
+		add(mainPane, java.awt.BorderLayout.CENTER);
 
 	}// </editor-fold>//GEN-END:initComponents
 
