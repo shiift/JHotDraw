@@ -17,6 +17,7 @@ public class HRFigure extends HtmlFigure
 		super(x, y, width, 1);
 		setTag("hr");
 		setName("Horizontal Rule");
+		this.addStyle("width", "50px");
 	}
 		
 	public HRFigure clone() {
@@ -24,24 +25,6 @@ public class HRFigure extends HtmlFigure
 		that.setTag("hr");
 		that.setName("Horizontal Rule");
 		return that;
-	}
-	
-	// Horizontal rules are horizontal lines, meaning the height doesn't change
-	// unlike an HtmlFigure, which is a rectangle that can change height and width
-	// basicSetBounds from HtmlFigure, height stays equivalent to 1
-	@Override
-	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
-		super.basicSetBounds(anchor, lead);
-		rectangle.height = 1;
-	}
-	
-	@Override
-	public void setParent(HtmlFigure parent) {
-		super.setParent(parent);
-		if(parent != null){
-			basicSetBounds(new Point2D.Double(parent.rectangle.getMinX() + 10, rectangle.getMinY()),
-					new Point2D.Double(parent.rectangle.getMaxX() - 10, rectangle.getMaxY()));
-		}
 	}
 	
 }
