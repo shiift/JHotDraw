@@ -28,6 +28,8 @@ import javax.swing.text.StyledEditorKit;
 import org.jhotdraw.app.*;
 import org.jhotdraw.draw.*;
 import org.jhotdraw.draw.action.*;
+
+import static org.jhotdraw.draw.AttributeKeys.*;
 /**
  * DrawApplicationModel.
  * 
