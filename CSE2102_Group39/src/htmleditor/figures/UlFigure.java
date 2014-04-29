@@ -37,7 +37,7 @@ private boolean control = false;
 	{
 		String parsedText = super.getParsedText();
         parsedText = parsedText.replaceAll("\\*\\*", "<li>");
-		parsedText = parsedText.replaceAll("<br />", "</li>");
+		parsedText = parsedText.replaceAll("<br />", "</li><br />");
 		parsedText = parsedText.concat("</li>");
 		return parsedText;
 	}
