@@ -33,7 +33,7 @@ public class HtmlParser {
 
 //			loc++;
 		}
-		writer.print(" style=\"" + hf.getStyleString() + "margin: 0; position:fixed;\" ");
+		writer.print(" style=\"" + hf.getStyleString() + "margin: 0; position:absolute;\" ");
 		writer.println(">");
 		if(hf instanceof AbstractTextFigure){
 			writer.print(((AbstractTextFigure) hf).getParsedText());

@@ -49,9 +49,10 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	private FigureSelectionEvent _evt;
 	private int xValue = 0;
 	private int yValue = 0;
+	private JTextField nameField;
 	
 	public AttributePanel(){
-
+		
 		// attributeFields are HashMaps with strings as keys and JTextFields as values
 		attributeFields = new HashMap<String, JTextField>();
 		styleFields = new HashMap<String, JTextField>();
@@ -383,48 +384,45 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		}});
 		optionsPanel.add(addStyleB);
 		
-//		final TopParentHtmlFigure topP = ((DefaultHtmlDrawingView) _evt.getView()).getDrawing().getTopParent();
-//		
-//		ActionListener setPageListener = new ActionListener() {
-//			public void actionPerformed(ActionEvent e){
-//				topP.setName(e.getActionCommand());
-//				paneChanged();
-//			}
-//		};
-//		
-//		JTextField pageBuilderTitle = new JTextField();
-//		pageBuilderTitle.setText("Page Options");
-//		pageBuilderTitle.setEditable(false);
-//		pageBuilderTitle.setBackground(null);
-//		pageBuilderTitle.setMaximumSize(new Dimension(100, 30));
-//		pageBuilderTitle.setBorder(null);
-//		pageBuilderTitle.setAlignmentX(CENTER_ALIGNMENT);
-//		optionsPanel.add(pageBuilderTitle);
-//
-//		JPanel pnamePanel = new JPanel();
-//		pnamePanel.setLayout(new BoxLayout(pnamePanel, BoxLayout.X_AXIS));
-//		
-//		JLabel nameLabel = new JLabel();
-//		nameLabel.setText("Page Name");
-//		nameLabel.setToolTipText("Page Name");
-//		pnamePanel.add(nameLabel);
-//		if(topP==null){
-//			System.out.println("wodnoqnd-");
-//		}
-//		
-//		JTextField nameField = new JTextField();
-//		nameField.setText(topP.getPageName());
-//		nameField.setToolTipText(topP.getPageName());
-//		nameField.setMaximumSize(new Dimension(100, 30));
-//		pnamePanel.add(nameField);
-//		
-//		JButton nameButton = new JButton();
-//		nameButton.addActionListener(setPageListener);
-//		nameButton.setActionCommand(topP.getName());
-//		pnamePanel.add(nameButton);
-//		
-//		optionsPanel.add(pnamePanel);
-//		
+		final TopParentHtmlFigure topP = ((DefaultHtmlDrawingView) _evt.getView()).getDrawing().getTopParent();
+		
+		ActionListener setPageListener = new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				topP.setPageName(nameField.getText());
+				paneChanged();
+			}
+		};
+		
+		JTextField pageBuilderTitle = new JTextField();
+		pageBuilderTitle.setText("Page Options");
+		pageBuilderTitle.setEditable(false);
+		pageBuilderTitle.setBackground(null);
+		pageBuilderTitle.setMaximumSize(new Dimension(100, 30));
+		pageBuilderTitle.setBorder(null);
+		pageBuilderTitle.setAlignmentX(CENTER_ALIGNMENT);
+		optionsPanel.add(pageBuilderTitle);
+
+		JPanel pnamePanel = new JPanel();
+		pnamePanel.setLayout(new BoxLayout(pnamePanel, BoxLayout.X_AXIS));
+		
+		JLabel nameLabel = new JLabel();
+		nameLabel.setText("Page Name");
+		pnamePanel.add(nameLabel);
+		
+		nameField = new JTextField();
+		nameField.setText(topP.getPageName());
+		nameField.setToolTipText("Page Title");
+		nameField.setMaximumSize(new Dimension(100, 30));
+		pnamePanel.add(nameField);
+		
+		JButton nameButton = new JButton();
+		nameButton.setText("Set Name");
+		nameButton.addActionListener(setPageListener);
+		nameButton.setActionCommand(null);
+		pnamePanel.add(nameButton);
+		
+		optionsPanel.add(pnamePanel);
+		
 		
 		
 		revalidate();
