@@ -317,7 +317,6 @@ public class DefaultOSXApplication extends AbstractApplication {
         mi.setIcon(null);
         if (model.getAction(ExportAction.ID) != null) {
             mi = m.add(model.getAction(ExportAction.ID));
-            mi.setIcon(null);
         }
         mb.add(m);
         
