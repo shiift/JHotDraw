@@ -1,5 +1,7 @@
 package htmleditor;
 
+import htmleditor.figures.HtmlFigure;
+
 import java.util.HashMap;
 
 /* StyleBuilder is a HashMap with keys that are attributes of the style attribute 
@@ -11,11 +13,13 @@ public class StyleBuilder
 	
 	public HashMap<String, String> _styleMap;
 	public String _styleValue;
+	HtmlFigure fig;
 	
-	public StyleBuilder()
+	public StyleBuilder(HtmlFigure figure)
 	{
 		_styleMap = new HashMap<String, String>();
 		_styleValue = "";
+		fig = figure;
 	}
 	
 	public HashMap<String, String> getStyleMap() {
@@ -46,7 +50,15 @@ public class StyleBuilder
 		String _styleValue = "";
 		for (String key: _styleMap.keySet())
 		{
-			_styleValue += key + ":" + _styleMap.get(key) + "; ";
+			if(key.equals("left") && fig.getParent() != null){
+				_styleValue += key + ":" + (Double.parseDouble(_styleMap.get(key)) -
+						Double.parseDouble(fig.getParent().getStyle("left")) + "; ");
+			}else if(key.equals("top") && fig.getParent() != null){
+				_styleValue += key + ":" + (Double.parseDouble(_styleMap.get(key)) -
+						Double.parseDouble(fig.getParent().getStyle("top")) + "; ");
+			}else{
+				_styleValue += key + ":" + _styleMap.get(key) + "; ";
+			}
 		}
 		return _styleValue;
 	}
