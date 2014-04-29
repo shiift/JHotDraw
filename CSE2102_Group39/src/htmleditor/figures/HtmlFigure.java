@@ -153,7 +153,6 @@ public class HtmlFigure extends RectangleFigure {
 	
 	public void setAttributeList(HashMap<String, AttributeValue> list){
 		attributeList = list;
-		//TODO check this once saving works
 		fileControl = attributeList.size();
 	}
 

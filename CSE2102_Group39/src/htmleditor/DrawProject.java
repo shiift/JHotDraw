@@ -14,27 +14,45 @@
  */
 package htmleditor;
 
-import org.jhotdraw.gui.*;
-import org.jhotdraw.io.ExtensionFileFilter;
-import org.jhotdraw.undo.*;
-import org.jhotdraw.util.*;
-
 import htmleditor.figures.TopParentHtmlFigure;
 
-import java.awt.*;
-import java.beans.*;
-import java.io.*;
-import java.lang.reflect.*;
+import java.awt.BorderLayout;
+import java.awt.Insets;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
 
-import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.JFileChooser;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 import org.jhotdraw.app.AbstractProject;
 import org.jhotdraw.app.action.RedoAction;
 import org.jhotdraw.app.action.UndoAction;
-import org.jhotdraw.draw.*;
-import org.jhotdraw.draw.action.*;
-import org.jhotdraw.xml.*;
+import org.jhotdraw.draw.DefaultDrawingEditor;
+import org.jhotdraw.draw.Drawing;
+import org.jhotdraw.draw.DrawingEditor;
+import org.jhotdraw.draw.GridConstrainer;
+import org.jhotdraw.draw.action.ToolBarButtonFactory;
+import org.jhotdraw.gui.PlacardScrollPaneLayout;
+import org.jhotdraw.io.ExtensionFileFilter;
+import org.jhotdraw.undo.UndoRedoManager;
+import org.jhotdraw.xml.NanoXMLLiteDOMInput;
+import org.jhotdraw.xml.NanoXMLLiteDOMOutput;
 
 /**
  * A drawing project.
@@ -90,8 +108,6 @@ public class DrawProject extends AbstractProject {
 			}
 		});
 
-//		ResourceBundleUtil labels = ResourceBundleUtil.getLAFBundle("org.jhotdraw.draw.Labels");
-
 		JPanel placardPanel = new JPanel(new BorderLayout());
 		javax.swing.AbstractButton pButton;
 		pButton = ToolBarButtonFactory.createZoomButton(view);
@@ -146,7 +162,6 @@ public class DrawProject extends AbstractProject {
 			domo.save(out);
 		} finally {
 			if (out != null) try { out.close(); } catch (IOException e) {};
-			//if (out != null) out.close();
 		}
 	}
 
@@ -184,7 +199,6 @@ public class DrawProject extends AbstractProject {
 		try {
 			HtmlParser.createFile(view.getDrawing().getTopParent(), file);
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

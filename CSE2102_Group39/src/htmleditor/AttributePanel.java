@@ -474,14 +474,10 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	
 	@Override
 	public void figureAreaInvalidated(FigureEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void figureAttributeChanged(FigureEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -502,20 +498,14 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 
 	@Override
 	public void figureAdded(FigureEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void figureRemoved(FigureEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void figureRequestRemove(FigureEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	// Using the color parameter that is given, set it
