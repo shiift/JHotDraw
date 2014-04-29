@@ -26,8 +26,6 @@ public class DefaultHtmlDrawing extends DefaultDrawing {
 	//Creates the Base Page for the Editor.
 	public TopParentHtmlFigure createTopParent(DefaultHtmlDrawingView view){
 		topParent = new TopParentHtmlFigure(0, 0, 1000, 1200);
-        topParent.addStyle("background", "#FFF");
-        topParent.addStyle("width", "800px");
         topParent.addStyle("width", "800px");
         topParent.addStyle("margin", "0 auto");
         topParent.addStyle("min-height", "800px");

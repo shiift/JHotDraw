@@ -17,9 +17,9 @@ public class HtmlParser {
 	static public void createFile(HtmlFigure hf, File file) throws FileNotFoundException, UnsupportedEncodingException{
 		writer = new PrintWriter(file.getAbsolutePath(), "UTF-8");
 
-		writer.println("<html>\n<head>\n<title>\n");
-		writer.println(((TopParentHtmlFigure) hf).getPageName());
-		writer.print("</title>\n</head>\n<body Style=\"background-color:");
+		writer.println("<html>\n<head>\n<title>");
+		writer.print(((TopParentHtmlFigure) hf).getPageName());
+		writer.print("</title>\n</head>\n<body style=\"background-color:");
 		writer.print(((TopParentHtmlFigure) hf).getPageColor()+";\">\n");
 		parseHtml(hf, 1);
 		writer.println("</body>\n</html>\n");

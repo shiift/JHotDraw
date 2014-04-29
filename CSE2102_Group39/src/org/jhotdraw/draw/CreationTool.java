@@ -10,7 +10,7 @@
  * such Confidential Information and shall use it only in accordance
  * with the terms of the license agreement you entered into with
  * JHotDraw.org.
-�
+���
  */
 
 package org.jhotdraw.draw;
@@ -109,7 +109,7 @@ public class CreationTool extends AbstractTool {
         super.mousePressed(evt);
         getView().clearSelection();
         // FIXME - Localize this label
-        creationEdit = new CompositeEdit("Figur erstellen");
+        creationEdit = new CompositeEdit("Redo");
         getDrawing().fireUndoableEditHappened(creationEdit);
         createdFigure = createFigure();
         Point2D.Double p = constrainPoint(viewToDrawing(anchor));
