@@ -252,6 +252,11 @@ public class HtmlFigure extends RectangleFigure {
 			this.setPageName(in.getAttribute("pname", "Page Name"));
 			this.setPageColor(in.getAttribute("pcolor", "white"));
 		}
+		else{
+			in.getAttribute("pname", "Page Name");
+			in.getAttribute("pcolor", "white");
+			System.out.println("fuuuuuuuuuu");
+		}
 		_style = new StyleBuilder(this);
 		for(int i = 1; i<_control+1;i++){
 			String name = in.getAttribute("n"+Integer.toString(i), null);
