@@ -49,9 +49,10 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	private FigureSelectionEvent _evt;
 	private int xValue = 0;
 	private int yValue = 0;
+	private JTextField nameField;
 	
 	public AttributePanel(){
-
+		
 		// attributeFields are HashMaps with strings as keys and JTextFields as values
 		attributeFields = new HashMap<String, JTextField>();
 		styleFields = new HashMap<String, JTextField>();
@@ -387,7 +388,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		
 		ActionListener setPageListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				topP.setName(e.getActionCommand());
+				topP.setPageName(nameField.getText());
 				paneChanged();
 			}
 		};
@@ -406,21 +407,18 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		
 		JLabel nameLabel = new JLabel();
 		nameLabel.setText("Page Name");
-		nameLabel.setToolTipText("Page Name");
 		pnamePanel.add(nameLabel);
 		
-		JTextField nameField = new JTextField();
+		nameField = new JTextField();
 		nameField.setText(topP.getPageName());
-		nameField.setToolTipText(topP.getPageName());
+		nameField.setToolTipText("Page Title");
 		nameField.setMaximumSize(new Dimension(100, 30));
 		pnamePanel.add(nameField);
 		
 		JButton nameButton = new JButton();
-		nameButton.setText("Page Name");
+		nameButton.setText("Set Name");
 		nameButton.addActionListener(setPageListener);
-		nameButton.setActionCommand(nameField.getText());
-		System.out.println(nameField.getText());
-		System.out.println(topP.getPageName());
+		nameButton.setActionCommand(null);
 		pnamePanel.add(nameButton);
 		
 		optionsPanel.add(pnamePanel);
