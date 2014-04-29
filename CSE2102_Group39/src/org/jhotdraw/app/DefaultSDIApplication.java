@@ -16,13 +16,18 @@ package org.jhotdraw.app;
 
 import org.jhotdraw.util.*;
 import org.jhotdraw.util.prefs.*;
+
+import htmleditor.DocumentationAction;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.beans.*;
 import java.io.*;
 import java.util.*;
 import java.util.prefs.*;
+
 import javax.swing.*;
+
 import org.jhotdraw.app.action.AboutAction;
 import org.jhotdraw.app.action.Actions;
 import org.jhotdraw.app.action.ClearAction;
@@ -365,6 +370,7 @@ public class DefaultSDIApplication extends AbstractApplication {
         m = new JMenu();
         labels.configureMenu(m, labels.getString("help"));
         m.add(model.getAction(AboutAction.ID));
+        m.add(model.getAction(DocumentationAction.ID));
         mb.add(m);
         
         addPropertyChangeListener(new PropertyChangeListener() {
