@@ -36,7 +36,7 @@ import org.jhotdraw.app.action.AbstractApplicationAction;
  * @version 1.0  04 January 2005  Created.
  */
 public class DocumentationAction extends AbstractApplicationAction {
-	public final static String ID = "documentation";
+	public final static String ID = "Documentation";
 
 	/** Creates a new instance. */
 	public DocumentationAction(Application app) {
@@ -49,21 +49,11 @@ public class DocumentationAction extends AbstractApplicationAction {
 		if(Desktop.isDesktopSupported())
 		{
 			try {
-				Desktop.getDesktop().browse(new URI("http://www.google.com"));
+				Desktop.getDesktop().browse(new URI("http://www.liamd.com/documentation.html"));
 			} catch (IOException | URISyntaxException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-		Runtime runtime = Runtime.getRuntime();
-		String[] args = { "osascript", "-e", "open location \"http://www.google.com\"" };
-		try
-		{
-			Process process = runtime.exec(args);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
 		}
 	}
 }

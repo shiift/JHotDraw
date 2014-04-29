@@ -1,5 +1,9 @@
 package htmleditor.figures;
 
+import java.awt.Color;
+
+import org.jhotdraw.draw.AttributeKeys;
+
 public class ParagraphFigure extends AbstractTextFigure {
 	
     /** Creates a new instance. */
@@ -8,6 +12,7 @@ public class ParagraphFigure extends AbstractTextFigure {
     }
     public ParagraphFigure(String text) {
         super(text);
+		this.setAttribute(AttributeKeys.FILL_COLOR, null);
     }
     
     public ParagraphFigure clone() {
