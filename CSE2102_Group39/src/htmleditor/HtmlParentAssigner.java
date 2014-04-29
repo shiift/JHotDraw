@@ -1,5 +1,6 @@
 package htmleditor;
 
+import htmleditor.figures.DivFigure;
 import htmleditor.figures.HtmlFigure;
 import htmleditor.figures.AbstractTextFigure;
 import htmleditor.figures.TopParentHtmlFigure;
@@ -102,7 +103,7 @@ public class HtmlParentAssigner{
 			HtmlFigure curFig = figurelist.get(i);
 
 			//Current Figure loop.
-			if(curFig.isTopParent == false){
+			if(curFig.isTopParent == false && (curFig instanceof DivFigure)){
 				Rectangle2D.Double curRec = new Rectangle2D.Double();
 				if(curFig instanceof AbstractTextFigure){
 					curRec = curFig.getBounds();

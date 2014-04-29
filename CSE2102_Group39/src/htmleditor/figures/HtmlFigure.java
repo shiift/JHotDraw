@@ -31,6 +31,8 @@ public class HtmlFigure extends RectangleFigure {
 	protected StyleBuilder _style;
 	public boolean isTopParent = false;
 	protected AttributePanel attributePanel;
+	private String PageName;
+	private String PageColor;
 	
 	/** Creates a new instance. */
 	public HtmlFigure() {
@@ -246,6 +248,10 @@ public class HtmlFigure extends RectangleFigure {
 		isTopParent = in.getAttribute("top", false);
 		int _control = in.getAttribute("control", 0);
 		int _control2 = in.getAttribute("scontrol", 0);
+		if(isTopParent){
+			this.setPageName(in.getAttribute("pname", "Page Name"));
+			this.setPageColor(in.getAttribute("pcolor", "white"));
+		}
 		_style = new StyleBuilder(this);
 		for(int i = 1; i<_control+1;i++){
 			String name = in.getAttribute("n"+Integer.toString(i), null);
@@ -269,7 +275,16 @@ public class HtmlFigure extends RectangleFigure {
 		setBounds(new Point2D.Double(x,y), new Point2D.Double(x+w,y+h));
 		readAttributes(in);
 	}
-    public void write(DOMOutput out) throws IOException {
+    private void setPageColor(String attribute) {
+		PageColor = attribute;
+		
+	}
+
+	private void setPageName(String attribute) {
+		PageName = attribute;
+	}
+
+	public void write(DOMOutput out) throws IOException {
         Rectangle2D.Double r = getBounds();
         out.addAttribute("x", r.x);
         out.addAttribute("y", r.y);
@@ -280,6 +295,8 @@ public class HtmlFigure extends RectangleFigure {
         out.addAttribute("top", this.isTopParent);
         out.addAttribute("control", fileControl);
         out.addAttribute("scontrol", StyleControl);
+        out.addAttribute("pname", PageName);
+        out.addAttribute("pcolor",PageColor);
         int control = 1;
         for(Entry<String, AttributeValue> entry : attributeList.entrySet()){
             out.addAttribute("n"+Integer.toString(control), entry.getKey());
