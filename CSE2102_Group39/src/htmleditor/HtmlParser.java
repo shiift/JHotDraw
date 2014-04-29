@@ -45,11 +45,6 @@ public class HtmlParser {
 		print("</" + hf.getTag() + ">\n", depth);
 	}
 
-//	private static String parseLoc(HtmlFigure hf, int loc) {
-//		String rString = " position: absolute; left: " + hf.rectangle.x + "; top: " + hf.rectangle.y + ";";
-//		return rString;
-//	}
-
 	static public void print(String line, int depth){
 		for(int i = 0; i < depth; i++){
 			writer.print("\t");

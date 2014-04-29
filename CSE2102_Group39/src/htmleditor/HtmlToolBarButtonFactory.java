@@ -30,8 +30,6 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
         ResourceBundleUtil labels = ResourceBundleUtil.getLAFBundle("org.jhotdraw.draw.Labels");
         
         JToggleButton t;
-//        Tool tool;
-//        HashMap<String,Object> attributes;
         
         ButtonGroup group;
         if (tb.getClientProperty("toolButtonGroup") instanceof ButtonGroup) {

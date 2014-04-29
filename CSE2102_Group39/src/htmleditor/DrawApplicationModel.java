@@ -183,7 +183,6 @@ public class DrawApplicationModel extends DefaultApplicationModel {
                         && allFonts[i].getFamily().equals(allFonts[i + 1].getFamily())) {
                     fontFamilies.add(allFonts[i]);
                     submenu = new JMenu(allFonts[i].getFamily());
-                    //submenu.setFont(JPopupButton.ITEM_FONT);
                     fontPopupButton.add(submenu);
                     
                 }
@@ -200,9 +199,6 @@ public class DrawApplicationModel extends DefaultApplicationModel {
             if (submenu == null) {
                 fontFamilies.add(allFonts[i]);
                 fontPopupButton.add(action);
-            } else {
-                JMenuItem item = submenu.add(action);
-                //item.setFont(JPopupButton.itemFont);
             }
         }
         fontPopupButton.setColumnCount( Math.max(1, fontFamilies.size()/32), true);
