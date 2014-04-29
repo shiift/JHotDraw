@@ -148,8 +148,14 @@ public class HtmlParentAssigner{
 				//Throws an error if the figure is outside of the main base page.
 				else{
 					DefaultHtmlDrawing htmldrawing = (DefaultHtmlDrawing) dView;
-					final Project project = htmldrawing.getProject();
-					JSheet.showMessageSheet(project.getComponent(),"Objects cannot be placed outside of the Base Area.",JOptionPane.ERROR_MESSAGE);
+					Project project = htmldrawing.getProject();
+					if(project == null){
+						JSheet.showMessageSheet(null,"Objects cannot be placed outside of the Base Area.",JOptionPane.ERROR_MESSAGE);
+					}
+
+					else{
+						JSheet.showMessageSheet(project.getComponent(),"Objects cannot be placed outside of the Base Area.",JOptionPane.ERROR_MESSAGE);
+					}
 					errorControl = true;
 				}
 			}
