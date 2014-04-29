@@ -1,5 +1,6 @@
 package htmleditor;
 
+import htmleditor.figures.DivFigure;
 import htmleditor.figures.HtmlFigure;
 import htmleditor.figures.AbstractTextFigure;
 import htmleditor.figures.TopParentHtmlFigure;
@@ -115,14 +116,15 @@ public class HtmlParentAssigner{
 				//Possible Parents are found, based on dimensions, and added to newly created link list for the current figure.
 				for(int j = 0; j <size; j++){
 					HtmlFigure curPossibleParent = figurelist.get(j);
-					
-					Rectangle2D.Double posRec = curPossibleParent.rectangle;
-					if(figurelist.get(j) instanceof AbstractTextFigure){
-						posRec = figurelist.get(j).getBounds();
-					}
-					if(j != i){
-						if(posRec.x<=curRec.x && posRec.y<=curRec.y && posRec.x + posRec.width>=curRec.x + curRec.width && posRec.y + posRec.height>=curRec.y + curRec.height){
-							possibleParents.add(curPossibleParent);
+					if((curPossibleParent instanceof DivFigure)||(curPossibleParent instanceof TopParentHtmlFigure)){
+						Rectangle2D.Double posRec = curPossibleParent.rectangle;
+						if(figurelist.get(j) instanceof AbstractTextFigure){
+							posRec = figurelist.get(j).getBounds();
+						}
+						if(j != i){
+							if(posRec.x<=curRec.x && posRec.y<=curRec.y && posRec.x + posRec.width>=curRec.x + curRec.width && posRec.y + posRec.height>=curRec.y + curRec.height){
+								possibleParents.add(curPossibleParent);
+							}
 						}
 					}
 				}
