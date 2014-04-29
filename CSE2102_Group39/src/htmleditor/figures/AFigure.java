@@ -30,6 +30,7 @@ public class AFigure extends AbstractTextFigure {
         return that;
     }
     
+//  Fill color is orange on the view
     public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) 
 	{
 		super.basicSetBounds(anchor, lead);
