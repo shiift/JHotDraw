@@ -65,7 +65,6 @@ public class HtmlFigure extends RectangleFigure {
 
 	//Limits movement of the object within its parent.
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
-		super.basicSetBounds(anchor, lead);
 		if(parent != null){
 			Rectangle2D.Double pRectangle = parent.rectangle;
 			rectangle.x = Math.min(anchor.x, lead.x);
@@ -324,7 +323,7 @@ public class HtmlFigure extends RectangleFigure {
 	public void setStyle(String key, String value) {
 		addStyle(key,value);
 		if(key.equals("top") || key.equals("left")){
-    		value = value.replaceAll("[^\\d.]", "");
+    		value = value.replaceAll("[^(\\d|\\-).]", "");
     		Rectangle2D.Double size = (java.awt.geom.Rectangle2D.Double) rectangle.clone();
 	    	if(key.equals("top")){
 	    		size.y = Double.parseDouble(value);
