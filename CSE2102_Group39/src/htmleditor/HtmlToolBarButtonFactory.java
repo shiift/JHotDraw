@@ -80,7 +80,7 @@ public class HtmlToolBarButtonFactory extends ToolBarButtonFactory{
 
     	//Assign parents Toggle Button.
     	JToggleButton parentAssigner = new JToggleButton();
-    	parentAssigner.setText("Contains Objects");
+    	parentAssigner.setText("Contain Objects");
     	parentAssigner.setFocusable(false);
     	parentAssigner.addItemListener(new ItemListener() {
     		public void itemStateChanged(ItemEvent e){

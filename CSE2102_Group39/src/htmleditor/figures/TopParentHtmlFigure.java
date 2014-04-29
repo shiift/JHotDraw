@@ -12,8 +12,8 @@ import org.jhotdraw.xml.DOMOutput;
 public class TopParentHtmlFigure extends HtmlFigure {
 	
 	public DefaultHtmlDrawing dView;
-	private String PageName = "Name";
-	private String PageColor = "white";
+	private String PageName;
+	private String PageColor;
 	
 	public TopParentHtmlFigure(){
 		this(0, 0, 0, 0);	
@@ -23,6 +23,8 @@ public class TopParentHtmlFigure extends HtmlFigure {
 		super(i,j,k,l);
 		this.setTag("div");
 		this.setName("Base Page");
+		PageName = "Name";
+		PageColor = "white";
 		this.isTopParent = true;
 	}
 	
