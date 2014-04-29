@@ -394,6 +394,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 			}
 		};
 		
+		// Sets options for the page, such as page name and page color
 		JTextField pageBuilderTitle = new JTextField();
 		pageBuilderTitle.setText("Page Options");
 		pageBuilderTitle.setEditable(false);
@@ -451,7 +452,6 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		pcolorPanel.add(colorButton);
 		
 		optionsPanel.add(pcolorPanel);
-		
 		
 		revalidate();
 		repaint();
