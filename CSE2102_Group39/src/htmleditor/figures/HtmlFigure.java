@@ -31,7 +31,7 @@ public class HtmlFigure extends RectangleFigure {
 	protected StyleBuilder _style;
 	public boolean isTopParent = false;
 	protected AttributePanel attributePanel;
-
+	
 	/** Creates a new instance. */
 	public HtmlFigure() {
 		this(0, 0, 0, 0);
@@ -41,7 +41,7 @@ public class HtmlFigure extends RectangleFigure {
 		super(x, y, width, height);
 		figureList = new LinkedList<HtmlFigure>();
 		attributeList = new HashMap<String, AttributeValue>();
-		_style = new StyleBuilder();
+		_style = new StyleBuilder(this);
 		parent = null;
 		tag = "";
 		name = "";
@@ -51,7 +51,7 @@ public class HtmlFigure extends RectangleFigure {
 		HtmlFigure that = (HtmlFigure) super.clone();
 		that.figureList = new LinkedList<HtmlFigure>();
 		that.attributeList = new HashMap<String, AttributeValue>();
-		that._style = new StyleBuilder();
+		that._style = new StyleBuilder(that);
 		that.parent = null;
 		that.tag = "";
 		that.name = "";
@@ -73,10 +73,10 @@ public class HtmlFigure extends RectangleFigure {
 	
 			if(!this.isChanging() || (rectangle.x != 0 || rectangle.y != 0)){
 				if(rectangle.x <= pRectangle.x){
-					rectangle.x = pRectangle.x + 10;
+					rectangle.x = pRectangle.x;
 				}
 				if(rectangle.y <= pRectangle.y){
-					rectangle.y = pRectangle.y + 10;
+					rectangle.y = pRectangle.y;
 				}		
 			}
 			if(rectangle.x + rectangle.width >= pRectangle.x + pRectangle.width){
@@ -246,7 +246,7 @@ public class HtmlFigure extends RectangleFigure {
 		isTopParent = in.getAttribute("top", false);
 		int _control = in.getAttribute("control", 0);
 		int _control2 = in.getAttribute("scontrol", 0);
-		_style = new StyleBuilder();
+		_style = new StyleBuilder(this);
 		for(int i = 1; i<_control+1;i++){
 			String name = in.getAttribute("n"+Integer.toString(i), null);
 			String value = in.getAttribute("v"+Integer.toString(i), null);
