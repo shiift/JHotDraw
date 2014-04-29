@@ -10,6 +10,7 @@ public class IFrameFigure extends HtmlFigure
 
 	private boolean control = false;
 	
+	// Creates IFrame instance
 	public IFrameFigure() {
 		this(0, 0, 0, 0);
 	}

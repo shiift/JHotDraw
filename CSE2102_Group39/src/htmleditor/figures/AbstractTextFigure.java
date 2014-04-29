@@ -39,6 +39,7 @@ import org.jhotdraw.geom.Insets2DDouble;
 import org.jhotdraw.xml.DOMInput;
 import org.jhotdraw.xml.DOMOutput;
 
+// Super class for HtmlFigures that use text
 public abstract class AbstractTextFigure extends HtmlFigure implements TextHolder {
 	private Rectangle2D.Double bounds = new Rectangle2D.Double();
     private boolean editable = true;
@@ -82,6 +83,10 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
         setAttribute(TEXT, newText);
     }
     
+    /** 
+     * Changes various symbols in the text to make sure they show up correctly
+     * when they are parsed to create the HTML file
+     */
     public String getParsedText() {
     	String parsedText = getText();
     	
@@ -99,6 +104,10 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
 		return parsedText;
 	}
     
+    /**
+     * Able to add width and height both by adjusting the figure on the view
+     * and manually changing it on the AttributePanel
+     */ 
 	public void basicSetBounds(Point2D.Double anchor, Point2D.Double lead) {
     	super.basicSetBounds(anchor, lead);
     	bounds.x = rectangle.x;
@@ -132,6 +141,9 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
     	return 8;
     }
 
+    /**
+     * Draws the text area
+     */
     protected void drawText(Graphics2D g) {
     	if (getText() != null || isEditable()) {
     		Font font = getFont();
@@ -175,6 +187,7 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
                 }
             }
             
+    		// draws red dashes when not all of the text is showing on the view.
             if (leftMargin >= rightMargin || verticalPos > textRect.y + textRect.height) {
                 g.setColor(Color.red);
                 g.setStroke(dashes);

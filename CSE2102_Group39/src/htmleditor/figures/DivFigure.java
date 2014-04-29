@@ -45,6 +45,7 @@ public class DivFigure extends HtmlFigure
 		this.setStyle("height", String.valueOf(rectangle.height));
 	}
 	
+	/** Sets the style of the DivFigure */
 	@Override
     public void setStyle(String key, String value){
     	super.setStyle(key, value);
