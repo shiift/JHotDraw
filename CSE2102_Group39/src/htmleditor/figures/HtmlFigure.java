@@ -189,6 +189,7 @@ public abstract class HtmlFigure extends RectangleFigure {
 		this.name = name;
 	}
 	
+	// Control methods
 	public void setControl(int c){
 		fileControl = c;
 	}
@@ -226,6 +227,8 @@ public abstract class HtmlFigure extends RectangleFigure {
 		return _style.getStyleMap();
 	}
 	
+	// Informs a figure that it has been added to the specified drawing.
+	// Gets the attribute panel if the project is not equal to null
 	@Override
 	public void addNotify(Drawing d){
 		super.addNotify(d);
@@ -277,6 +280,8 @@ public abstract class HtmlFigure extends RectangleFigure {
 		setBounds(new Point2D.Double(x,y), new Point2D.Double(x+w,y+h));
 		readAttributes(in);
 	}
+	
+	// Sets page elements
     private void setPageColor(String attribute) {
 		PageColor = attribute;
 		
