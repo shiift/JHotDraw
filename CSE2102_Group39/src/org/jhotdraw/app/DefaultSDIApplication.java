@@ -109,6 +109,7 @@ public class DefaultSDIApplication extends AbstractApplication {
     protected void initApplicationActions() {
         ResourceBundleUtil appLabels = ResourceBundleUtil.getLAFBundle("org.jhotdraw.app.Labels");
         ApplicationModel m = getModel();
+        m.putAction(DocumentationAction.ID, new DocumentationAction(this));
         m.putAction(AboutAction.ID, new AboutAction(this));
         m.putAction(ExitAction.ID, new ExitAction(this));
         
