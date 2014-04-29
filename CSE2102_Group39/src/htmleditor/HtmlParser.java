@@ -2,6 +2,7 @@ package htmleditor;
 
 import htmleditor.figures.AbstractTextFigure;
 import htmleditor.figures.HtmlFigure;
+import htmleditor.figures.TopParentHtmlFigure;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +17,10 @@ public class HtmlParser {
 	static public void createFile(HtmlFigure hf, File file) throws FileNotFoundException, UnsupportedEncodingException{
 		writer = new PrintWriter(file.getAbsolutePath(), "UTF-8");
 
-		writer.println("<html>\n<body>\n");
+		writer.println("<html>\n<head>\n<title>\n");
+		writer.println(((TopParentHtmlFigure) hf).getPageName());
+		writer.print("</title>\n</head>\n<body Style=\"background-color:");
+		writer.print(((TopParentHtmlFigure) hf).getPageColor()+";\">\n");
 		parseHtml(hf, 1);
 		writer.println("</body>\n</html>\n");
 		writer.close();
@@ -25,13 +29,10 @@ public class HtmlParser {
 	// Parses html recursively
 	static public void parseHtml(HtmlFigure hf, int depth){
 		print("<" + hf.getTag(), depth);
-//		int loc = 0;
 		for(String name : hf.getAttributeList().keySet()){
 				if(hf.getAttributeValue(name).getValue() != ""){
 					writer.print(" " + name + "=\"" + hf.getAttributeValue(name).getValue() + "\" ");
 				}
-
-//			loc++;
 		}
 		writer.print(" style=\"" + hf.getStyleString() + "margin: 0; position:absolute;\" ");
 		writer.println(">");

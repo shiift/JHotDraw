@@ -23,8 +23,8 @@ public class TopParentHtmlFigure extends HtmlFigure {
 		super(i,j,k,l);
 		this.setTag("div");
 		this.setName("Base Page");
-		PageName = "Name";
-		PageColor = "white";
+		PageName = "Page Name";
+		PageColor = "White";
 		this.isTopParent = true;
 	}
 	

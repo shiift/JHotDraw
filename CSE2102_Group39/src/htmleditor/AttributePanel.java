@@ -50,6 +50,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	private int xValue = 0;
 	private int yValue = 0;
 	private JTextField nameField;
+	private JTextField colorField;
 	
 	public AttributePanel(){
 		
@@ -423,6 +424,33 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		
 		optionsPanel.add(pnamePanel);
 		
+		ActionListener setColorListener = new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				topP.setPageColor(colorField.getText());
+				paneChanged();
+			}
+		};
+
+		JPanel pcolorPanel = new JPanel();
+		pcolorPanel.setLayout(new BoxLayout(pcolorPanel, BoxLayout.X_AXIS));
+		
+		JLabel colorLabel = new JLabel();
+		colorLabel.setText("Page Color");
+		pcolorPanel.add(colorLabel);
+		
+		colorField = new JTextField();
+		colorField.setText(topP.getPageColor());
+		colorField.setToolTipText("Page Color");
+		colorField.setMaximumSize(new Dimension(100, 30));
+		pcolorPanel.add(colorField);
+		
+		JButton colorButton = new JButton();
+		colorButton.setText("Set Color");
+		colorButton.addActionListener(setColorListener);
+		colorButton.setActionCommand(null);
+		pcolorPanel.add(colorButton);
+		
+		optionsPanel.add(pcolorPanel);
 		
 		
 		revalidate();
