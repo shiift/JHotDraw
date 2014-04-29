@@ -92,7 +92,6 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
     	parsedText = parsedText.replaceAll("\'", "&#39;");
     	
         parsedText = parsedText.replaceAll("\n", "<br />");
-        parsedText = parsedText.replaceAll("\\*\\*", "<li>");
         parsedText = parsedText.replaceAll("B\\^", "<strong>");
         parsedText = parsedText.replaceAll("\\^B", "</strong>");
         parsedText = parsedText.replaceAll("I\\^", "<em>");

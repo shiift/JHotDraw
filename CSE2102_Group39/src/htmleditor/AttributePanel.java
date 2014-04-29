@@ -123,7 +123,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
         addColorPane("ul", Color.GREEN, "Unordered List");
         addColorPane("ol", Color.YELLOW, "Ordered List");
         addColorPane("embed", Color.PINK, "Embedded Video");
-        addColorPane("iframe", Color.BLUE, "Embedded Web Page");
+        addColorPane("iframe", Color.RED, "Embedded Web Page");
 
 	}
 
