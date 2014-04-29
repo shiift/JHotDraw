@@ -255,6 +255,7 @@ public class DrawProject extends AbstractProject {
 
 		mainPane.setLeftComponent(attributePanel);
 		mainPane.setRightComponent(scrollPane);
+		mainPane.setDividerLocation(400);
 		
 		add(mainPane, java.awt.BorderLayout.CENTER);
 
