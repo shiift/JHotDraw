@@ -8,4 +8,4 @@ and links, to name a few. Users are also able to edit multiple pages at the same
 most, if not all, of your HTML editing needs.
 
 
-Requirements to run: Linux or Microsoft Windows Operating system
+Requirements to run: Linux, Mac, or Microsoft Windows Operating system
