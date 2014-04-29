@@ -27,14 +27,14 @@ public class Main {
     public static void main(String[] args) {
         Application app;
         String os = System.getProperty("os.name").toLowerCase();
-        if (os.startsWith("mac")) {
-            app = new DefaultOSXApplication();
-        } else if (os.startsWith("win")) {
-          //  app = new DefaultMDIApplication();
+//        if (os.startsWith("mac")) {
+//            app = new DefaultOSXApplication();
+//        } else if (os.startsWith("win")) {
+//          //  app = new DefaultMDIApplication();
+//            app = new DefaultSDIApplication();
+//        } else {
             app = new DefaultSDIApplication();
-        } else {
-            app = new DefaultSDIApplication();
-        }
+//        }
         
 
         DrawApplicationModel model = new DrawApplicationModel();
