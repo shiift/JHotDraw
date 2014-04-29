@@ -11,6 +11,7 @@ public class ParagraphFigure extends AbstractTextFigure {
     }
     
     public ParagraphFigure clone() {
-    	return (ParagraphFigure) super.clone();
+    	ParagraphFigure that = (ParagraphFigure) super.clone();
+    	return that;
     }
 }
