@@ -10,7 +10,7 @@
  * such Confidential Information and shall use it only in accordance
  * with the terms of the license agreement you entered into with
  * JHotDraw.org.
-�
+���
  */
 
 
@@ -62,7 +62,7 @@ public abstract class AbstractDrawing extends AbstractBean implements Drawing {
         listenerList.remove(UndoableEditListener.class, l);
     }
     public void addAll(Collection<Figure> figures) {
-        CompositeEdit edit = new CompositeEdit("Figuren hinzuf\u00fcgen");
+        CompositeEdit edit = new CompositeEdit("Add Figures");
         fireUndoableEditHappened(edit);
         for (Figure f : figures) {
             add(f);
@@ -85,7 +85,7 @@ public abstract class AbstractDrawing extends AbstractBean implements Drawing {
     }
     
     public void removeAll(Collection<Figure> toBeRemoved) {
-        CompositeEdit edit = new CompositeEdit("Figuren entfernen");
+        CompositeEdit edit = new CompositeEdit("Remove Figures");
         fireUndoableEditHappened(edit);
         
         for (Figure f : new ArrayList<Figure>(toBeRemoved)) {
@@ -117,7 +117,7 @@ public abstract class AbstractDrawing extends AbstractBean implements Drawing {
         figure.addNotify(this);
         fireFigureAdded(figure);
         fireUndoableEditHappened(new AbstractUndoableEdit() {
-            public String getPresentationName() { return "Figur einf\u00fcgen"; }
+            public String getPresentationName() { return "Undo"; }
             public void undo()  throws CannotUndoException {
                 super.undo();
                 basicRemove(figure);
@@ -147,7 +147,7 @@ public abstract class AbstractDrawing extends AbstractBean implements Drawing {
             figure.removeNotify(this);
             fireFigureRemoved(figure);
             fireUndoableEditHappened(new AbstractUndoableEdit() {
-                public String getPresentationName() { return "Figur entfernen"; }
+                public String getPresentationName() { return "Remove Figure"; }
                 public void redo()  throws CannotUndoException {
                     super.redo();
                     basicRemove(figure);

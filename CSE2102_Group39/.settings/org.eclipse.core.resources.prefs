@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/org/jhotdraw/draw/AbstractDrawing.java=UTF-8
+encoding//src/org/jhotdraw/draw/CreationTool.java=UTF-8
 encoding//src/org/jhotdraw/draw/DefaultDrawingView.java=UTF-8
 encoding//src/org/jhotdraw/draw/DelegationSelectionTool.java=UTF-8
 encoding//src/org/jhotdraw/draw/RectangleFigure.java=UTF-8
