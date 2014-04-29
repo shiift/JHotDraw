@@ -117,8 +117,6 @@ public abstract class AbstractTextFigure extends HtmlFigure implements TextHolde
         this.addStyle("width",bounds.width+"px");
         this.addStyle("height",bounds.height+"px");
         textLayout = null;
-//		this.attributeList.get("width ").setValue(this.rectangle.width + "px");
-//		this.attributeList.get("height ").setValue(this.rectangle.height + "px");
 	}
     
     public void basicTransform(AffineTransform tx) {

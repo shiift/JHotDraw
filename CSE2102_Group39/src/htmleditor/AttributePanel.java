@@ -59,7 +59,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		styleFields = new HashMap<String, JTextField>();
 
 		// Used for the visual appearance of the AttributePanel
-		setPreferredSize(new Dimension(250,0));
+		setPreferredSize(new Dimension(500,0));
         setBorder(new EmptyBorder(30,0,0,0));
         
         // Components are laid out vertically from top to bottom
@@ -195,6 +195,7 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 		attributeTitle.setMaximumSize(new Dimension(100, 30));
 		attributeTitle.setEditable(false);
 		attributeTitle.setBorder(null);
+		attributeTitle.setBackground(null);
 		attributeTitle.setAlignmentX(CENTER_ALIGNMENT);
 		optionsPanel.add(attributeTitle);
 
@@ -473,14 +474,10 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 	
 	@Override
 	public void figureAreaInvalidated(FigureEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void figureAttributeChanged(FigureEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -501,20 +498,14 @@ public class AttributePanel extends JPanel implements FigureSelectionListener, F
 
 	@Override
 	public void figureAdded(FigureEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void figureRemoved(FigureEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void figureRequestRemove(FigureEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	// Using the color parameter that is given, set it

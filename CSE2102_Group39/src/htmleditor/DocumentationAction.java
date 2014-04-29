@@ -14,20 +14,15 @@
 
 package htmleditor;
 
-import org.jhotdraw.util.*;
-
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Desktop;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 
-import javax.swing.*;
-
-import org.jhotdraw.app.*;
+import org.jhotdraw.app.Application;
 import org.jhotdraw.app.action.AbstractApplicationAction;
+import org.jhotdraw.util.ResourceBundleUtil;
 
 /**
  * Displays a dialog showing information about the application.
@@ -51,7 +46,6 @@ public class DocumentationAction extends AbstractApplicationAction {
 			try {
 				Desktop.getDesktop().browse(new URI("http://www.liamd.com/documentation.html"));
 			} catch (IOException | URISyntaxException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
