@@ -255,7 +255,6 @@ public class HtmlFigure extends RectangleFigure {
 		else{
 			in.getAttribute("pname", "Page Name");
 			in.getAttribute("pcolor", "white");
-			System.out.println("fuuuuuuuuuu");
 		}
 		_style = new StyleBuilder(this);
 		for(int i = 1; i<_control+1;i++){
