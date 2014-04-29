@@ -19,7 +19,7 @@ import org.jhotdraw.draw.RectangleFigure;
 import org.jhotdraw.xml.DOMInput;
 import org.jhotdraw.xml.DOMOutput;
 
-public class HtmlFigure extends RectangleFigure {
+public abstract class HtmlFigure extends RectangleFigure {
 
 	protected LinkedList<HtmlFigure> figureList;
 	protected HashMap<String, AttributeValue> attributeList;
