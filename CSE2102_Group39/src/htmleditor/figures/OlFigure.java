@@ -36,6 +36,7 @@ public class OlFigure extends AbstractTextFigure
 	public String getParsedText()
 	{
 		String parsedText = super.getParsedText();
+        parsedText = parsedText.replaceAll("\\*\\*", "<li>");
 		parsedText = parsedText.replaceAll("<br />", "</li>");
 		parsedText = parsedText.concat("</li>");
 		return parsedText;
