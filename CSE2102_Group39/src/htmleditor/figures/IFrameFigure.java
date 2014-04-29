@@ -35,7 +35,7 @@ public class IFrameFigure extends HtmlFigure
 	{
 		super.basicSetBounds(anchor, lead);
 		if(control==false){
-			this.setAttribute(AttributeKeys.FILL_COLOR, Color.BLUE);
+			this.setAttribute(AttributeKeys.FILL_COLOR, Color.RED);
 			control = true;
 		}
 		this.setStyle("width", String.valueOf(rectangle.width));
